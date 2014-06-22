@@ -1,0 +1,3 @@
+cliente_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ClienteBundle:Default:index }

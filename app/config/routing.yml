@@ -1,0 +1,23 @@
+producto:
+    resource: "@ProductoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+direccion:
+    resource: "@DireccionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+movimiento:
+    resource: "@MovimientoBundle/Resources/config/routing.yml"
+    prefix:   /
+
+cliente:
+    resource: "@ClienteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+proveedor:
+    resource: "@ProveedorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+empleado:
+    resource: "@EmpleadoBundle/Resources/config/routing.yml"
+    prefix:   /

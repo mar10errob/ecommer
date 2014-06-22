@@ -1,0 +1,7 @@
+parameters:
+#    producto.example.class: SPV\ProductoBundle\Example
+
+services:
+#    producto.example:
+#        class: %producto.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
