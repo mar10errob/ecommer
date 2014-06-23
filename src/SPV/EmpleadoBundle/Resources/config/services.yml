@@ -1,7 +1,0 @@
-parameters:
-#    empleado.example.class: SPV\EmpleadoBundle\Example
-
-services:
-#    empleado.example:
-#        class: %empleado.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

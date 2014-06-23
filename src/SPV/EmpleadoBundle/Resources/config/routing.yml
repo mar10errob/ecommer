@@ -1,3 +1,0 @@
-empleado_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: EmpleadoBundle:Default:index }
