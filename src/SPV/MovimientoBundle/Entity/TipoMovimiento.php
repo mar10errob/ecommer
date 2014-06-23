@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * TipoMovimiento
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="SPV\MovimientoBundle\Entity\TipoMovimientoRepository")
+ * @ORM\Entity
  */
 class TipoMovimiento
 {

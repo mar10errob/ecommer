@@ -66,21 +66,21 @@ class Producto
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo_unidad", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ProductoBundle\Entity\TipoUnidad")
      */
     private $tipoUnidad;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo_producto", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ProductoBundle\Entity\TipoProducto")
      */
     private $tipoProducto;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="proveedor", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\Proveedor")
      */
     private $proveedor;
 
@@ -250,10 +250,10 @@ class Producto
     /**
      * Set tipoUnidad
      *
-     * @param string $tipoUnidad
+     * @param \SPV\ProductoBundle\Entity\TipoUnidad|string $tipoUnidad
      * @return Producto
      */
-    public function setTipoUnidad($tipoUnidad)
+    public function setTipoUnidad(\SPV\ProductoBundle\Entity\TipoUnidad $tipoUnidad)
     {
         $this->tipoUnidad = $tipoUnidad;
 
@@ -273,10 +273,10 @@ class Producto
     /**
      * Set tipoProducto
      *
-     * @param string $tipoProducto
+     * @param \SPV\ProductoBundle\Entity\TipoProducto|string $tipoProducto
      * @return Producto
      */
-    public function setTipoProducto($tipoProducto)
+    public function setTipoProducto(\SPV\ProductoBundle\Entity\TipoProducto $tipoProducto)
     {
         $this->tipoProducto = $tipoProducto;
 
@@ -296,10 +296,10 @@ class Producto
     /**
      * Set proveedor
      *
-     * @param string $proveedor
+     * @param \SPV\ProveedorBundle\Entity\Proveedor|string $proveedor
      * @return Producto
      */
-    public function setProveedor($proveedor)
+    public function setProveedor(\SPV\ProveedorBundle\Entity\Proveedor $proveedor)
     {
         $this->proveedor = $proveedor;
 

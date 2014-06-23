@@ -24,14 +24,14 @@ class DetalleMovimiento
     /**
      * @var string
      *
-     * @ORM\Column(name="movimiento", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\MovimientoBundle\Entity\Movimiento")
      */
     private $movimiento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="producto", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ProductoBundle\Entity\Producto")
      */
     private $producto;
 
@@ -56,10 +56,10 @@ class DetalleMovimiento
     /**
      * Set movimiento
      *
-     * @param string $movimiento
+     * @param \SPV\MovimientoBundle\Entity\Movimiento|string $movimiento
      * @return DetalleMovimiento
      */
-    public function setMovimiento($movimiento)
+    public function setMovimiento(\SPV\MovimientoBundle\Entity\Movimiento $movimiento)
     {
         $this->movimiento = $movimiento;
 
@@ -79,10 +79,10 @@ class DetalleMovimiento
     /**
      * Set producto
      *
-     * @param string $producto
+     * @param \SPV\ProductoBundle\Entity\Producto|string $producto
      * @return DetalleMovimiento
      */
-    public function setProducto($producto)
+    public function setProducto(\SPV\ProductoBundle\Entity\Producto $producto)
     {
         $this->producto = $producto;
 

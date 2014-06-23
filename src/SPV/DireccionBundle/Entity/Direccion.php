@@ -24,14 +24,7 @@ class Direccion
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=255)
-     */
-    private $estado;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="colonia", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Colonia")
      */
     private $colonia;
 
@@ -68,35 +61,12 @@ class Direccion
     }
 
     /**
-     * Set estado
-     *
-     * @param string $estado
-     * @return Direccion
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado
-     *
-     * @return string 
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
-    /**
      * Set colonia
      *
-     * @param string $colonia
+     * @param \SPV\DireccionBundle\Entity\Colonia|string $colonia
      * @return Direccion
      */
-    public function setColonia($colonia)
+    public function setColonia(\SPV\DireccionBundle\Entity\Colonia $colonia)
     {
         $this->colonia = $colonia;
 

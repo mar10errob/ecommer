@@ -38,7 +38,7 @@ class Colonia
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Estado")
      */
     private $estado;
 
@@ -101,10 +101,10 @@ class Colonia
     /**
      * Set estado
      *
-     * @param string $estado
+     * @param \SPV\DireccionBundle\Entity\Estado|string $estado
      * @return Colonia
      */
-    public function setEstado($estado)
+    public function setEstado(\SPV\DireccionBundle\Entity\Estado $estado)
     {
         $this->estado = $estado;
 

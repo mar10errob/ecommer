@@ -87,7 +87,8 @@ class Cliente
     /**
      * @var string
      *
-     * @ORM\Column(name="direccion", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Direccion")
+     *
      */
     private $direccion;
 
@@ -326,10 +327,10 @@ class Cliente
     /**
      * Set direccion
      *
-     * @param string $direccion
+     * @param \SPV\DireccionBundle\Entity\Direccion|string $direccion
      * @return Cliente
      */
-    public function setDireccion($direccion)
+    public function setDireccion(\SPV\DireccionBundle\Entity\Direccion  $direccion)
     {
         $this->direccion = $direccion;
 

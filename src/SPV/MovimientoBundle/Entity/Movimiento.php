@@ -24,28 +24,28 @@ class Movimiento
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\MovimientoBundle\Entity\TipoMovimiento")
      */
     private $tipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cliente", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ClienteBundle\Entity\Cliente")
      */
     private $cliente;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usuario", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\UsuarioBundle\Entity\Usuario")
      */
     private $usuario;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="proveedor", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\Proveedor")
      */
     private $proveedor;
 
@@ -105,10 +105,10 @@ class Movimiento
     /**
      * Set tipo
      *
-     * @param string $tipo
+     * @param \SPV\MovimientoBundle\Entity\TipoMovimiento|string $tipo
      * @return Movimiento
      */
-    public function setTipo($tipo)
+    public function setTipo(\SPV\MovimientoBundle\Entity\TipoMovimiento $tipo)
     {
         $this->tipo = $tipo;
 
@@ -128,10 +128,10 @@ class Movimiento
     /**
      * Set cliente
      *
-     * @param string $cliente
+     * @param \SPV\ClienteBundle\Entity\Cliente|string $cliente
      * @return Movimiento
      */
-    public function setCliente($cliente)
+    public function setCliente(\SPV\ClienteBundle\Entity\Cliente $cliente)
     {
         $this->cliente = $cliente;
 
@@ -151,10 +151,10 @@ class Movimiento
     /**
      * Set usuario
      *
-     * @param string $usuario
+     * @param \SPV\UsuarioBundle\Entity\Usuario|string $usuario
      * @return Movimiento
      */
-    public function setUsuario($usuario)
+    public function setUsuario(\SPV\UsuarioBundle\Entity\Usuario $usuario)
     {
         $this->usuario = $usuario;
 
@@ -174,10 +174,10 @@ class Movimiento
     /**
      * Set proveedor
      *
-     * @param string $proveedor
+     * @param \SPV\ProveedorBundle\Entity\Proveedor|string $proveedor
      * @return Movimiento
      */
-    public function setProveedor($proveedor)
+    public function setProveedor(\SPV\ProveedorBundle\Entity\Proveedor $proveedor)
     {
         $this->proveedor = $proveedor;
 

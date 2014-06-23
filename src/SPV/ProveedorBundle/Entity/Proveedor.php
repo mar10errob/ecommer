@@ -31,14 +31,14 @@ class Proveedor
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\TipoProveedor")
      */
     private $tipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="direccion", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Direccion")
      */
     private $direccion;
 
@@ -93,10 +93,10 @@ class Proveedor
     /**
      * Set tipo
      *
-     * @param string $tipo
+     * @param \SPV\ProveedorBundle\Entity\TipoProveedor|string $tipo
      * @return Proveedor
      */
-    public function setTipo($tipo)
+    public function setTipo(\SPV\ProveedorBundle\Entity\TipoProveedor $tipo)
     {
         $this->tipo = $tipo;
 
@@ -116,10 +116,10 @@ class Proveedor
     /**
      * Set direccion
      *
-     * @param string $direccion
+     * @param \SPV\DireccionBundle\Entity\Direccion|string $direccion
      * @return Proveedor
      */
-    public function setDireccion($direccion)
+    public function setDireccion(\SPV\DireccionBundle\Entity\Direccion $direccion)
     {
         $this->direccion = $direccion;
 

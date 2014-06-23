@@ -45,14 +45,14 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="direccion", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Direccion")
      */
     private $direccion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tipo", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="SPV\UsuarioBundle\Entity\TipoUsuario")
      */
     private $tipo;
 
@@ -160,10 +160,10 @@ class Usuario
     /**
      * Set direccion
      *
-     * @param string $direccion
+     * @param \SPV\DireccionBundle\Entity\Direccion|string $direccion
      * @return Usuario
      */
-    public function setDireccion($direccion)
+    public function setDireccion(\SPV\DireccionBundle\Entity\Direccion $direccion)
     {
         $this->direccion = $direccion;
 
@@ -183,10 +183,10 @@ class Usuario
     /**
      * Set tipo
      *
-     * @param string $tipo
+     * @param \SPV\UsuarioBundle\Entity\TipoUsuario|string $tipo
      * @return Usuario
      */
-    public function setTipo($tipo)
+    public function setTipo(\SPV\UsuarioBundle\Entity\TipoUsuario $tipo)
     {
         $this->tipo = $tipo;
 
