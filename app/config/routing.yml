@@ -1,3 +1,7 @@
+usuario:
+    resource: "@UsuarioBundle/Resources/config/routing.yml"
+    prefix:   /
+
 producto:
     resource: "@ProductoBundle/Resources/config/routing.yml"
     prefix:   /
@@ -16,8 +20,4 @@ cliente:
 
 proveedor:
     resource: "@ProveedorBundle/Resources/config/routing.yml"
-    prefix:   /
-
-empleado:
-    resource: "@EmpleadoBundle/Resources/config/routing.yml"
     prefix:   /
