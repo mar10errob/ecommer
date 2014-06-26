@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+{% block elementhead %}
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+    <script src="{{ asset('js/vendor/modernizr-2.6.2.min.js') }}"></script>
+{% endblock %}
+{% block jsbody %}
+    <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-1.10.1.min.js') }}"><\/script>')</script>
+    <script src="{{ asset('js/vendor/bootstrap.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}" ></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        {% block contenido %}{% endblock %}
+    </div>
+{% endblock %}
