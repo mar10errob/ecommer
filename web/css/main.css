@@ -11,7 +11,7 @@ textarea {
 }
 
 body {
-    font-size: 1em;
+    font-size: 12px;
     line-height: 1.4;
 }
 
@@ -59,7 +59,29 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+body{
+    background: url("../img/bg.jpg") no-repeat top;
+}
+#buscar{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background: url("../img/top_search_bg.gif") no-repeat center;
+    background-size: 100% 100%;
+}
+#section-search{
+    background-color: #4a4a4a;
+}
+#header{
+    background: url("../img/header_bg.jpg") no-repeat center;
+    background-size: 100% 100%;
+}
+#header img{
+    margin-top: 20px;
+}
+#menu{
+    background: url("../img/menu_bg.gif") center;
+}
 
 
 

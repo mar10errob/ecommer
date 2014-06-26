@@ -12,6 +12,49 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        {% block contenido %}{% endblock %}
+        <div class="row" id="section-search">
+            <div class="col-sm-6 col-md-3 col-lg-3 col-md-offset-8 col-lg-offset-8" id="buscar">
+                <form action="" method="POST" role="form" class="form-inline">
+                    <div class="row">
+                        <div class="form-group col-sm-10">
+                            <label for="">Buscar: </label>
+                            <input type="text" class="form-control input-sm" name="" id="">
+                        </div>
+                        <input type="image" class="btn btn-sm col-sm-2" src="{{ asset('img/search.gif') }}">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row" id="header">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="{{ asset('img/logo.png') }}" alt="" class="img-responsive"/>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+
+            </div>
+        </div>
+        <div class="row" id="menu">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Inicio
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Inicio2
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Inicio2
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Inicio2
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Inicio2
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                Inicio2
+            </div>
+        </div>
+        {% block contenido %}
+
+        {% endblock %}
     </div>
 {% endblock %}
