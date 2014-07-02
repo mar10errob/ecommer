@@ -16,7 +16,7 @@ movimiento:
 
 cliente:
     resource: "@ClienteBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /cliente
 
 proveedor:
     resource: "@ProveedorBundle/Resources/config/routing.yml"
@@ -25,3 +25,15 @@ proveedor:
 portada:
     pattern: /
     defaults: { _controller: ProductoBundle:Default:portada }
+
+productos:
+    pattern: /productos
+    defaults: { _controller: ProductoBundle:Default:productos }
+
+detalle:
+    pattern: /detalle
+    defaults: { _controller: ProductoBundle:Default:detalleproducto }
+
+login:
+    pattern:  /login
+    defaults: { _controller: ClienteBundle:Default:login }

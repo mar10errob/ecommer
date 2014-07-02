@@ -6,8 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function loginAction()
     {
-        return $this->render('ClienteBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('ClienteBundle:Default:login.html.twig');
+    }
+
+    public function carritoAction(){
+        return $this->render('ClienteBundle:Default:carrito.html.twig');
+    }
+
+    public function checkoutAction(){
+        return $this->render('ClienteBundle:Default:checkout.html.twig');
     }
 }

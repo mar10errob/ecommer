@@ -9,4 +9,12 @@ class DefaultController extends Controller
     public function portadaAction(){
         return $this->render('ProductoBundle:Default:poartada.html.twig');
     }
+
+    public function productosAction(){
+        return $this->render('ProductoBundle:Default:productos.html.twig');
+    }
+
+    public function detalleproductoAction(){
+        return $this->render('ProductoBundle:Default:detalle.html.twig');
+    }
 }

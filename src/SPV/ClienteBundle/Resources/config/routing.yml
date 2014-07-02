@@ -1,3 +1,7 @@
-cliente_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ClienteBundle:Default:index }
+carrito:
+    pattern: /carrito
+    defaults: { _controller: ClienteBundle:Default:carrito }
+
+checkout:
+    pattern: /checkout
+    defaults: { _controller: ClienteBundle:Default:checkout }
