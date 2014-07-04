@@ -57,18 +57,18 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{ asset('images/home/logo.png') }}" alt="" /></a>
+                            <a href="{{ path('portada') }}"><img src="{{ asset('images/home/logo.png') }}" alt="" /></a>
                         </div>
-                        <div class="btn-group pull-right">
+                        {#<div class="btn-group pull-right">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    USA
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
-                                </ul>
+                                    <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                        USA
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Canada</a></li>
+                                        <li><a href="#">UK</a></li>
+                                    </ul>
                             </div>
 
                             <div class="btn-group">
@@ -81,16 +81,15 @@
                                     <li><a href="#">Pound</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div>#}
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                                <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                <li><a href="{{ path('checkout') }}" class="{% block checkout '' %}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="{{ path('carrito') }}" class="{% block carrito '' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="{{ path('login') }}" class="{% block login '' %}"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="{{ path('perfil') }}" class="{% block cuenta '' %}"><i class="fa fa-user"></i> Cuenta</a></li>
+                                <li><a href="{{ path('pedido') }}" class="{% block pedido '' %}"><i class="fa fa-truck"></i> Pedido</a></li>
+                                <li><a href="{{ path('carrito') }}" class="{% block carrito '' %}"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
+                                <li><a href="{{ path('cliente_login') }}" class="{% block login '' %}"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
                     </div>
@@ -113,9 +112,9 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="{{ path('portada') }}" class="{% block home '' %}">Home</a></li>
-                                <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                <li><a href="{{ path('productos') }}" class="{% block productos '' %}">Productos</a></li>
+                                {#<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="{{ path('productos') }}" class="{% block productos '' %}">Products</a></li>
                                         <li><a href="{{ path('detalle') }}" class="{% block detalle '' %}">Product Details</a></li>
                                         <li><a href="{{ path('checkout') }}" >Checkout</a></li>
                                         <li><a href="{{ path('carrito') }}" >Cart</a></li>
@@ -128,14 +127,14 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="404.html">404</a></li>#}
+                                <li><a href="{{ path('contacto') }}" class="{% block contacto '' %}">¿Quienes Somos?</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
-                            <input type="text" placeholder="Search"/>
+                            <input type="text" placeholder="Buscar"/>
                         </div>
                     </div>
                 </div>
@@ -146,10 +145,11 @@
     {% block fullcontenido %}
     <section>
         <div class="container">
+            {% block migas %}{% endblock %}
             <div class="row">
                 <div class="col-sm-3">
                     <div class="left-sidebar">
-                        <h2>Category</h2>
+                        <h2>Categorias</h2>
                         <div class="panel-group category-products" id="accordian"><!--category-productsr-->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -258,7 +258,7 @@
                         </div><!--/category-products-->
 
                         <div class="brands_products"><!--brands_products-->
-                            <h2>Brands</h2>
+                            <h2>Marcas</h2>
                             <div class="brands-name">
                                 <ul class="nav nav-pills nav-stacked">
                                     <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
@@ -273,7 +273,7 @@
                         </div><!--/brands_products-->
 
                         <div class="price-range"><!--price-range-->
-                            <h2>Price Range</h2>
+                            <h2>Rango de Precio</h2>
                             <div class="well text-center">
                                 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
                                 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>

@@ -3,6 +3,7 @@
 namespace SPV\ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SPV\ProductoBundle\Util\Util;
 
 /**
  * Producto
@@ -118,6 +119,7 @@ class Producto
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+        $this->slug= Util::getSlug($nombre);
 
         return $this;
     }

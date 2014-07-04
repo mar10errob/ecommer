@@ -2,6 +2,20 @@ carrito:
     pattern: /carrito
     defaults: { _controller: ClienteBundle:Default:carrito }
 
-checkout:
-    pattern: /checkout
-    defaults: { _controller: ClienteBundle:Default:checkout }
+pedido:
+    pattern: /pedido
+    defaults: { _controller: ClienteBundle:Default:pedido }
+
+perfil:
+    pattern: /perfil
+    defaults: { _controller: ClienteBundle:Default:perfil }
+
+cliente_login:
+    pattern:  /login
+    defaults: { _controller: ClienteBundle:Default:login }
+
+cliente_login_check:
+    pattern: /login_check
+
+cliente_logout:
+    pattern: /logout

@@ -1,0 +1,62 @@
+{% extends '::public.html.twig' %}
+{% block title %}Cuenta{% endblock %}
+{% block id %}cuenta{% endblock %}
+{% block cuenta %}active{% endblock %}
+{% block fullcontenido %}
+    <section>
+        <div class="container">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <p>Bienvenido <span></span>.</p>
+            </div>
+            <div class="step-one">
+                <h2 class="heading">Perfil de usuario <span></span></h2>
+            </div>
+
+            <div class="shopper-informations">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="shopper-info">
+                            <p>Informacion de Usuario</p>
+                            <label for="">Nombre(s):</label>
+                            <input type="text" value="" disabled/>
+                            <label for="">Apellidos:</label>
+                            <input type="text" value="" disabled/>
+                            <label for="">Curp:</label>
+                            <input type="text" value="" disabled/>
+                            <label for="">Email:</label>
+                            <input type="text" value="" disabled/>
+                            <label for="">Fecha de Nacimiento:</label>
+                            <input type="text" value=""/>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 clearfix">
+                        <div class="bill-to">
+                            <p>Direccion</p>
+                            <div class="perfil-one">
+                                <input type="text" value="Calle" disabled/>
+                                <input type="text" value="Numero Exterior" disabled/>
+                                <input type="text" value="Numero Interior" disabled/>
+                                <input type="text" value="Colonia" disabled/>
+                                <input type="text" value="Codigo Postal" disabled/>
+                            </div>
+                            <div class="perfil-two">
+                                <input type="text" value="Queretaro" disabled/>
+                                <input type="text" value="Mexico" disabled/>
+                                <input type="text" value="Telefono" disabled>
+                                <input type="text" value="Telefono Celular" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="shopper-info">
+                            <p>Saldo</p>
+                            <input type="text" value="$" disabled/>
+                            {#<label><input type="checkbox"> Shipping to bill address</label>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,6 +1,16 @@
 {% extends '::public.html.twig' %}
 {% block title %}Detalle{% endblock %}
 {% block id %}detalle{% endblock %}
+{% block productos %}active{% endblock %}
+{% block migas %}
+    <div class="breadcrumbs">
+        <ol class="breadcrumb">
+            <li><a href="{{ path('portada') }}">Home</a></li>
+            <li><a href="{{ path('productos') }}">Productos</a></li>
+            <li class="active">Detalles</li>
+        </ol>
+    </div>
+{% endblock %}
 {% block contenido %}
     <div class="product-details"><!--product-details-->
         <div class="col-sm-5">
@@ -47,22 +57,21 @@
                 <p>Web ID: 1089772</p>
                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
-									<span>US $59</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
+									<span>MX $56</span>
+									<label>Cantidad:</label>
+									<input type="text" value="3"/>
 									<button type="button" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
+                                        <i class="fa fa-shopping-cart"></i> Agregar al carrito
                                     </button>
 								</span>
-                <p><b>Availability:</b> In Stock</p>
-                <p><b>Condition:</b> New</p>
-                <p><b>Brand:</b> E-SHOPPER</p>
+                <p><b>Disponible:</b> In Stock</p>
+                <p><b>Marca:</b> E-SHOPPER</p>
                 <a href=""><img src="{{ asset('images/product-details/share.png') }}" class="share img-responsive"  alt="" /></a>
             </div><!--/product-information-->
         </div>
     </div><!--/product-details-->
-    <div class="category-tab shop-details-tab"><!--category-tab-->
+    <br/><br/>
+    {#<div class="category-tab shop-details-tab"><!--category-tab-->
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
                 <li><a href="#details" data-toggle="tab">Details</a></li>
@@ -148,10 +157,10 @@
             </div>
 
         </div>
-    </div><!--/category-tab-->
+    </div><!--/category-tab-->#}
 
     <div class="recommended_items"><!--recommended_items-->
-        <h2 class="title text-center">recommended items</h2>
+        <h2 class="title text-center">productos recomendados</h2>
 
         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -164,7 +173,7 @@
                                     <img src="{{ asset('images/home/recommend1.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</button>
                                 </div>
                             </div>
                         </div>
@@ -180,7 +189,7 @@
                                     <img src="{{ asset('images/home/recommend2.jpg') }}" alt="" />
                                     <h2>$56</h2>
                                     <p>Easy Polo Black Edition</p>
-                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
+                                    <button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</button>
                                 </div>
                             </div>
                         </div>
