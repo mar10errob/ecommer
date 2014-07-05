@@ -84,12 +84,18 @@
                         </div>#}
                     </div>
                     <div class="col-sm-8">
+
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="{{ path('perfil') }}" class="{% block cuenta '' %}"><i class="fa fa-user"></i> Cuenta</a></li>
+                            {% if is_granted('ROLE_CLIENTE') %}
+                                <li><a href="{{ path('perfil') }}" class="{% block cuenta '' %}"><i class="fa fa-user"></i> Cuenta: {{ app.user.nombre }}</a></li>
                                 <li><a href="{{ path('pedido') }}" class="{% block pedido '' %}"><i class="fa fa-truck"></i> Pedido</a></li>
                                 <li><a href="{{ path('carrito') }}" class="{% block carrito '' %}"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
-                                <li><a href="{{ path('cliente_login') }}" class="{% block login '' %}"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="{{ path('cliente_logout') }}"><i class="fa fa-sign-out"></i> Salir</a></li>
+                            {% else %}
+                                <li><a href="{{ path('cliente_regsitro') }}" class="{% block registro '' %}"><i class="fa fa-plus"></i> Registrate</a></li>
+                                <li><a href="{{ path('cliente_login') }}" class="{% block login '' %}"><i class="fa fa-sign-in"></i> Login</a></li>
+                            {% endif %}
                             </ul>
                         </div>
                     </div>

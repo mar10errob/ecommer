@@ -1,12 +1,32 @@
 <?php
 namespace SPV\ClienteBundle\Form;
+
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ClienteType extends AbstractType{
 
-    public function buildForm(FormBuilder $builder, array $option){
-        
+    public function buildForm(FormBuilderInterface $builder, array $option){
+        $builder
+            ->add('nombre')
+            ->add('apellidoPaterno')
+            ->add('apellidoMaterno')
+            ->add('email','email')
+            ->add('password','repeated', array(
+                'type'=>'password',
+                'invalid_message'=>'Ambos campos de contraseña deben coincidir'
+            ))
+            ->add('fechaNacimiento','birthday')
+            ->add('curp')
+            ->add('telefono')
+            ;
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver){
+        $resolver->setDefaults(array(
+            'data_class'=>'SPV\ClienteBundle\Entity\Cliente'
+        ));
     }
 
     /**
@@ -16,6 +36,6 @@ class ClienteType extends AbstractType{
      */
     public function getName()
     {
-        return 'cliente_form';
+        return 'spv_clientebundle_clientetype';
     }
 }

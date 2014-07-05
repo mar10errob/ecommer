@@ -50,16 +50,16 @@ class Movimiento
     private $proveedor;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="costo", type="integer")
+     * @ORM\Column(name="costo", type="float")
      */
     private $costo;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="saldo", type="integer")
+     * @ORM\Column(name="saldo", type="float")
      */
     private $saldo;
 
@@ -76,13 +76,6 @@ class Movimiento
      * @ORM\Column(name="fecha_entrega", type="datetime")
      */
     private $fechaEntrega;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="slug", type="string", length=255)
-     */
-    private $slug;
 
     /**
      * @var boolean
@@ -197,7 +190,7 @@ class Movimiento
     /**
      * Set costo
      *
-     * @param integer $costo
+     * @param float $costo
      * @return Movimiento
      */
     public function setCosto($costo)
@@ -210,7 +203,7 @@ class Movimiento
     /**
      * Get costo
      *
-     * @return integer 
+     * @return float
      */
     public function getCosto()
     {
@@ -220,7 +213,7 @@ class Movimiento
     /**
      * Set saldo
      *
-     * @param integer $saldo
+     * @param float $saldo
      * @return Movimiento
      */
     public function setSaldo($saldo)
@@ -231,9 +224,9 @@ class Movimiento
     }
 
     /**
-     * Get slado
+     * Get saldo
      *
-     * @return integer 
+     * @return float
      */
     public function getSaldo()
     {
@@ -284,29 +277,6 @@ class Movimiento
     public function getFechaEntrega()
     {
         return $this->fechaEntrega;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Movimiento
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string 
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 
     /**

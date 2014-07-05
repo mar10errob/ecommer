@@ -80,9 +80,9 @@ class Cliente implements UserInterface
     private $telefono;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="saldo", type="integer")
+     * @ORM\Column(name="saldo", type="float")
      */
     private $saldo;
 
@@ -306,7 +306,7 @@ class Cliente implements UserInterface
     /**
      * Set saldo
      *
-     * @param integer $saldo
+     * @param float $saldo
      * @return Cliente
      */
     public function setSaldo($saldo)
@@ -319,7 +319,7 @@ class Cliente implements UserInterface
     /**
      * Get saldo
      *
-     * @return integer 
+     * @return float
      */
     public function getSaldo()
     {
@@ -393,6 +393,11 @@ class Cliente implements UserInterface
     public function getStatus()
     {
         return $this->status;
+    }
+
+    function __toString()
+    {
+        return $this->getNombre().''.$this->getApellidoPaterno().' '.$this->getApellidoMaterno();
     }
 
     /**

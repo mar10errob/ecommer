@@ -61,4 +61,11 @@ class Estado
     {
         return $this->nombre;
     }
+
+    function __toString()
+    {
+        return $this->getDescripcion();
+    }
+
+
 }

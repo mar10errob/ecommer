@@ -1,6 +1,6 @@
 {% extends '::public.html.twig' %}
-{% block title %}Detalle{% endblock %}
-{% block id %}detalle{% endblock %}
+{% block title %}Login{% endblock %}
+{% block id %}login{% endblock %}
 {% block login %}active{% endblock %}
 {% block fullcontenido %}
     <section>
@@ -16,33 +16,25 @@
     <section id="form"><!--form-->
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 col-sm-offset-1">
+                <div class="col-sm-4 col-sm-offset-4">
+                    {% if error %}
+                    <div class="alert alert-danger">
+                    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    	<strong>¡Error!</strong> {{ error.message }}
+                    </div>
+                    {% endif %}
                     <div class="login-form"><!--login form-->
                         <h2>Entra a tu cuenta</h2>
-                        <form action="#">
-                            <input type="text" placeholder="Email" />
-                            <input type="password" placeholder="Contraseña" />
+                        <form action="{{ path('cliente_login_check') }}" method="post">
+                            <input type="text" name="_username" placeholder="Email" value="{{ last_username }}"/>
+                            <input type="password" name="_password" placeholder="Contraseña" />
 							<span>
-								<input type="checkbox" class="checkbox" checked>
-								Mantenerme conectado
+								<input type="checkbox" name="_remember_me" class="checkbox" checked>
+								No cerrar sesión
 							</span>
                             <button type="submit" class="btn btn-default">Entrar</button>
                         </form>
                     </div><!--/login form-->
-                </div>
-                <div class="col-sm-1">
-                    <h2 class="or">O</h2>
-                </div>
-                <div class="col-sm-4">
-                    <div class="signup-form"><!--sign up form-->
-                        <h2>Usuario Nuevo ¡Registrate!</h2>
-                        <form action="#">
-                            <input type="text" placeholder="Name"/>
-                            <input type="email" placeholder="Email Address"/>
-                            <input type="password" placeholder="Password"/>
-                            <button type="submit" class="btn btn-default">Signup</button>
-                        </form>
-                    </div><!--/sign up form-->
                 </div>
             </div>
         </div>

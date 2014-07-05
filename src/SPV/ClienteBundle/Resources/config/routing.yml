@@ -19,3 +19,7 @@ cliente_login_check:
 
 cliente_logout:
     pattern: /logout
+
+cliente_regsitro:
+    pattern: /registrate
+    defaults: { _controller: ClienteBundle:Default:resgistro }

@@ -120,4 +120,11 @@ class Colonia
     {
         return $this->estado;
     }
+
+    function __toString()
+    {
+        return $this->getNombre().' CP.'.$this->getCodigoPostal();
+    }
+
+
 }

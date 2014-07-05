@@ -37,9 +37,9 @@ class Producto
     private $descripcion;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="precio_unitario", type="integer")
+     * @ORM\Column(name="precio_unitario", type="float")
      */
     private $precioUnitario;
 
@@ -160,7 +160,7 @@ class Producto
     /**
      * Set precioUnitario
      *
-     * @param integer $precioUnitario
+     * @param float $precioUnitario
      * @return Producto
      */
     public function setPrecioUnitario($precioUnitario)
@@ -173,7 +173,7 @@ class Producto
     /**
      * Get precioUnitario
      *
-     * @return integer 
+     * @return float
      */
     public function getPrecioUnitario()
     {

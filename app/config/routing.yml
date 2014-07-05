@@ -41,3 +41,7 @@ error:
 contacto:
     pattern: /contacto
     defaults: { _controller: ProductoBundle:Default:contacto }
+
+adios:
+    pattern: /adios
+    defaults: { _controller: ProductoBundle:Default:adios }

@@ -151,4 +151,11 @@ class Direccion
     {
         return $this->numeroExterior;
     }
+
+    function __toString()
+    {
+        return $this->getCalle().' '.$this->getColonia()->getNombre().' '.$this->getNumeroExterior();
+    }
+
+
 }

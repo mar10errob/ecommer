@@ -23,4 +23,7 @@ class DefaultController extends Controller
     public function contactoAction(){
         return $this->render('ProductoBundle:Default:contacto.html.twig');
     }
+    public function adiosAction(){
+        return $this->render('ProductoBundle:Default:adios.html.twig');
+    }
 }

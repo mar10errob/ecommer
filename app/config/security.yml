@@ -6,11 +6,21 @@ security:
             form_login:
                 login_path: cliente_login
                 check_path: cliente_login_check
+                use_referer: false
+                default_target_path: /cliente/perfil
+                always_use_default_target_path: true
+            logout:
+                path: cliente_logout
+                target: adios
+            remember_me:
+                key: inventario123
+                lifetime: 3600
     access_control:
         - { path: ^/cliente/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/cliente/registrate, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/cliente/*, roles: ROLE_CLIENTE }
     providers:
         cliente:
             entity: { class: SPV\ClienteBundle\Entity\Cliente, property: email }
     encoders:
-        SPV\ClienteBundle\Entity\Cliente: plaintext
+        SPV\ClienteBundle\Entity\Cliente: { algorithm: sha512, iterations: 10 }

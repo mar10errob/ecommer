@@ -1,0 +1,20 @@
+{% extends '::public.html.twig' %}
+{% block title %}Vuelva Pronto{% endblock %}
+{% block id %}adios{% endblock %}
+{% block fullcontenido %}
+    <section>
+        <div class="container">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="{{ path('portada') }}">Home</a></li>
+                    <li class="active">Adios</li>
+                </ol>
+            </div><!--/breadcrums-->
+        </div>
+    </section>
+    <section><!--form-->
+        <div class="container adios">
+            <h1 class="text-center">Vuelva Pronto</h1>
+        </div>
+    </section><!--/form-->
+{% endblock %}

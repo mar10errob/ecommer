@@ -19,15 +19,15 @@
                         <div class="shopper-info">
                             <p>Informacion de Usuario</p>
                             <label for="">Nombre(s):</label>
-                            <input type="text" value="" disabled/>
+                            <input type="text" value="{{ app.user.nombre }}" disabled/>
                             <label for="">Apellidos:</label>
-                            <input type="text" value="" disabled/>
+                            <input type="text" value="{{ app.user.apellidopaterno~' '~app.user.apellidomaterno }}" disabled/>
                             <label for="">Curp:</label>
                             <input type="text" value="" disabled/>
                             <label for="">Email:</label>
-                            <input type="text" value="" disabled/>
+                            <input type="text" value="{{ app.user.email }}" disabled/>
                             <label for="">Fecha de Nacimiento:</label>
-                            <input type="text" value=""/>
+                            <input type="text" value="{{ app.user.fechanacimiento |date('d/m/Y') }}"/>
                         </div>
                     </div>
                     <div class="col-sm-5 clearfix">
@@ -51,7 +51,7 @@
                     <div class="col-sm-3">
                         <div class="shopper-info">
                             <p>Saldo</p>
-                            <input type="text" value="$" disabled/>
+                            <input type="text" value="${{ app.user.saldo }}" disabled/>
                             {#<label><input type="checkbox"> Shipping to bill address</label>#}
                         </div>
                     </div>
