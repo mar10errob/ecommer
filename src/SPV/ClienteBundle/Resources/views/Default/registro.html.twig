@@ -65,10 +65,7 @@
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         <label for="">Dirección</label>
-                        <select name="" id="">
-                            <option value="">--Estado--</option>
-                            <option value="">Queretaro</option>
-                        </select>
+                        {{ form_widget(direccion.estado) }}
                         {{ form_widget(direccion.colonia) }}
                         {{ form_widget(direccion.calle, {'attr':{
                         'placeholder':'Calle'

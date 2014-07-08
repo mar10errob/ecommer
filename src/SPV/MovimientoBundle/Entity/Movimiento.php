@@ -19,71 +19,77 @@ class Movimiento
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\MovimientoBundle\Entity\TipoMovimiento")
      */
-    private $tipo;
+    protected $tipo;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ClienteBundle\Entity\Cliente")
      */
-    private $cliente;
+    protected $cliente;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\UsuarioBundle\Entity\Usuario")
      */
-    private $usuario;
+    protected $usuario;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\Proveedor")
      */
-    private $proveedor;
+    protected $proveedor;
 
     /**
      * @var float
      *
      * @ORM\Column(name="costo", type="float")
      */
-    private $costo;
+    protected $costo;
 
     /**
      * @var float
      *
      * @ORM\Column(name="saldo", type="float")
      */
-    private $saldo;
+    protected $saldo;
+
+    /**
+     * @var string
+     * @ORM\Column(name="observaciones", type="text")
+     *
+     */
+    protected $observaciones;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_creacion", type="datetime")
      */
-    private $fechaCreacion;
+    protected $fechaCreacion;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_entrega", type="datetime")
      */
-    private $fechaEntrega;
+    protected $fechaEntrega;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean")
      */
-    private $status;
-
+    protected $status;
 
     /**
      * Get id
@@ -231,6 +237,28 @@ class Movimiento
     public function getSaldo()
     {
         return $this->saldo;
+    }
+
+    /**
+     * Set obseravciones
+     *
+     * @param string $observaciones
+     * @return Movimiento
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
     }
 
     /**

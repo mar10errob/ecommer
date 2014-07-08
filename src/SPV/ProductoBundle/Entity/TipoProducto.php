@@ -3,6 +3,7 @@
 namespace SPV\ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use SPV\ProductoBundle\Util\Util;
 
 /**
  * TipoProducto
@@ -19,14 +20,21 @@ class TipoProducto
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=50)
      */
-    private $descripcion;
+    protected $descripcion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=50)
+     */
+    protected $slug;
 
 
     /**
@@ -48,6 +56,7 @@ class TipoProducto
     public function setDescripcion($descripcion)
     {
         $this->descripcion = $descripcion;
+        $this->slug=Util::getSlug($descripcion);
 
         return $this;
     }
@@ -61,4 +70,21 @@ class TipoProducto
     {
         return $this->descripcion;
     }
+
+    /**
+     * @param string $slug
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
 }

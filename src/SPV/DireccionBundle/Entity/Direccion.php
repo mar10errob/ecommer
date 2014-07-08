@@ -19,35 +19,42 @@ class Direccion
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected  $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Estado")
+     */
+    protected $estado;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Colonia")
      */
-    private $colonia;
+    protected $colonia;
 
     /**
      * @var string
      *
      * @ORM\Column(name="calle", type="string", length=50)
      */
-    private $calle;
+    protected $calle;
 
     /**
      * @var string
      *
      * @ORM\Column(name="numero_interior", type="string", length=5)
      */
-    private $numeroInterior;
+    protected $numeroInterior;
 
     /**
      * @var string
      *
      * @ORM\Column(name="numero_exterior", type="string", length=5)
      */
-    private $numeroExterior;
+    protected $numeroExterior;
 
 
     /**
@@ -58,6 +65,30 @@ class Direccion
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param Estado $estado
+     * @internal param \SPV\DireccionBundle\Entity\Estado|string $estado
+     * @return Direccion
+     */
+    public function setEstado(\SPV\DireccionBundle\Entity\Estado $estado)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return string
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 
     /**

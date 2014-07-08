@@ -12,4 +12,27 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductoRepository extends EntityRepository
 {
+    public function findRecientes(){
+        $em=$this->getEntityManager();
+        $consulta=$em->createQuery('
+        SELECT p
+        FROM ProductoBundle:Producto p
+        WHERE p.fechaIngreso BETWEEN :hoy AND :final
+        ORDER BY p.fechaIngreso DESC');
+        $consulta->setMaxResults(6);
+        $consulta->setParameter('hoy',new \DateTime('today'));
+        $consulta->setParameter('final',new \DateTime('today + 7 days'));
+
+        return $consulta->getResult();
+    }
+    public function findPopulares(){
+        $em=$this->getEntityManager();
+        $consulta=$em->createQuery('
+        SELECT p
+        FROM ProductoBundle:Producto p
+        ORDER BY p.ranking DESC');
+        $consulta->setMaxResults(6);
+
+        return $consulta->getResult();
+    }
 }

@@ -21,70 +21,70 @@ class Cliente implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=30)
      */
-    private $nombre;
+    protected $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="apellido_paterno", type="string", length=30)
      */
-    private $apellidoPaterno;
+    protected $apellidoPaterno;
 
     /**
      * @var string
      *
      * @ORM\Column(name="apellido_materno", type="string", length=30)
      */
-    private $apellidoMaterno;
+    protected $apellidoMaterno;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_nacimiento", type="date")
      */
-    private $fechaNacimiento;
+    protected $fechaNacimiento;
 
     /**
      * @var string
      *
      * @ORM\Column(name="curp", type="string", length=18)
      */
-    private $curp;
+    protected $curp;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=30)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telefono", type="string", length=15)
      */
-    private $telefono;
+    protected $telefono;
 
     /**
      * @var float
      *
      * @ORM\Column(name="saldo", type="float")
      */
-    private $saldo;
+    protected $saldo;
 
     /**
      * @var string
@@ -92,21 +92,21 @@ class Cliente implements UserInterface
      * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Direccion")
      *
      */
-    private $direccion;
+    protected $direccion;
 
     /**
      * @var string
      *
      * @ORM\Column(name="salt", type="string", length=255)
      */
-    private $salt;
+    protected $salt;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean")
      */
-    private $status;
+    protected $status;
 
 
     /**
@@ -397,7 +397,7 @@ class Cliente implements UserInterface
 
     function __toString()
     {
-        return $this->getNombre().''.$this->getApellidoPaterno().' '.$this->getApellidoMaterno();
+        return $this->getNombre().' '.$this->getApellidoPaterno().' '.$this->getApellidoMaterno();
     }
 
     /**

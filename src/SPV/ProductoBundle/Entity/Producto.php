@@ -20,84 +20,97 @@ class Producto
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=255)
      */
-    private $nombre;
+    protected $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="text")
      */
-    private $descripcion;
+    protected $descripcion;
 
     /**
      * @var float
      *
      * @ORM\Column(name="precio_unitario", type="float")
      */
-    private $precioUnitario;
+    protected $precioUnitario;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="existencia", type="integer")
      */
-    private $existencia;
+    protected $existencia;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_ingreso", type="datetime")
      */
-    private $fechaIngreso;
+    protected $fechaIngreso;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="fecha_caducidad", type="datetime")
      */
-    private $fechaCaducidad;
+    protected $fechaCaducidad;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ProductoBundle\Entity\TipoUnidad")
      */
-    private $tipoUnidad;
+    protected $tipoUnidad;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ProductoBundle\Entity\TipoProducto")
      */
-    private $tipoProducto;
+    protected $tipoProducto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="imagen", type="string", length=255)
+     */
+    protected $imagen;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\Proveedor")
      */
-    private $proveedor;
+    protected $proveedor;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="ranking", type="integer")
+     */
+    protected $ranking;
 
     /**
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean")
      */
-    private $status;
+    protected $status;
 
 
     /**
@@ -296,6 +309,26 @@ class Producto
     }
 
     /**
+     * set imagen
+     *
+     * @param string $imagen
+     */
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+    }
+
+    /**
+     * get imagen
+     *
+     * @return string
+     */
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
      * Set proveedor
      *
      * @param \SPV\ProveedorBundle\Entity\Proveedor|string $proveedor
@@ -316,6 +349,26 @@ class Producto
     public function getProveedor()
     {
         return $this->proveedor;
+    }
+
+    /**
+     * set ranking
+     *
+     * @param int $ranking
+     */
+    public function setRanking($ranking)
+    {
+        $this->ranking = $ranking;
+    }
+
+    /**
+     * get ranking
+     *
+     * @return int
+     */
+    public function getRanking()
+    {
+        return $this->ranking;
     }
 
     /**

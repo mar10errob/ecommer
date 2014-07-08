@@ -19,28 +19,28 @@ class DetalleMovimiento
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\MovimientoBundle\Entity\Movimiento")
      */
-    private $movimiento;
+    protected $movimiento;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ProductoBundle\Entity\Producto")
      */
-    private $producto;
+    protected $producto;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cantidad", type="integer")
      */
-    private $cantidad;
+    protected $cantidad;
 
 
     /**

@@ -19,14 +19,14 @@ class TipoProveedor
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="descripcion", type="string", length=50)
      */
-    private $descripcion;
+    protected $descripcion;
 
 
     /**

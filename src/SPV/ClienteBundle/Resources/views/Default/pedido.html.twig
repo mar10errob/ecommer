@@ -13,23 +13,8 @@
     </div><!--/breadcrums-->
 
     <div class="step-one">
-        <h2 class="heading">Paso 1</h2>
+        <h2 class="heading">Generacion del Pedido</h2>
     </div>
-    {#<div class="checkout-options">
-        <h3>New User</h3>
-        <p>Checkout options</p>
-        <ul class="nav">
-            <li>
-                <label><input type="checkbox"> Register Account</label>
-            </li>
-            <li>
-                <label><input type="checkbox"> Guest Checkout</label>
-            </li>
-            <li>
-                <a href=""><i class="fa fa-times"></i>Cancel</a>
-            </li>
-        </ul>
-    </div><!--/checkout-options-->#}
     <div class="alert alert-info">
     	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <p>Por favor revise que su informacion para que su pedido llegue correctamente.</p>
@@ -41,10 +26,10 @@
                 <div class="shopper-info">
                     <p>Informacion de Usuario</p>
                     <form>
-                        <input type="text" placeholder="Nombre de Usuario">
-                        <input type="text" placeholder="Email">
+                        <input type="text" value="{{ app.user }}" disabled>
+                        <input type="text" value="{{ app.user.email }}" disabled>
                     </form>
-                    <a class="btn btn-primary" href="">Actualizar</a>
+                    <a class="btn btn-primary" href="">Modificar</a>
                     <a class="btn btn-primary" href="">Continuar</a>
                 </div>
             </div>
@@ -53,34 +38,20 @@
                     <p>Enviar a</p>
                     <div class="form-one">
                         <form>
-                            <input type="text" placeholder="Nombre(s) *">
-                            <input type="text" placeholder="Apellido Paterno *">
-                            <input type="text" placeholder="Apellido Materno *">
-                            <select>
-                                <option>-- Pais --</option>
-                                <option selected>México</option>
-                            </select>
-                            <select>
-                                <option>-- Estado --</option>
-                                <option selected>Querétaro</option>
-                            </select>
-                            <input type="text" placeholder="Codigo Postal *">
+                            <input type="text" value="{{ app.user.nombre }}" disabled/>
+                            <input type="text" value="{{ app.user.apellidoPaterno }}" disabled/>
+                            <input type="text" value="{{ app.user.apellidoMaterno }}" disabled/>
+                            <input type="text" value="{{ app.user.direccion.estado }}" disabled/>
+                            <input type="text" value="{{ app.user.direccion.colonia.codigoPostal }}" disabled>
                         </form>
                     </div>
                     <div class="form-two">
                         <form>
-                            <select>
-                            	<option value=""> -- Colonia -- </option>
-                                <option value="">Centro</option>
-                            </select>
-                            <select>
-                                <option value=""> -- Calle -- </option>
-                                <option value="">Hidalgo</option>
-                            </select>
-                            <input type="text" placeholder="Numero Exterior *">
-                            <input type="text" placeholder="Numero Interior *">
-                            <input type="text" placeholder="Telefono ">
-                            <input type="text" placeholder="Telefono Celular">
+                            <input type="text" value="{{ app.user.direccion.colonia.nombre }}" disabled/>
+                            <input type="text" value="{{ app.user.direccion.calle }}" disabled/>
+                            <input type="text" value="#ext. {{ app.user.direccion.numeroExterior }}" disabled/>
+                            <input type="text" value="#int. {{ app.user.direccion.numeroInterior }}" disabled/>
+                            <input type="text" value="{{ app.user.telefono }}" disabled/>
                         </form>
                     </div>
                 </div>

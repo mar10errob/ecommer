@@ -23,7 +23,7 @@
                             <label for="">Apellidos:</label>
                             <input type="text" value="{{ app.user.apellidopaterno~' '~app.user.apellidomaterno }}" disabled/>
                             <label for="">Curp:</label>
-                            <input type="text" value="" disabled/>
+                            <input type="text" value="{{ app.user.curp }}" disabled/>
                             <label for="">Email:</label>
                             <input type="text" value="{{ app.user.email }}" disabled/>
                             <label for="">Fecha de Nacimiento:</label>
@@ -34,16 +34,16 @@
                         <div class="bill-to">
                             <p>Direccion</p>
                             <div class="perfil-one">
-                                <input type="text" value="Calle" disabled/>
-                                <input type="text" value="Numero Exterior" disabled/>
-                                <input type="text" value="Numero Interior" disabled/>
-                                <input type="text" value="Colonia" disabled/>
-                                <input type="text" value="Codigo Postal" disabled/>
+                                <input type="text" value="{{ app.user.direccion.calle }}" disabled/>
+                                <input type="text" value="#ext. {{ app.user.direccion.numeroExterior }}" disabled/>
+                                <input type="text" value="#int. {{ app.user.direccion.numeroInterior }}" disabled/>
+                                <input type="text" value="{{ app.user.direccion.colonia.nombre }}" disabled/>
+                                <input type="text" value="cp. {{ app.user.direccion.colonia.codigoPostal }}" disabled/>
                             </div>
                             <div class="perfil-two">
-                                <input type="text" value="Queretaro" disabled/>
+                                <input type="text" value="{{ app.user.direccion.estado }}" disabled/>
                                 <input type="text" value="Mexico" disabled/>
-                                <input type="text" value="Telefono" disabled>
+                                <input type="text" value="{{ app.user.telefono }}" disabled>
                                 <input type="text" value="Telefono Celular" disabled>
                             </div>
                         </div>

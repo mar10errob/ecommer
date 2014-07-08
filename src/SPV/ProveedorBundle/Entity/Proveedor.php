@@ -20,42 +20,42 @@ class Proveedor
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=50)
      */
-    private $nombre;
+    protected $nombre;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\TipoProveedor")
      */
-    private $tipo;
+    protected $tipo;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Direccion")
      */
-    private $direccion;
+    protected $direccion;
 
     /**
      * @var string
      *
      * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="status", type="boolean")
      */
-    private $status;
+    protected $status;
 
 
     /**

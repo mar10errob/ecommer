@@ -2,6 +2,11 @@
 {% block title %}Portada{% endblock %}
 {% block id %}portada{% endblock %}
 {% block home %}active{% endblock %}
+{% block buscar %}
+    <div class="search_box pull-right">
+        <input type="text" placeholder="Buscar"/>
+    </div>
+{% endblock %}
 {% block slider %}
     <section id="slider"><!--slider-->
         <div class="container">
@@ -81,24 +86,23 @@
 {% block contenido %}
     <div class="features_items"><!--features_items-->
         <h2 class="title text-center">Productos Principales</h2>
-        {% for i in 1..6 %}
+        {% for producto in productos %}
             <div class="col-sm-4">
                 <div class="product-image-wrapper">
                     <div class="single-products">
                         <div class="productinfo text-center">
-                            <img src="{{ asset('images/home/product1.jpg') }}" alt=""/>
+                            <img src="{{ asset('uploads/images/productos/'~producto.imagen) }}" alt=""/>
 
-                            <h2>$56</h2>
+                            <h2>${{ producto.precioUnitario }}</h2>
 
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                            <p>{{ producto.nombre }}</p>
+                            {#<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>#}
                         </div>
-
                         <div class="product-overlay">
                             <div class="overlay-content">
                                 <a href="{{ path('detalle') }}">
-                                    <p>Easy Polo Black Edition</p>
-                                    <h2>$56</h2>
+                                    <p>{{ producto.nombre }}</p>
+                                    <h2>${{ producto.precioUnitario }}</h2>
                                 </a>
                                 <br/>
                                 <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>

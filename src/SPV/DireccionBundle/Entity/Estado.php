@@ -19,14 +19,14 @@ class Estado
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=30)
      */
-    private $nombre;
+    protected $nombre;
 
 
     /**

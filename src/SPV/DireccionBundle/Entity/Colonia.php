@@ -19,28 +19,28 @@ class Colonia
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre", type="string", length=50)
      */
-    private $nombre;
+    protected $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="codigo_postal", type="string", length=50)
      */
-    private $codigoPostal;
+    protected $codigoPostal;
 
     /**
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Estado")
      */
-    private $estado;
+    protected $estado;
 
 
     /**

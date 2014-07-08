@@ -16,6 +16,10 @@ class DireccionType extends AbstractType{
                 'class'=>'SPV\DireccionBundle\Entity\Colonia',
                 'empty_value'=>'--Colonia--'
             ))
+            ->add('estado','entity',array(
+                'class'=>'SPV\DireccionBundle\Entity\Estado',
+                'empty_value'=>'--Estado--'
+            ))
         ;
     }
 

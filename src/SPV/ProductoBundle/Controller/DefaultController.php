@@ -7,11 +7,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     public function portadaAction(){
-        return $this->render('ProductoBundle:Default:poartada.html.twig');
+        $em=$this->getDoctrine()->getManager();
+        $recientes=$em->getRepository('ProductoBundle:Producto')->findRecientes();
+        return $this->render('ProductoBundle:Default:portada.html.twig',array(
+            'productos'=>$recientes
+        ));
     }
 
     public function productosAction(){
-        return $this->render('ProductoBundle:Default:productos.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $productos=$em->getRepository('ProductoBundle:Producto')->findRecientes();
+        return $this->render('ProductoBundle:Default:productos.html.twig',array(
+            'productos'=>$productos
+            ));
     }
 
     public function detalleproductoAction(){
@@ -20,10 +28,20 @@ class DefaultController extends Controller
     public function errorAction(){
         return $this->render('ProductoBundle:Default:error.html.twig');
     }
-    public function contactoAction(){
+    public function contactoAction(){        
         return $this->render('ProductoBundle:Default:contacto.html.twig');
     }
     public function adiosAction(){
         return $this->render('ProductoBundle:Default:adios.html.twig');
+    }
+    public function filtrosAction(){
+        $em=$this->getDoctrine()->getManager();
+        $categorias=$em->getRepository('ProductoBundle:TipoProducto')->findAll();
+        $marcas=$em->getRepository('ProveedorBundle:Proveedor')->findAll();
+        return $this->render('ProductoBundle:Default:filtros.html.twig',
+        array(
+            'categorias'=>$categorias,
+            'marcas'=>$marcas
+        ));
     }
 }

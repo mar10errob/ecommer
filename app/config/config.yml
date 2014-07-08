@@ -64,3 +64,16 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#KnpPaginatorBundle
+knp_paginator:
+    page_range: 5 #numero de paginas a mostrar
+    default_options:
+        page_name: page #nombre del parametro depaginacion
+        sort_field_name: sort #nombre del parametro para ordenar los registros
+        sort_direction_name: direction #nombre del parametro para ordenar la direccion de los registros
+        distinct: true #incluir resultados diferentes, util en consultas con GROUP BY
+    template:
+        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig #plantilla utilizada en la paginacion
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # plantilla utilizada en la paginacion para ordenar los resultado
+
