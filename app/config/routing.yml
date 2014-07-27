@@ -49,3 +49,7 @@ adios:
 admin:
     pattern: /admin
     defaults: { _controller: UsuarioBundle:Admin:prueba }
+
+sylius_cart:
+    resource: @SyliusCartBundle/Resources/config/routing.yml
+    prefix: /cart

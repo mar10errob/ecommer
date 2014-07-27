@@ -77,3 +77,10 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:sliding.html.twig #plantilla utilizada en la paginacion
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # plantilla utilizada en la paginacion para ordenar los resultado
 
+#SyliusCartBundle
+sylius_cart:
+    driver: doctrine/orm
+    resolver: app.cart_item_resolver
+    classes:
+        item:
+            model: SPV\ClienteBundle\Entity\CartItem
