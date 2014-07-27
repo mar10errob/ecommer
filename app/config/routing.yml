@@ -27,11 +27,11 @@ portada:
     defaults: { _controller: ProductoBundle:Default:portada }
 
 productos:
-    pattern: /productos
-    defaults: { _controller: ProductoBundle:Default:productos }
+    pattern: /productos/{categoria}
+    defaults: { _controller: ProductoBundle:Default:productos, categoria: 'todos'}
 
 detalle:
-    pattern: /detalle
+    pattern: /detalle/{id}
     defaults: { _controller: ProductoBundle:Default:detalleproducto }
 
 error:
@@ -45,3 +45,7 @@ contacto:
 adios:
     pattern: /adios
     defaults: { _controller: ProductoBundle:Default:adios }
+
+admin:
+    pattern: /admin
+    defaults: { _controller: UsuarioBundle:Admin:prueba }

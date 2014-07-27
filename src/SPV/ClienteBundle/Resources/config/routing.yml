@@ -23,3 +23,11 @@ cliente_logout:
 cliente_regsitro:
     pattern: /registrate
     defaults: { _controller: ClienteBundle:Default:resgistro }
+
+add_carrito:
+    pattern: /add-carrito/{producto}/{cantidad}
+    defaults: { _controller: ClienteBundle:Default:addcarrito, cantidad: 1}
+
+remove_carrito:
+    pattern: /remove-carrito/{producto}
+    defaults: { _controller: ClienteBundle:Default:rmcarrito }

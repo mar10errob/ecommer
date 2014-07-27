@@ -17,41 +17,34 @@
 {% endblock %}
 {% block contenido %}
     <div class="features_items"><!--features_items-->
-    <h2 class="title text-center">Productos</h2>
-    {% for i in 1..12 %}
-        <div class="col-sm-4">
-            <div class="product-image-wrapper">
-                <div class="single-products">
-                    <div class="productinfo text-center">
-                        <img src="{{ asset('images/shop/product9.jpg') }}" alt="" />
-                        <h2>$56</h2>
-                        <p>Easy Polo Black Edition</p>
-                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
-                    </div>
-                    <div class="product-overlay">
-                        <div class="overlay-content">
-                            <a href="{{ path('detalle') }}">
-                                <p>Easy Polo Black Edition</p>
-                                <h2>$56</h2>
-                            </a>
-                            <br/>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+        <h2 class="title text-center">Productos</h2>
+        {% for producto in pagination %}
+            <div class="col-sm-4">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{ asset(producto.imagen != null ? 'uploads/images/productos/'~producto.imagen : 'uploads/images/productos/img-default.png') }}" alt=""/>
+
+                            <h2>${{ producto.precioUnitario | number_format(2,'.',',') }}</h2>
+
+                            <p>{{ producto.nombre }}</p>
+                            {# <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a> #}
                         </div>
+                        <div class="product-overlay">
+                            <div class="overlay-content">
+                                <a href="{{ path('detalle', {'id' : producto.id}) }}" class="product-det">
+                                    <p>{{ producto.nombre }}</p>
+                                    <h2>Detalles...</h2>
+                                </a>
+                                <br/>
+                                <a href="{{ path('add_carrito', { 'cliente': app.user.id ,'producto': producto.id })}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                            </div>
+                        </div>                    
                     </div>
-                    {% if i % 2 %}
-                        <img src="{{ asset('images/home/sale.png') }}" class="new" alt=""/>
-                    {% else %}
-                        <img src="{{ asset('images/home/new.png') }}" class="new" alt=""/>
-                    {% endif %}
                 </div>
             </div>
-        </div>
-    {% endfor %}
-    <ul class="pagination">
-        <li class="active"><a href="">1</a></li>
-        <li><a href="">2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">&raquo;</a></li>
-    </ul>
+        {% endfor %}
     </div><!--features_items-->
+    {{ knp_pagination_render(pagination) }}
+
 {% endblock %}

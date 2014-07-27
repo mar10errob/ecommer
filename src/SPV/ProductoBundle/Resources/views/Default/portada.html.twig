@@ -91,28 +91,28 @@
                 <div class="product-image-wrapper">
                     <div class="single-products">
                         <div class="productinfo text-center">
-                            <img src="{{ asset('uploads/images/productos/'~producto.imagen) }}" alt=""/>
+                            <img src="{{ asset(producto.imagen != null ? 'uploads/images/productos/'~producto.imagen : 'uploads/images/productos/img-default.png') }}" alt=""/>
 
-                            <h2>${{ producto.precioUnitario }}</h2>
+                            <h2>${{ producto.precioUnitario | number_format(2,'.',',') }}</h2>
 
                             <p>{{ producto.nombre }}</p>
                             {#<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>#}
                         </div>
                         <div class="product-overlay">
                             <div class="overlay-content">
-                                <a href="{{ path('detalle') }}">
+                                <a href="{{ path('detalle', {'id' : producto.id}) }}" class="product-det">
                                     <p>{{ producto.nombre }}</p>
-                                    <h2>${{ producto.precioUnitario }}</h2>
+                                    <h2>Detalles...</h2>
                                 </a>
                                 <br/>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                <a href="{{ path('add_carrito', { 'cliente': app.user.id ,'producto': producto.id })}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                             </div>
                         </div>
-                        {% if i % 2 %}
+                        {# if i % 2 %}
                             <img src="{{ asset('images/home/sale.png') }}" class="new" alt=""/>
                         {% else %}
                             <img src="{{ asset('images/home/new.png') }}" class="new" alt=""/>
-                        {% endif %}
+                        {% endif #}
                     </div>
                 </div>
             </div>
@@ -122,158 +122,62 @@
     <div class="category-tab"><!--category-tab-->
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#tshirt" data-toggle="tab">T-Shirt</a></li>
-                <li><a href="#blazers" data-toggle="tab">Blazers</a></li>
-                <li><a href="#sunglass" data-toggle="tab">Sunglass</a></li>
-                <li><a href="#kids" data-toggle="tab">Kids</a></li>
-                <li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li>
+                <li class="active"><a href="#t1" data-toggle="tab">T-Shirt</a></li>
+                <li><a href="#t2" data-toggle="tab">Blazers</a></li>
+                <li><a href="#t3" data-toggle="tab">Sunglass</a></li>
+                <li><a href="#t4" data-toggle="tab">Kids</a></li>
+                <li><a href="#t5" data-toggle="tab">Polo shirt</a></li>
             </ul>
         </div>
     <div class="tab-content">
-        <div class="tab-pane fade active in" id="tshirt">
-            {% for i in 1..4 %}
-            <div class="col-sm-3">
-                <div class="product-image-wrapper">
-                    <div class="single-products">
-                        <div class="productinfo text-center">
-                            <img src="{{ asset('images/home/gallery1.jpg') }}" alt=""/>
+        {% for i in 1..5 %}
+            <div class="tab-pane fade {{ i== 1 ? 'active in'}}" id="t{{i}}">
+                {% for j in 1..4 %}
+                <div class="col-sm-3">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="{{ asset('images/home/gallery1.jpg') }}" alt=""/>
 
-                            <h2>$56</h2>
+                                <h2>${{i*56}}</h2>
 
-                            <p>Easy Polo Black Edition</p>
-                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                <p>Easy Polo Black Edition</p>
+                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                            </div>
                         </div>
-
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-
-        <div class="tab-pane fade" id="blazers">
-            {% for i in 1..4 %}
-                <div class="col-sm-3">
-                    <div class="product-image-wrapper">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img src="{{ asset('images/home/gallery1.jpg') }}" alt=""/>
-
-                                <h2>$56</h2>
-
-                                <p>Easy Polo Black Edition</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <div class="tab-pane fade" id="sunglass">
-            {% for i in 1..4 %}
-                <div class="col-sm-3">
-                    <div class="product-image-wrapper">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img src="{{ asset('images/home/gallery1.jpg') }}" alt=""/>
-
-                                <h2>$56</h2>
-
-                                <p>Easy Polo Black Edition</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <div class="tab-pane fade" id="kids">
-            {% for i in 1..4 %}
-                <div class="col-sm-3">
-                    <div class="product-image-wrapper">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img src="{{ asset('images/home/gallery1.jpg') }}" alt=""/>
-
-                                <h2>$56</h2>
-
-                                <p>Easy Polo Black Edition</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <div class="tab-pane fade" id="poloshirt">
-            {% for i in 1..4 %}
-                <div class="col-sm-3">
-                    <div class="product-image-wrapper">
-                        <div class="single-products">
-                            <div class="productinfo text-center">
-                                <img src="{{ asset('images/home/gallery1.jpg') }}" alt=""/>
-
-                                <h2>$56</h2>
-
-                                <p>Easy Polo Black Edition</p>
-                                <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+        {% endfor %}
     </div>
     </div><!--/category-tab-->
 
-    <div class="recommended_items"><!--recommended_items-->
+    {# <div class="recommended_items"><!--recommended_items-->
         <h2 class="title text-center">productos recomendados</h2>
 
         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="item active">
-                    {% for i in 1..3 %}
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ asset('images/home/recommend1.jpg') }}" alt=""/>
+                {% for i in 1..3 %}
+                    <div class="item {{ i == 1 ? 'active' }}">
+                        {% for j in 1..3 %}
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="{{ asset('images/home/recommend1.jpg') }}" alt=""/>
 
-                                    <h2>$56</h2>
+                                        <h2>${{ i*56 }}</h2>
 
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                        <p>Easy Polo Black Edition</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
-                <div class="item">
-                    {% for i in 1..3 %}
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="{{ asset('images/home/recommend2.jpg') }}" alt=""/>
-
-                                    <h2>$56</h2>
-
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
+                {% endfor %}
             </div>
             <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
                 <i class="fa fa-angle-left"></i>
@@ -282,6 +186,6 @@
                 <i class="fa fa-angle-right"></i>
             </a>
         </div>
-    </div><!--/recommended_items-->
+    </div><!--/recommended_items--> #}
 {% endblock %}
 

@@ -24,82 +24,41 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="{{ asset('images/cart/one.png') }}" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="{{ asset('images/cart/two.png') }}" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="cart_product">
-                            <a href=""><img src="{{ asset('images/cart/three.png') }}" alt=""></a>
-                        </td>
-                        <td class="cart_description">
-                            <h4><a href="">Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td class="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td class="cart_quantity">
-                            <div class="cart_quantity_button">
-                                <a class="cart_quantity_up" href=""> + </a>
-                                <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                                <a class="cart_quantity_down" href=""> - </a>
-                            </div>
-                        </td>
-                        <td class="cart_total">
-                            <p class="cart_total_price">$59</p>
-                        </td>
-                        <td class="cart_delete">
-                            <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                        </td>
-                    </tr>
+                        {% set total=0 %}
+                        {% for producto in productos %}
+                        <tr>
+                            <td class="cart_product">
+                                <a href=""><img src="{{ asset(producto.producto.imagen != null ? 'uploads/images/productos/'~producto.producto.imagen : 'uploads/images/productos/img-default.png') }}" alt="" class="img-resposive" style="width:110px; height:110px;"></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href="">{{ producto.producto.nombre }}</a></h4>
+                                <p>Web ID: <span>{{ producto.producto.id }}</span></p>
+                            </td>
+                            <td class="cart_price">
+                                <p>$<span id="precio{{ producto.id }}">{{ producto.producto.precioUnitario | number_format(2,'.',',') }}</span></p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <input type="text" id="index" value="{{ producto.id }}" hidden>
+                                    {# <a class="cart_quantity_up" href="#" id="car-mas"> + </a> #}
+                                    <input class="cart_quantity_input" id="car-input{{ producto.id }}" type="number" value="{{ producto.cantidad }}" autocomplete="off" size="2" min="1">
+                                    {# <a class="cart_quantity_down" href="#" id="car-menos"> - </a> #}
+                                </div>
+                            </td>
+                            {% set tProducto= producto.producto.precioUnitario * producto.cantidad %}
+                            <td class="cart_total">
+                                <p class="cart_total_price">$<span id="car-total{{ producto.id }}">{{ tProducto | number_format(2,'.',',') }}</span></p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href="{{ path('remove_carrito', { 'producto':producto.id }) }}"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                        {% set total= total + tProducto %}
+                        {% else %}
+                        <tr>
+                            <td colspan="5" align="center"><h4>No hay articulos en el carrito.</h4></td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -108,77 +67,21 @@
 
     <section id="do_action">
         <div class="container">
-            {#<div class="heading">
-                <h3>What would you like to do next?</h3>
-                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-            </div>#}
             <div class="row">
                 <div class="col-sm-6">
                     <h3>What would you like to do next?</h3>
                     <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-                    {#<div class="chose_area">
-                        <ul class="user_option">
-                            <li>
-                                <input type="checkbox">
-                                <label>Use Coupon Code</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Use Gift Voucher</label>
-                            </li>
-                            <li>
-                                <input type="checkbox">
-                                <label>Estimate Shipping & Taxes</label>
-                            </li>
-                        </ul>
-                        <ul class="user_info">
-                            <li class="single_field">
-                                <label>Country:</label>
-                                <select>
-                                    <option>United States</option>
-                                    <option>Bangladesh</option>
-                                    <option>UK</option>
-                                    <option>India</option>
-                                    <option>Pakistan</option>
-                                    <option>Ucrane</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-
-                            </li>
-                            <li class="single_field">
-                                <label>Region / State:</label>
-                                <select>
-                                    <option>Select</option>
-                                    <option>Dhaka</option>
-                                    <option>London</option>
-                                    <option>Dillih</option>
-                                    <option>Lahore</option>
-                                    <option>Alaska</option>
-                                    <option>Canada</option>
-                                    <option>Dubai</option>
-                                </select>
-
-                            </li>
-                            <li class="single_field zip-field">
-                                <label>Zip Code:</label>
-                                <input type="text">
-                            </li>
-                        </ul>
-                        <a class="btn btn-default update" href="">Get Quotes</a>
-                        <a class="btn btn-default check_out" href="">Continue</a>
-                    </div>#}
                 </div>
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Sub Total <span>$59</span></li>
+                            <li>Sub Total <span>${{ total | number_format(2,'.',',') }}</span></li>
                             {#<li>Eco Tax <span>$2</span></li>
                             <li>Costo de envio <span>Free</span></li>#}
-                            <li>Total <span>$61</span></li>
+                            <li>Total <span>${{ total | number_format(2,'.',',') }}</span></li>
                         </ul>
-                        <a class="btn btn-default update" href="">Actualizar</a>
-                        <a class="btn btn-default check_out" href="">Confirmar</a>
+                        <a class="btn btn-default update" href="#">Actualizar</a>
+                        <a class="btn btn-default check_out" href="#">Confirmar</a>
                     </div>
                 </div>
             </div>

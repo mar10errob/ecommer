@@ -1,12 +1,13 @@
 {% extends '::base.html.twig' %}
 {% block linkhead %}
+    <link href="{{ asset('css/normalize.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
     <link href="{{ asset('css/price-range.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="{{ asset('js/html5shiv.js') }}"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
@@ -95,7 +96,7 @@
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="{{ path('portada') }}" class="{% block home '' %}">Home</a></li>
-                                <li><a href="{{ path('productos') }}" class="{% block productos '' %}">Productos</a></li>
+                                <li><a href="{{ path('productos', {'categoria':'todos'}) }}" class="{% block productos '' %}">Productos</a></li>
                                 <li><a href="{{ path('contacto') }}" class="{% block contacto '' %}">¿Quienes Somos?</a></li>
                             </ul>
                         </div>

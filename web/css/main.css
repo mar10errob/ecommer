@@ -910,9 +910,12 @@ h2.title {
 
 .product-overlay .overlay-content {
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   text-align: center;
   width: 100%;
+}
+.overlay-content .product-det:hover p, .overlay-content .product-det:hover h2{
+  color: #696763;
 }
 
 .product-overlay .add-to-cart {
@@ -922,12 +925,13 @@ h2.title {
   color: #FE980F;
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
-  margin-bottom: 25px;
+  margin-top: 20px;
+  margin-bottom: 0px;
 }
 
 .product-overlay .add-to-cart:hover {
   background:#fff;
-  color: #FE980F;
+  color: #696763;
 }
 
 
@@ -1100,18 +1104,18 @@ h2.title {
   padding-left: 15px;
 }
 
-.pagination  li:first-child  a, .pagination  li:first-child  span {
+.pagination  li:first-child  a, .pagination  span.first a {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   margin-left: 0;
 }
 
-.pagination  li:last-child  a, .pagination  li:last-child  span {
+.pagination  li:last-child  a, .pagination span.last a{
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
 }
 
-.pagination  .active  a, .pagination  .active  span, .pagination  .active  a:hover, .pagination  .active  span:hover, .pagination  .active  a:focus, .pagination  .active  span:focus {
+.pagination  .active  a, .pagination .active  a:hover, .pagination  .active  a:focus {
   background-color: #FE980F;
   border-color: #FE980F;
   color: #FFFFFF;
@@ -1119,7 +1123,7 @@ h2.title {
   z-index: 2;
 }
 
-.pagination  li  a, .pagination  li  span {
+.pagination  li  a, .pagination span a, .pagination span.current{
   background-color: #f0f0e9;
   border: 0;
   float: left;
@@ -1132,7 +1136,15 @@ h2.title {
   color:#000;
 }
 
-.pagination  li  a:hover{
+.pagination span.current{
+  background-color: #FE980F;
+  border-color: #FE980F;
+  color: #FFFFFF;
+  cursor: default;
+}
+
+
+.pagination  li  a:hover, .pagination span a:hover{
 	background:#FE980F;
 	color:#fff;
 }
@@ -1255,6 +1267,15 @@ h2.title {
   font-weight: 700;
   margin-right: 20px;
   margin-top: 0px;
+}
+span .precio{
+  color: #FE980F;
+  float: left;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin-right: 20px;
+  margin-top: -5px;
 }
 .product-information span input {
   border: 1px solid #DEDEDC;
@@ -1822,7 +1843,9 @@ h2.title {
 .perfil-two {
     margin-left: 5%
 }
-
+.color{
+  color: 
+}
 /*************************
 *******checkout CSS******
 **************************/

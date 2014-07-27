@@ -81,7 +81,7 @@ class Producto
     /**
      * @var string
      *
-     * @ORM\Column(name="imagen", type="string", length=255)
+     * @ORM\Column(name="imagen", type="string", length=255, nullable=true)
      */
     protected $imagen;
 
@@ -94,6 +94,7 @@ class Producto
 
     /**
      * @var integer
+     *
      * @ORM\Column(name="ranking", type="integer")
      */
     protected $ranking;
@@ -359,6 +360,8 @@ class Producto
     public function setRanking($ranking)
     {
         $this->ranking = $ranking;
+
+        return $this;
     }
 
     /**

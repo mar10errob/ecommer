@@ -17,11 +17,11 @@ class ProductoRepository extends EntityRepository
         $consulta=$em->createQuery('
         SELECT p
         FROM ProductoBundle:Producto p
-        WHERE p.fechaIngreso BETWEEN :hoy AND :final
+        WHERE p.fechaIngreso BETWEEN :inicio AND :final
         ORDER BY p.fechaIngreso DESC');
-        $consulta->setMaxResults(6);
-        $consulta->setParameter('hoy',new \DateTime('today'));
-        $consulta->setParameter('final',new \DateTime('today + 7 days'));
+        $consulta->setMaxResults(9);
+        $consulta->setParameter('inicio',new \DateTime('today - 2 weeks'));
+        $consulta->setParameter('final',new \DateTime('today'));
 
         return $consulta->getResult();
     }
@@ -32,6 +32,17 @@ class ProductoRepository extends EntityRepository
         FROM ProductoBundle:Producto p
         ORDER BY p.ranking DESC');
         $consulta->setMaxResults(6);
+
+        return $consulta->getResult();
+    }
+    public function findCategorias($slug){
+        $em=$this->getEntityManager();
+        $consulta=$em->createQuery('
+            SELECT p
+            FROM ProductoBundle:Producto p
+            JOIN p.tipoProducto t
+            WHERE t.slug= :tipo');
+        $consulta->setParameter('tipo', $slug);
 
         return $consulta->getResult();
     }
