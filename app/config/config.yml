@@ -80,7 +80,10 @@ knp_paginator:
 #SyliusCartBundle
 sylius_cart:
     driver: doctrine/orm
-    resolver: app.cart_item_resolver
+    resolver: spv.cart_item_resolver
     classes:
         item:
             model: SPV\ClienteBundle\Entity\CartItem
+
+parameters:
+    directorio.productos: %kernel.root_dir%/../web/uploads/images/productos/

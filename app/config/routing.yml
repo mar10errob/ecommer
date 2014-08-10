@@ -1,10 +1,10 @@
 usuario:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 producto:
     resource: "@ProductoBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 direccion:
     resource: "@DireccionBundle/Resources/config/routing.yml"
@@ -12,7 +12,7 @@ direccion:
 
 movimiento:
     resource: "@MovimientoBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 cliente:
     resource: "@ClienteBundle/Resources/config/routing.yml"
@@ -20,7 +20,7 @@ cliente:
 
 proveedor:
     resource: "@ProveedorBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /admin
 
 portada:
     pattern: /
@@ -46,10 +46,3 @@ adios:
     pattern: /adios
     defaults: { _controller: ProductoBundle:Default:adios }
 
-admin:
-    pattern: /admin
-    defaults: { _controller: UsuarioBundle:Admin:prueba }
-
-sylius_cart:
-    resource: @SyliusCartBundle/Resources/config/routing.yml
-    prefix: /cart

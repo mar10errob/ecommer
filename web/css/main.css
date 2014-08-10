@@ -2171,8 +2171,15 @@ span .precio{
   background:#FE980F;
   color: #fff
 }
-
-
+/*************************
+*******Productos******
+**************************/
+.alto-box{
+    height: 320px;
+}
+.alto-imagen{
+    height: 210px;
+}
 
 /*************************
 *******Blog Single CSS******

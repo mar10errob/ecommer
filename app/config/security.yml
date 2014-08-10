@@ -1,8 +1,20 @@
 security:
     firewalls:
+        administra:
+            pattern: ^/admin
+            anonymous: ~
+            provider: administradores
+            form_login:
+                login_path: usuario_login
+                check_path: usuario_login_check
+                default_target_path: admin
+            logout:
+                path: usuario_logout
+
         publico:
             pattern: ^/*
             anonymous: ~
+            provider: cliente
             form_login:
                 login_path: cliente_login
                 check_path: cliente_login_check
@@ -15,12 +27,24 @@ security:
             remember_me:
                 key: inventario123
                 lifetime: 3600
+
     access_control:
         - { path: ^/cliente/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/cliente/registrate, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/cliente/*, roles: ROLE_CLIENTE }
+        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/*, roles: [ROLE_ADMIN, ROLE_EMPLEADO] }
+
     providers:
         cliente:
             entity: { class: SPV\ClienteBundle\Entity\Cliente, property: email }
+        administradores:
+            entity: { class: SPV\UsuarioBundle\Entity\Usuario, property: id }
+#            memory:
+#                users:
+#                    admin: { password: 1234, roles: ROLE_ADMIN }
+#                    empleado: { password: 5678, roles: ROLE_EMPLEADO }
+
     encoders:
         SPV\ClienteBundle\Entity\Cliente: { algorithm: sha512, iterations: 10 }
+        SPV\UsuarioBundle\Entity\Usuario: { algorithm: sha512, iterations: 10 }

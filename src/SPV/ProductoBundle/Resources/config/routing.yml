@@ -1,3 +1,11 @@
-producto_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ProductoBundle:Default:index }
+producto_registro:
+    pattern:  /registro-producto
+    defaults: { _controller: ProductoBundle:Admin:registro }
+
+lista_productos:
+    pattern: /lista-productos
+    defaults: { _controller: ProductoBundle:Admin:lista }
+
+editar_producto:
+    pattern: /editar-producto/{id}
+    defaults: { _controller: ProductoBundle:Admin:editar }

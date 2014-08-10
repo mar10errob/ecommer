@@ -1,17 +1,17 @@
 <?php
 namespace SPV\ClienteBundle\Cart;
 
-use Doctrine\ORM\EntityManager;
 use Sylius\Bundle\CartBundle\Model\CartItemInterface;
 use Sylius\Bundle\CartBundle\Resolver\ItemResolverInterface;
 use Sylius\Bundle\CartBundle\Resolver\ItemResolvingException;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\EntityManager;
 
 class ItemResolver implements ItemResolverInterface
 {
     private $entityManger;
 
-    function __construct(EntityManager $entityManger)
+    public function __construct(EntityManager $entityManger)
     {
         $this->entityManger = $entityManger;
     }
@@ -35,7 +35,7 @@ class ItemResolver implements ItemResolverInterface
         }
 
         $item->setProducto($producto);
-        $item->setUnitPrice($producto->getPrice());
+        $item->setUnitPrice($producto->getPrecioUnitario());
 
         return $item;
 

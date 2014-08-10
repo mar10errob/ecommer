@@ -1,0 +1,18 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    {% if accion=='editar' %}
+        editar {{ producto.nombre }}
+    {% endif %}
+    <form action="{{ accion == 'crear' ? path('producto_registro') : path('editar_producto',{'id':producto.id}) }}" method="post" {{ form_enctype(formproducto) }}>
+        {{ form_widget(formproducto) }}
+    {% if accion=='editar' %}
+        {% if producto.imagen %}
+            <img src="{{ asset( 'uploads/images/productos/'~producto.imagen ) }}" alt=""/>
+        {% else %}
+            <h5>No hay imagen</h5>
+        {% endif %}
+    {% endif %}
+        <br/>
+        <input type="submit" name="" value="{{ accion == 'crear' ? 'Registrar' : 'Modificar' }}">
+    </form>
+{% endblock %}

@@ -2,6 +2,7 @@
 namespace SPV\ClienteBundle\Entity;
 
 use Sylius\Bundle\CartBundle\Entity\CartItem as BaseCartItem;
+use Sylius\Bundle\CartBundle\Model\CartItemInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +29,11 @@ class CartItem extends BaseCartItem
 
     public function setProducto(\SPV\ProductoBundle\Entity\Producto $producto){
         $this->producto=$producto;
+    }
+
+     public function equals(CartItemInterface $item)
+    {
+        return $this->producto === $item->getProducto();
     }
 }
 

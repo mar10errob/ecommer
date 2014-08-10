@@ -38,7 +38,7 @@ class DetalleMovimiento
     /**
      * @var integer
      *
-     * @ORM\Column(name="cantidad", type="integer")
+     * @ORM\Column(name="cantidad", type="integer", nullable=true)
      */
     protected $cantidad;
 

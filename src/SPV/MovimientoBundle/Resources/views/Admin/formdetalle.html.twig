@@ -1,0 +1,11 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <form action="{{ path('registro_detalle') }}" method="post" {{ form_enctype(formproducto) }}>
+        {{ form_widget(formproducto) }}
+        <input type="hidden" value="{{ movimiento }}" name="movimiento"/>
+        <br/>
+        <input type="submit" name="accion" value="Otro Producto"/>
+        <input type="submit" name="accion" value="Terminar"/>
+    </form>
+
+{% endblock %}

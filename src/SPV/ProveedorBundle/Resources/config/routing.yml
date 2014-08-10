@@ -1,3 +1,11 @@
-proveedor_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ProveedorBundle:Default:index }
+proveedor_registro:
+    pattern:  /registro-proveedor
+    defaults: { _controller: ProveedorBundle:Admin:registro }
+
+lista_proveedores:
+    pattern: /lista-proveedores
+    defaults: { _controller: ProveedorBundle:Admin:lista }
+
+editar_proveedor:
+    pattern: /editar-provedor/{id}
+    defaults: { _controller: ProveedorBundle:Admin:editar }

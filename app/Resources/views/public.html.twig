@@ -68,7 +68,7 @@
                             {% if is_granted('ROLE_CLIENTE') %}
                                 <li><a href="{{ path('perfil') }}" class="{% block cuenta '' %}"><i class="fa fa-user"></i> Cuenta: {{ app.user.nombre }}</a></li>
                                 <li><a href="{{ path('pedido') }}" class="{% block pedido '' %}"><i class="fa fa-truck"></i> Pedido</a></li>
-                                <li><a href="{{ path('carrito') }}" class="{% block carrito '' %}"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
+                                <li><a href="{{ path('sylius_cart_summary') }}" class="{% block carrito '' %}"><i class="fa fa-shopping-cart"></i> Carrito</a></li>
                                 <li><a href="{{ path('cliente_logout') }}"><i class="fa fa-sign-out"></i> Salir</a></li>
                             {% else %}
                                 <li><a href="{{ path('cliente_regsitro') }}" class="{% block registro '' %}"><i class="fa fa-plus"></i> Registrate</a></li>
@@ -97,7 +97,7 @@
                             <ul class="nav navbar-nav collapse navbar-collapse">
                                 <li><a href="{{ path('portada') }}" class="{% block home '' %}">Home</a></li>
                                 <li><a href="{{ path('productos', {'categoria':'todos'}) }}" class="{% block productos '' %}">Productos</a></li>
-                                <li><a href="{{ path('sylius_cart_summary') }}" class="{% block contacto '' %}">¿Quienes Somos?</a></li>
+                                <li><a href="{{ path('contacto') }}" class="{% block contacto '' %}">¿Quienes Somos?</a></li>
                             </ul>
                         </div>
                     </div>

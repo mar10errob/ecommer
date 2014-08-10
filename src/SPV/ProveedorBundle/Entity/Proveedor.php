@@ -183,4 +183,11 @@ class Proveedor
     {
         return $this->status;
     }
+
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
+
 }

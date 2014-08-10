@@ -24,7 +24,7 @@ class TipoUsuario
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=10)
+     * @ORM\Column(name="descripcion", type="string", length=20)
      */
     protected $descripcion;
 
@@ -59,6 +59,10 @@ class TipoUsuario
      */
     public function getDescripcion()
     {
+        return $this->descripcion;
+    }
+
+    public function __toString(){
         return $this->descripcion;
     }
 }

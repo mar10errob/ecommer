@@ -2,6 +2,8 @@
 
 namespace SPV\UsuarioBundle\Entity;
 
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="SPV\UsuarioBundle\Entity\UsuarioRepository")
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
      * @var integer
@@ -270,5 +272,56 @@ class Usuario
     public function getStatus()
     {
         return $this->status;
+    }
+
+    function __toString()
+    {
+        return $this->getNombre().' '.$this->getApellidoPaterno().' '.$this->getApellidoMaterno();
+    }
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return Role[] The user roles
+     */
+    public function getRoles()
+    {
+        if($this->getTipo()->getDescripcion()=='administrador'){
+            return array('ROLE_ADMIN');
+        }else{
+            return array('ROLE_EMPLEADO');
+        }
+    }
+
+    /**
+     * Returns the username used to authenticate the user.
+     *
+     * @return string The username
+     */
+    public function getUsername()
+    {
+        return $this->getId();
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
     }
 }

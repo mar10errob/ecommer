@@ -1,0 +1,16 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <table>
+        <tr>
+            <td>id</td>
+            <td>nombre</td>
+        </tr>
+    {% for proveedor in proveedores %}
+        <tr>
+            <td>{{ proveedor.id }}</td>
+            <td>{{ proveedor.nombre }}</td>
+            <td><a href="{{ path('editar_proveedor', {'id':proveedor.id}) }}">Modificar</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

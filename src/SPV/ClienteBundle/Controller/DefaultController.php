@@ -28,54 +28,6 @@ class DefaultController extends Controller
         ));
     }
 
-    public function carritoAction(){
-        $cliente=$this->get('security.context')->getToken()->getUser();
-        $em = $this->getDoctrine()->getManager();
-        // $carrito=$em->getRepository('ClienteBundle:Carrito')->findProductos($cliente);
-        $carrito=$em->getRepository('ClienteBundle:Carrito')->findBy(array(
-            'cliente'=>$cliente,
-            'fechaAdd'=>new \DateTime('today')
-            ));
-        return $this->render('ClienteBundle:Default:carrito.html.twig',array(
-            'productos'=>$carrito
-            ));
-    }
-
-    public function addcarritoAction($producto, $cantidad){
-        $em = $this->getDoctrine()->getManager();
-        $hoy =new \DateTime('today');
-        $cliente = $this->get('security.context')->getToken()->getUser();
-        $p = $em->getRepository('ProductoBundle:Producto')->find($producto);
-        $c=$em->getRepository('ClienteBundle:Carrito')->findBy(array(
-            'producto'=>$p,
-            'cliente'=>$cliente,
-            'fechaAdd'=>$hoy
-            ));
-
-        if(!$c){
-            $carrito=new Carrito();
-            $carrito->setCliente($cliente);
-            $carrito->setProducto($p);
-            $carrito->setCantidad($cantidad);
-            $carrito->setFechaAdd($hoy);
-
-            $em->persist($carrito);
-            $em->flush();
-        }
-        
-        return $this->redirect($this->generateUrl('carrito'));
-    }
-
-    public function rmcarritoAction($producto){
-        $em = $this->getDoctrine()->getManager();
-        $carrito = $em->getRepository('ClienteBundle:Carrito')->find($producto);
-
-        $em->remove($carrito);
-        $em->flush();
-
-        return $this->redirect($this->generateUrl('carrito'));
-    }
-
     public function pedidoAction(){
         return $this->render('ClienteBundle:Default:pedido.html.twig');
     }
@@ -84,7 +36,7 @@ class DefaultController extends Controller
         return $this->render('ClienteBundle:Default:perfil.html.twig');
     }
 
-    public function resgistroAction(){
+    public function registroAction(){
         $peticion=$this->getRequest();
         $cliente=new Cliente();
         $direccion=new Direccion();

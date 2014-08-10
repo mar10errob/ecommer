@@ -52,20 +52,20 @@ class Movimiento
     /**
      * @var float
      *
-     * @ORM\Column(name="costo", type="float")
+     * @ORM\Column(name="costo", type="float", nullable=true)
      */
     protected $costo;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="saldo", type="float")
+     * @ORM\Column(name="saldo", type="float", nullable=true)
      */
     protected $saldo;
 
     /**
      * @var string
-     * @ORM\Column(name="observaciones", type="text")
+     * @ORM\Column(name="observaciones", type="text", nullable=true)
      *
      */
     protected $observaciones;
@@ -80,14 +80,14 @@ class Movimiento
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_entrega", type="datetime")
+     * @ORM\Column(name="fecha_entrega", type="datetime", nullable=true)
      */
     protected $fechaEntrega;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="status", type="boolean")
+     * @ORM\Column(name="status", type="boolean", nullable=true)
      */
     protected $status;
 

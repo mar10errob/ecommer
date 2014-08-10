@@ -87,4 +87,8 @@ class TipoProducto
         return $this->slug;
     }
 
+    public function __toString(){
+        return $this->getDescripcion();
+    }
+
 }

@@ -105,7 +105,7 @@
                                     <h2>Detalles...</h2>
                                 </a>
                                 <br/>
-                                <a href="{{ path('add_carrito', { 'cliente': app.user.id ,'producto': producto.id })}}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
+                                <a href="{{ path('sylius_cart_item_add', {'productoId': producto.id }) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                             </div>
                         </div>
                         {# if i % 2 %}
@@ -116,6 +116,8 @@
                     </div>
                 </div>
             </div>
+            {% else %}
+            <h1>no hay productos</h1>
         {% endfor %}
     </div><!--features_items-->
 

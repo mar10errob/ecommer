@@ -1,0 +1,17 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <table>
+        <tr>
+            <td>Proveedor</td>
+            <td>Fecha de Registro</td>
+            <td></td>
+        </tr>
+        {% for compra in compras %}
+        <tr>
+            <td>{{ compra.proveedor.nombre }}</td>
+            <td>{{ compra.fechaCreacion | date('d/m/y h:m:s') }}</td>
+            <td><a href="{{ path('lista_detalles',{ 'id' : compra.id }) }}">Detalles</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

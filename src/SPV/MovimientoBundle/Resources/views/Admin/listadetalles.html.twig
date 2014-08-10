@@ -1,0 +1,17 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <table>
+        <tr>
+            <td>Producto</td>
+            <td>Cantidad</td>
+            <td></td>
+        </tr>
+        {% for detalle in detalles %}
+            <tr>
+                <td>{{ detalle.producto.nombre }}</td>
+                <td>{{ detalle.producto.existencia }}</td>
+                <td><a href="#">Detalles</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

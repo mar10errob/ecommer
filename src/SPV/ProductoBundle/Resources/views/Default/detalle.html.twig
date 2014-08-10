@@ -41,7 +41,7 @@
                         <a class="cart_quantity_down" href="#" id="menos"> - </a>
                     </div>
 				</span> <br><br>
-                <a href="{{ path('add_carrito', {'producto': producto.id }) }}" class="btn btn-fefault cart" id="add-car">
+                <a href="{{ path('sylius_cart_item_add', {'productoId': producto.id }) }}" class="btn btn-fefault cart" id="add-car">
                     <i class="fa fa-shopping-cart"></i> Agregar al carrito
                 </a>
                 

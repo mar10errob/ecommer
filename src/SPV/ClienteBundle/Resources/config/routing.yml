@@ -1,7 +1,3 @@
-carrito:
-    pattern: /carrito
-    defaults: { _controller: ClienteBundle:Default:carrito }
-
 pedido:
     pattern: /pedido
     defaults: { _controller: ClienteBundle:Default:pedido }
@@ -22,12 +18,8 @@ cliente_logout:
 
 cliente_regsitro:
     pattern: /registrate
-    defaults: { _controller: ClienteBundle:Default:resgistro }
+    defaults: { _controller: ClienteBundle:Default:registro }
 
-add_carrito:
-    pattern: /add-carrito/{producto}/{cantidad}
-    defaults: { _controller: ClienteBundle:Default:addcarrito, cantidad: 1}
-
-remove_carrito:
-    pattern: /remove-carrito/{producto}
-    defaults: { _controller: ClienteBundle:Default:rmcarrito }
+sylius_cart:
+    resource: @SyliusCartBundle/Resources/config/routing.yml
+    prefix: /carrito

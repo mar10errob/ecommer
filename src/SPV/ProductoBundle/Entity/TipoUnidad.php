@@ -91,4 +91,11 @@ class TipoUnidad
     {
         return $this->simbolo;
     }
+
+    function __toString()
+    {
+        return $this->getDescripcion();
+    }
+
+
 }

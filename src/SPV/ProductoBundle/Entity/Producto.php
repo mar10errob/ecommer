@@ -4,6 +4,7 @@ namespace SPV\ProductoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use SPV\ProductoBundle\Util\Util;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Producto
@@ -356,6 +357,7 @@ class Producto
      * set ranking
      *
      * @param int $ranking
+     * @return $this
      */
     public function setRanking($ranking)
     {
@@ -418,5 +420,14 @@ class Producto
     public function getStatus()
     {
         return $this->status;
+    }
+
+    public function subirImagen($directorioDestino){
+        if(null === $this->getImagen()){
+            return;
+        }
+        $nombreArchivoFoto=$this->getImagen()->getClientOriginalName();
+        $this->getImagen()->move($directorioDestino, $nombreArchivoFoto);
+        $this->setImagen($nombreArchivoFoto);
     }
 }

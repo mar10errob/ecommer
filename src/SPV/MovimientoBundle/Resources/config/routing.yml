@@ -1,3 +1,15 @@
-movimiento_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: MovimientoBundle:Default:index }
+nueva_compra:
+    pattern:  /nueva-compra/
+    defaults: { _controller: MovimientoBundle:Admin:nuevaCompra }
+
+lista_compras:
+    pattern: /lista-compras/
+    defaults: { _controller: MovimientoBundle:Admin:listaCompras }
+
+registro_detalle:
+    pattern: /nuevo-detalle/
+    defaults: { _controller: MovimientoBundle:Admin:nuevoDetalle }
+
+lista_detalles:
+    pattern: /movimiento-detalles/{id}
+    defaults: { _controller: MovimientoBundle:Admin:listaDetalles }

@@ -45,7 +45,7 @@ class Direccion
     /**
      * @var string
      *
-     * @ORM\Column(name="numero_interior", type="string", length=5)
+     * @ORM\Column(name="numero_interior", type="string", length=5, nullable=true)
      */
     protected $numeroInterior;
 

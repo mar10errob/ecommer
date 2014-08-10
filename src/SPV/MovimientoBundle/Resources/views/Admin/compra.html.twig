@@ -1,0 +1,23 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <form action="{{ path('nueva_compra') }}" method="post" {{ form_enctype(formcompra) }}>
+        <table>
+            <tr>
+                <td></td>
+                <td>Id</td>
+                <td>Nombre</td>
+            </tr>
+            {% for proveedor in proveedores %}
+                <tr>
+                    <td><input type="radio" name="proveedor" value="{{ proveedor.id }}"/></td>
+                    <td>{{ proveedor.id }}</td>
+                    <td>{{ proveedor.nombre }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a>
+        {{ form_widget(formcompra) }}
+        <br/>
+        <input type="submit" name="" value="Siguiente">
+    </form>
+{% endblock %}
