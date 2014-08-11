@@ -11,4 +11,5 @@
 /composer.phar
 /.idea/
 /comandos.txt
-/web/css/
+/web/css/*
+/web/admin/*
