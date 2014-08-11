@@ -2,6 +2,8 @@
 
 namespace SPV\ClienteBundle\Controller;
 
+use SPV\ClienteBundle\Form\EditaClienteType;
+use SPV\MovimientoBundle\Entity\DetalleMovimiento;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Security\Core\SecurityContext;
 use SPV\ClienteBundle\Entity\Cliente;
@@ -9,7 +11,6 @@ use SPV\ClienteBundle\Form\ClienteType;
 use SPV\DireccionBundle\Entity\Direccion;
 use SPV\DireccionBundle\Form\DireccionType;
 use SPV\ClienteBundle\Entity\Carrito;
-use SPV\ProductoBundle\Entity\Producto;
 use SPV\MovimientoBundle\Entity\Movimiento;
 
 class DefaultController extends Controller
@@ -33,6 +34,10 @@ class DefaultController extends Controller
     }
 
     public function perfilAction(){
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Bienvenido'
+        );
         return $this->render('ClienteBundle:Default:perfil.html.twig');
     }
 
@@ -62,25 +67,87 @@ class DefaultController extends Controller
         }
         return $this->render(
             'ClienteBundle:Default:registro.html.twig',
-            array('cliente'=>$formcliente->createView(),'direccion'=>$formdireccion->createView())
+            array(
+                'accion'=>'crear',
+                'formcliente'=>$formcliente->createView(),
+                'formdireccion'=>$formdireccion->createView())
         );
     }
 
-    public function confirmaAction(){
+    public function nuevoPedidoAction(){
         $cliente=$this->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        $carrito=$em->getRepository('ClienteBundle:Carrito')->findBy(array(
-            'cliente'=>$cliente,
-            'fechaAdd'=>new \DateTime('today')
+        $carProveedor=$this->get('sylius.cart_provider');
+        $carritoActual=$carProveedor->getCart()->getItems();
+        if(count($carritoActual)<=0){
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                'El carrito esta vacio!!!'
+            );
+            return $this->render('ClienteBundle:Default:pedido.html.twig');
+        }else{
+            $tipomovimiento=$em->getRepository('MovimientoBundle:TipoMovimiento')->findOneBy(array(
+                'descripcion'=>'pedido'
             ));
-        $tipomovimiento=$em->getRepository('MovimientoBundle:TipoMovimiento')->findBy(array(
-            'descripcion'=>'pedido'
-            ));
-        $movimiento =new Movimiento();
-
-        foreach ($carrito as $producto) {
-            
-
+            $total=$carProveedor->getCart()->getTotal();
+            $saldo=$cliente->getSaldo();
+            $pedido=new Movimiento();
+            $pedido->setTipo($tipomovimiento);
+            $pedido->setCliente($cliente);
+            $pedido->setFechaCreacion(new \DateTime('now'));
+            $pedido->setObservaciones($this->getRequest()->get('observaciones'));
+            $pedido->setCosto($total);
+            $pedido->setSaldo($total);
+            $cliente->setSaldo($total + $saldo);
+            $em->persist($pedido);
+            $em->persist($cliente);
+            foreach($carritoActual as $item){
+                $detallePedido=new DetalleMovimiento();
+                $detallePedido->setMovimiento($pedido);
+                $detallePedido->setProducto($item->getProducto());
+                $em->persist($detallePedido);
+            }
+            $em->flush();
+            $carProveedor->abandonCart();
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                'Su pedido a sido registrado con exito!!!!'
+            );
+            return $this->redirect($this->generateUrl('perfil'));
         }
+
+    }
+
+    public function editarAction(){
+        $em=$this->getDoctrine()->getManager();
+        $cliente=$this->get('security.context')->getToken()->getUser();
+        $direccion=$cliente->getDireccion();
+        $peticion = $this->getRequest();
+        $formcliente=$this->createForm(new EditaClienteType(), $cliente);
+        $formdireccion=$this->createForm(new DireccionType(), $direccion);
+        if ($peticion->getMethod() == 'POST') {
+            $formdireccion->bind($peticion);
+            $formcliente->bind($peticion);
+            if($formdireccion->isValid() and $formcliente->isValid()){
+                $em->persist($cliente);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'info',
+                    'Su informacion ha sido modificada exitosamente!!!'
+                );
+                return $this->redirect(
+                    $this->generateUrl('perfil')
+                );
+            }
+        }
+
+        return $this->render('ClienteBundle:Default:registro.html.twig',
+            array(
+                'accion'=>'editar',
+                'cliente' => $cliente,
+                'formcliente'=>$formcliente->createView(),
+                'formdireccion'=>$formdireccion->createView()
+            )
+        );
     }
 }

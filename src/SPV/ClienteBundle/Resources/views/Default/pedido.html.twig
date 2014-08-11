@@ -4,197 +4,145 @@
 {% block pedido %}active{% endblock %}
 {% block fullcontenido %}
     <section id="cart_items">
-    <div class="container">
-    <div class="breadcrumbs">
-        <ol class="breadcrumb">
-            <li><a href="#">Cliente</a></li>
-            <li class="active">Pedido</li>
-        </ol>
-    </div><!--/breadcrums-->
+        <div class="container">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="#">Cliente</a></li>
+                    <li class="active">Pedido</li>
+                </ol>
+            </div><!--/breadcrums-->
 
-    <div class="step-one">
-        <h2 class="heading">Generacion del Pedido</h2>
-    </div>
-    <div class="alert alert-info">
-    	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <p>Por favor revise que su informacion para que su pedido llegue correctamente.</p>
-    </div>
+            <div class="step-one">
+                <h2 class="heading">Generacion del Pedido</h2>
+            </div>
+            {#<div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <p>Por favor revise que su informacion para que su pedido llegue correctamente.</p>
+            </div>#}
 
-    <div class="shopper-informations">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="shopper-info">
-                    <p>Informacion de Usuario</p>
-                    <form>
-                        <input type="text" value="{{ app.user }}" disabled>
-                        <input type="text" value="{{ app.user.email }}" disabled>
-                    </form>
-                    <a class="btn btn-primary" href="">Modificar</a>
-                    <a class="btn btn-primary" href="">Continuar</a>
+            <div class="shopper-informations">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="shopper-info">
+                            <p>Informacion de Usuario</p>
+                            <form>
+                                <input type="text" value="{{ app.user }}" disabled>
+                                <input type="text" value="{{ app.user.email }}" disabled>
+                            </form>
+                            <a class="btn btn-primary" href="{{ path('modificar_cliente') }}">Modificar Informacion</a>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 clearfix">
+                        <div class="bill-to">
+                            <p>Enviar a</p>
+                            <div class="form-one">
+                                <form>
+                                    <input type="text" value="{{ app.user.nombre }}" disabled/>
+                                    <input type="text" value="{{ app.user.apellidoPaterno }}" disabled/>
+                                    <input type="text" value="{{ app.user.apellidoMaterno }}" disabled/>
+                                    <input type="text" value="{{ app.user.direccion.estado }}" disabled/>
+                                    <input type="text" value="{{ app.user.direccion.colonia.codigoPostal }}" disabled>
+                                </form>
+                            </div>
+                            <div class="form-two">
+                                <form>
+                                    <input type="text" value="{{ app.user.direccion.colonia.nombre }}" disabled/>
+                                    <input type="text" value="{{ app.user.direccion.calle }}" disabled/>
+                                    <input type="text" value="#ext. {{ app.user.direccion.numeroExterior }}" disabled/>
+                                    <input type="text" value="#int. {{ app.user.direccion.numeroInterior }}" disabled/>
+                                    <input type="text" value="{{ app.user.telefono }}" disabled/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="order-message">
+                            <form action="{{ path('confirmar_pedido') }}" id="formobservacion">
+                                <p>Observaciones del envio</p>
+                                <textarea name="observaciones" rows="16"></textarea>
+                            </form>
+                            {#<label><input type="checkbox"> Shipping to bill address</label>#}
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-sm-5 clearfix">
-                <div class="bill-to">
-                    <p>Enviar a</p>
-                    <div class="form-one">
-                        <form>
-                            <input type="text" value="{{ app.user.nombre }}" disabled/>
-                            <input type="text" value="{{ app.user.apellidoPaterno }}" disabled/>
-                            <input type="text" value="{{ app.user.apellidoMaterno }}" disabled/>
-                            <input type="text" value="{{ app.user.direccion.estado }}" disabled/>
-                            <input type="text" value="{{ app.user.direccion.colonia.codigoPostal }}" disabled>
-                        </form>
-                    </div>
-                    <div class="form-two">
-                        <form>
-                            <input type="text" value="{{ app.user.direccion.colonia.nombre }}" disabled/>
-                            <input type="text" value="{{ app.user.direccion.calle }}" disabled/>
-                            <input type="text" value="#ext. {{ app.user.direccion.numeroExterior }}" disabled/>
-                            <input type="text" value="#int. {{ app.user.direccion.numeroInterior }}" disabled/>
-                            <input type="text" value="{{ app.user.telefono }}" disabled/>
-                        </form>
-                    </div>
-                </div>
+            <div class="review-payment">
+                <h2>Resumen de Compra</h2>
             </div>
-            <div class="col-sm-4">
-                <div class="order-message">
-                    <p>Observaciones del envio</p>
-                    <textarea name="message" rows="16"></textarea>
-                    {#<label><input type="checkbox"> Shipping to bill address</label>#}
+                {% set cart = sylius_cart_get() %}
+                <div class="table-responsive cart_info">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr class="cart_menu">
+                                <td class="image">Producto</td>
+                                <td class="description"></td>
+                                <td class="price">Precio</td>
+                                <td class="quantity">Cantidad</td>
+                                <td class="total">Total</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart.Items %}
+                                {% set producto= item.Producto %}
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="{{ asset(producto.imagen != null ? 'uploads/images/productos/'~producto.imagen : 'uploads/images/productos/img-default.png') }}" alt="" class="img-resposive" style="width:110px; height:110px;"></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">{{ producto.nombre }}</a></h4>
+                                    <p>Web ID: <span>{{ producto.id }}</span></p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>$<span>{{ item.UnitPrice | number_format(2,'.',',') }}</span></p>
+                                </td>
+                                <td class="cart_quantity">
+                                    {{ item.quantity }}
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">$<span>{{ item.total | number_format(2,'.',',') }}</span></p>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="5" align="center"><h4>No hay articulos en el carrito.</h4></td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="3">&nbsp;</td>
+                                <td colspan="2">
+                                    <table class="table table-condensed total-result">
+                                        <tr>
+                                            <td>Sub Total</td>
+                                            <td><span>${{ cart.total | number_format(2,'.',',') }}</span></td>
+                                        </tr>
+                                        <tr class="shipping-cost">
+                                            <td>Costo de envio</td>
+                                            <td>Free</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td><span>${{ cart.total | number_format(2,'.',',') }}</span></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            <div class="payment-options col-md-10">
+                <span>
+                    <label><input type="checkbox"> Transferencia Bancaria</label>
+                </span>
+                <span>
+                    <label><input type="checkbox"> Deposito Bancario</label>
+                </span>
+                <span>
+                    <label><input type="checkbox"> Paypal</label>
+                </span>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-default check_out" form="formobservacion" value="Confirmar Pedido"/>
             </div>
         </div>
-    </div>
-    <div class="review-payment">
-        <h2>Resumen de Compra</h2>
-    </div>
-
-    <div class="table-responsive cart_info">
-        <table class="table table-condensed">
-            <thead>
-            <tr class="cart_menu">
-                <td class="image">Producto</td>
-                <td class="description"></td>
-                <td class="price">Precio</td>
-                <td class="quantity">Cantidad</td>
-                <td class="total">Total</td>
-                <td></td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="cart_product">
-                    <a href=""><img src="{{ asset('images/cart/one.png') }}" alt=""></a>
-                </td>
-                <td class="cart_description">
-                    <h4><a href="">Colorblock Scuba</a></h4>
-                    <p>Web ID: 1089772</p>
-                </td>
-                <td class="cart_price">
-                    <p>$59</p>
-                </td>
-                <td class="cart_quantity">
-                    <div class="cart_quantity_button">
-                        <a class="cart_quantity_up" href=""> + </a>
-                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                        <a class="cart_quantity_down" href=""> - </a>
-                    </div>
-                </td>
-                <td class="cart_total">
-                    <p class="cart_total_price">$59</p>
-                </td>
-                <td class="cart_delete">
-                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="cart_product">
-                    <a href=""><img src="{{ asset('images/cart/two.png') }}" alt=""></a>
-                </td>
-                <td class="cart_description">
-                    <h4><a href="">Colorblock Scuba</a></h4>
-                    <p>Web ID: 1089772</p>
-                </td>
-                <td class="cart_price">
-                    <p>$59</p>
-                </td>
-                <td class="cart_quantity">
-                    <div class="cart_quantity_button">
-                        <a class="cart_quantity_up" href=""> + </a>
-                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                        <a class="cart_quantity_down" href=""> - </a>
-                    </div>
-                </td>
-                <td class="cart_total">
-                    <p class="cart_total_price">$59</p>
-                </td>
-                <td class="cart_delete">
-                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td class="cart_product">
-                    <a href=""><img src="{{ asset('images/cart/three.png') }}" alt=""></a>
-                </td>
-                <td class="cart_description">
-                    <h4><a href="">Colorblock Scuba</a></h4>
-                    <p>Web ID: 1089772</p>
-                </td>
-                <td class="cart_price">
-                    <p>$59</p>
-                </td>
-                <td class="cart_quantity">
-                    <div class="cart_quantity_button">
-                        <a class="cart_quantity_up" href=""> + </a>
-                        <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-                        <a class="cart_quantity_down" href=""> - </a>
-                    </div>
-                </td>
-                <td class="cart_total">
-                    <p class="cart_total_price">$59</p>
-                </td>
-                <td class="cart_delete">
-                    <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="4">&nbsp;</td>
-                <td colspan="2">
-                    <table class="table table-condensed total-result">
-                        <tr>
-                            <td>Sub Total</td>
-                            <td>$59</td>
-                        </tr>
-                        {#<tr>
-                            <td>Exo Tax</td>
-                            <td>$2</td>
-                        </tr>#}
-                        <tr class="shipping-cost">
-                            <td>Costo de envio</td>
-                            <td>Free</td>
-                        </tr>
-                        <tr>
-                            <td>Total</td>
-                            <td><span>$61</span></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="payment-options">
-					<span>
-						<label><input type="checkbox"> Transferencia Bancaria</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Deposito Bancario</label>
-					</span>
-					<span>
-						<label><input type="checkbox"> Paypal</label>
-					</span>
-    </div>
-    </div>
     </section> <!--/#cart_items-->
 {% endblock %}

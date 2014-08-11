@@ -1,9 +1,9 @@
 pedido:
-    pattern: /pedido
+    pattern: /pedido/
     defaults: { _controller: ClienteBundle:Default:pedido }
 
 perfil:
-    pattern: /perfil
+    pattern: /perfil/
     defaults: { _controller: ClienteBundle:Default:perfil }
 
 cliente_login:
@@ -17,9 +17,17 @@ cliente_logout:
     pattern: /logout
 
 cliente_regsitro:
-    pattern: /registrate
+    pattern: /registrate/
     defaults: { _controller: ClienteBundle:Default:registro }
+
+modificar_cliente:
+    pattern: /modificar-informacion/
+    defaults: { _controller: ClienteBundle:Default:editar }
 
 sylius_cart:
     resource: @SyliusCartBundle/Resources/config/routing.yml
     prefix: /carrito
+
+confirmar_pedido:
+   pattern: /confirmar-pedido/
+   defaults: { _controller: ClienteBundle:Default:nuevoPedido }

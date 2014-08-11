@@ -97,4 +97,14 @@ class AdminController extends Controller
                 'detalles'=>$detalles
             ));
     }
+
+    public function listaPedidosAction(){
+        $em=$this->getDoctrine()->getManager();
+        $tipo=$em->getRepository('MovimientoBundle:TipoMovimiento')->findOneBy(array('descripcion'=>'pedido'));
+        $pedidos=$em->getRepository('MovimientoBundle:Movimiento')->findBy(array('tipo'=>$tipo));
+        return $this->render('MovimientoBundle:Admin:listapedidos.html.twig',
+            array(
+                'pedidos'=>$pedidos
+            ));
+    }
 }

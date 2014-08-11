@@ -1,6 +1,6 @@
 {% extends '::public.html.twig' %}
-{% block title %}Registrate{% endblock %}
-{% block id %}registro{% endblock %}
+{% block title %}{{ accion=='crear' ? 'Registrate' : 'Modificar'}}{% endblock %}
+{% block id %}{{ accion=='crear' ? 'registro' : 'modificar'}}{% endblock %}
 {% block registro %}active{% endblock %}
 {% block fullcontenido %}
     <section>
@@ -8,7 +8,7 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
-                    <li class="active">Registro</li>
+                    <li class="active">{{ accion=='crear' ? 'Registro' : 'Modificar'}}</li>
                 </ol>
             </div><!--/breadcrums-->
         </div>
@@ -16,71 +16,69 @@
     <section id="form"><!--form-->
         <div class="container signup-form">
             <h2>Usuario Nuevo ¡Registrate!</h2>
-            <div class="alert alert-danger">
-            	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            	<strong>Error!</strong> {{ form_errors(cliente)|striptags }}
-            </div>
-            <form action="{{ path('cliente_regsitro') }}" method="post">
+            <form action="{{ accion == 'crear' ? path('cliente_regsitro') : path('modificar_cliente') }}" method="post">
                 <div class="row">
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         <label for="">Datos Personales</label>
-                        {{ form_widget(cliente.nombre, {'attr':{
+                        {{ form_widget(formcliente.nombre, {'attr':{
                             'placeholder':'Nombre(s)'
                         }}) }}
-                        {{ form_widget(cliente.apellidoPaterno, {'attr':{
+                        {{ form_widget(formcliente.apellidoPaterno, {'attr':{
                             'placeholder':'Apellido Paterno'
                         }}) }}
-                        {{ form_widget(cliente.apellidoMaterno, {'attr':{
-                        'placeholder':'Apellido Materno'
+                        {{ form_widget(formcliente.apellidoMaterno, {'attr':{
+                            'placeholder':'Apellido Materno'
                         }}) }}
-                        {{ form_widget(cliente.email, {'attr':{
-                        'placeholder':'Email'
+                        {{ form_widget(formcliente.email, {'attr':{
+                            'placeholder':'Email'
                         }}) }}
-                        {{ form_widget(cliente.password.first,{ 'attr': {
-                        'placeholder' : 'Contraseña'
+                        {% if accion == 'crear' %}
+                        {{ form_widget(formcliente.password.first,{ 'attr': {
+                            'placeholder' : 'Contraseña'
                         } }) }}
-                        {{ form_widget(cliente.password.second,{ 'attr': {
-                        'placeholder' : 'Repetir Contraseña'
+                        {{ form_widget(formcliente.password.second,{ 'attr': {
+                            'placeholder' : 'Repetir Contraseña'
                         } }) }}
+                        {% endif %}
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         <label for="">Fecha de Nacimiento</label>
                         <div class="row">
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                {{ form_widget(cliente.fechaNacimiento.day) }}
+                                {{ form_widget(formcliente.fechaNacimiento.day) }}
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                {{ form_widget(cliente.fechaNacimiento.month) }}
+                                {{ form_widget(formcliente.fechaNacimiento.month) }}
                             </div>
                             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                {{ form_widget(cliente.fechaNacimiento.year) }}
+                                {{ form_widget(formcliente.fechaNacimiento.year) }}
                             </div>
                         </div>
-                        {{ form_widget(cliente.curp, {'attr':{
+                        {{ form_widget(formcliente.curp, {'attr':{
                         'placeholder':'CURP'
                         }}) }}
-                        {{ form_widget(cliente.telefono, {'attr':{
+                        {{ form_widget(formcliente.telefono, {'attr':{
                         'placeholder':'Telefono'
                         }}) }}
                     </div>
                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                         <label for="">Dirección</label>
-                        {{ form_widget(direccion.estado) }}
-                        {{ form_widget(direccion.colonia) }}
-                        {{ form_widget(direccion.calle, {'attr':{
+                        {{ form_widget(formdireccion.estado) }}
+                        {{ form_widget(formdireccion.colonia) }}
+                        {{ form_widget(formdireccion.calle, {'attr':{
                         'placeholder':'Calle'
                         }}) }}
-                        {{ form_widget(direccion.numeroExterior, {'attr':{
+                        {{ form_widget(formdireccion.numeroExterior, {'attr':{
                         'placeholder':'Numero Exterior'
                         }}) }}
-                        {{ form_widget(direccion.numeroInterior, {'attr':{
+                        {{ form_widget(formdireccion.numeroInterior, {'attr':{
                         'placeholder':'Numero Interior'
                         }}) }}
                     </div>
                 </div>
-                {{ form_rest(cliente) }}
-                {{ form_rest(direccion) }}
-                <button type="submit" class="btn btn-default">Registrar</button>
+                {{ form_rest(formcliente) }}
+                {{ form_rest(formdireccion) }}
+                <button type="submit" class="btn btn-default">{{ accion == 'crear' ? 'Registrar' : 'Modificar' }}</button>
             </form>
         </div>
     </section><!--/form-->

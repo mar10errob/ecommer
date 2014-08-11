@@ -5,24 +5,24 @@
             <!-- block -->
             <div class="block">
                 <div class="navbar navbar-inner block-header">
-                    <div class="muted pull-left">Compras a Proveedores</div>
+                    <div class="muted pull-left">Pedidos de los Clientes</div>
                 </div>
             </div>
             <div class="block-content collapse in">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Proveedor</th>
+                        <th>Cliente</th>
                         <th>Fecha de Registro</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for compra in compras %}
+                    {% for pedido in pedidos %}
                         <tr>
-                            <td>{{ compra.proveedor.nombre }}</td>
-                            <td>{{ compra.fechaCreacion | date('d/m/y h:m:s') }}</td>
-                            <td><a href="{{ path('lista_detalles',{ 'id' : compra.id }) }}">Detalles</a></td>
+                            <td>{{ pedido.cliente.nombre }}</td>
+                            <td>{{ pedido.fechaCreacion | date('d/m/y h:m:s') }}</td>
+                            <td><a href="{{ path('lista_detalles',{ 'id' : pedido.id }) }}">Detalles</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

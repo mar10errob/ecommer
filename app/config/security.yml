@@ -10,6 +10,7 @@ security:
                 default_target_path: admin
             logout:
                 path: usuario_logout
+                target: usuario_login
 
         publico:
             pattern: ^/*

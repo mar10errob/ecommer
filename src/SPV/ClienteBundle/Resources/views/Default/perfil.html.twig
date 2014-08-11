@@ -5,10 +5,6 @@
 {% block fullcontenido %}
     <section>
         <div class="container">
-            <div class="alert alert-success">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <p>Bienvenido <span></span>.</p>
-            </div>
             <div class="step-one">
                 <h2 class="heading">Perfil de usuario <span></span></h2>
             </div>
@@ -27,7 +23,7 @@
                             <label for="">Email:</label>
                             <input type="text" value="{{ app.user.email }}" disabled/>
                             <label for="">Fecha de Nacimiento:</label>
-                            <input type="text" value="{{ app.user.fechanacimiento |date('d/m/Y') }}"/>
+                            <input type="text" value="{{ app.user.fechanacimiento |date('d/m/Y') }}" disabled/>
                         </div>
                     </div>
                     <div class="col-sm-5 clearfix">
@@ -39,6 +35,8 @@
                                 <input type="text" value="#int. {{ app.user.direccion.numeroInterior }}" disabled/>
                                 <input type="text" value="{{ app.user.direccion.colonia.nombre }}" disabled/>
                                 <input type="text" value="cp. {{ app.user.direccion.colonia.codigoPostal }}" disabled/>
+                                <a class="btn btn-default update" href="{{ path('modificar_cliente') }}">Modificar Información</a>
+                                {#<a class="btn btn-default update" href="#">Modificar Contraseña</a>#}
                             </div>
                             <div class="perfil-two">
                                 <input type="text" value="{{ app.user.direccion.estado }}" disabled/>

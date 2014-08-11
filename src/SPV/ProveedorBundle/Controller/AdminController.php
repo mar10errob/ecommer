@@ -66,6 +66,7 @@ class AdminController extends Controller{
             )
         );
     }
+    
     public function listaAction(){
         $em=$this->getDoctrine()->getManager();
         $proveedores=$em->getRepository('ProveedorBundle:Proveedor')->findAll();

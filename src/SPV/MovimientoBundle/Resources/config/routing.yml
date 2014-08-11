@@ -13,3 +13,7 @@ registro_detalle:
 lista_detalles:
     pattern: /movimiento-detalles/{id}
     defaults: { _controller: MovimientoBundle:Admin:listaDetalles }
+
+lista_pedidos:
+    pattern: /lista-pedidos/
+    defaults: { _controller: MovimientoBundle:Admin:listaPedidos }

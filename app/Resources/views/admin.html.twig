@@ -1,23 +1,94 @@
 {% extends '::base.html.twig' %}
 {% block title %}Administracion{% endblock %}
 {% block linkhead %}
-    <link href="{{ asset('css/normalize.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    {#<link href="{{ asset('css/normalize.min.css') }}" rel="stylesheet" media="screen">#}
+    <link href="{{ asset('admin/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('admin/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('admin/vendors/easypiechart/jquery.easy-pie-chart.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('admin/assets/styles.css') }}" rel="stylesheet" media="screen">
+    {#<link href="{{ asset('css/styles.css') }}" rel="stylesheet">#}
     <!--[if lt IE 9]>
     <script src="{{ asset('js/html5shiv.js') }}"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <![endif]-->
+    <script src="{{ asset('admin/vendors/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
 {% endblock %}
 {% block body %}
-    <a href="{{ path('admin') }}">Inicio</a><br/>
-      {% block contenido %}{% endblock %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="{{ path('admin') }}">Panel del Administrador</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav pull-right">
+                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EMPLEADO') %}
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-user"></i>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    Administrador - {{ app.user }}
+                                {% else %}
+                                    Empleado - {{ app.user }}
+                                {% endif %}
+                                <i class="caret"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Perfil</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="{{ path('usuario_logout') }}">Cerrar Sesion</a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+    {% block fullcontenido %}
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3" id="sidebar">
+                <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
+                    <li class="active"><a href="{{ path('admin') }}">Inicio</a></li>
+                    <li><a href="{{ path('usuario_registro') }}">Nuevo empleado</a></li>
+                    <li><a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a></li>
+                    <li><a href="{{ path('lista_proveedores') }}">Lista de Proveedores</a></li>
+                    <li><a href="{{ path('producto_registro') }}">Nuevo Producto</a></li>
+                    <li><a href="{{ path('lista_productos') }}">Lista de Productos</a></li>
+                    <li><a href="{{ path('nueva_compra') }}">Nueva Compra</a></li>
+                    <li><a href="{{ path('lista_compras') }}">Lista de Compras</a></li>
+                    <li><a href="{{ path('lista_pedidos') }}">Lista de Pedidos</a></li>
+                    <li><a href="#">Nueva Venta</a></li>
+                </ul>
+            </div>
+            <div class="span9" id="content">
+                {% block contenido %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
 {% endblock %}
 {% block cfooter %}text-center{% endblock %}
 {% block footer %}
 {% endblock %}
 {% block jsbody %}
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/scripts.js') }}"></script>
+    <script src="{{ asset('admin/vendors/jquery-1.9.1.min.js') }}"></script>
+    <script src="{{ asset('admin/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/easypiechart/jquery.easy-pie-chart.js') }}"></script>
+    <script src="{{ asset('admin/assets/scripts.js') }}"></script>
+    {#<script src="{{ asset('js/scripts.js') }}"></script>#}
+    <script>
+        $(function() {
+            // Easy pie charts
+            $('.chart').easyPieChart({animate: 1000});
+        });
+    </script>
 {% endblock %}

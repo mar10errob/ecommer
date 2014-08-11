@@ -1,19 +1,14 @@
 {% extends '::admin.html.twig' %}
 {% block contenido %}
-    {% if is_granted('ROLE_ADMIN') %}
-		<h1>Hola Administrador</h1>
-	{% else %}
-		<h1>Hola Empleado</h1>
-    {% endif %}
-    <ul>
-        <li><a href="{{ path('usuario_registro') }}">Nuevo empleado</a></li>
-        <li><a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a></li>
-        <li><a href="{{ path('lista_proveedores') }}">Lista de Proveedores</a></li>
-        <li><a href="{{ path('producto_registro') }}">Nuevo Producto</a></li>
-        <li><a href="{{ path('lista_productos') }}">Lista de Productos</a></li>
-        <li><a href="{{ path('nueva_compra') }}">Nueva Compra</a></li>
-        <li><a href="{{ path('lista_compras') }}">Lista de Compras</a></li>
-        <li><a href="#">Nueva Venta</a></li>
-        <li><a href="{{ path('usuario_logout') }}">cerrar sesion</a></li>
-    </ul>
+    <div class="row-fluid">
+        <div class="row-fluid">
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left" a><h2>Bienvenido.</h2></div>
+                    <div class="pull-right"><!--<span class="badge badge-warning">View More</span>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

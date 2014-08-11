@@ -1,17 +1,34 @@
 {% extends '::admin.html.twig' %}
 {% block contenido %}
-    <table>
-        <tr>
-            <td>Producto</td>
-            <td>Cantidad</td>
-            <td></td>
-        </tr>
-        {% for detalle in detalles %}
-            <tr>
-                <td>{{ detalle.producto.nombre }}</td>
-                <td>{{ detalle.producto.existencia }}</td>
-                <td><a href="#">Detalles</a></td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="row-fluid">
+        <div class="block">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Detalles</div>
+                </div>
+            </div>
+            <div class="block-content collapse in">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for detalle in detalles %}
+                        <tr>
+                            <td>{{ detalle.producto.nombre }}</td>
+                            <td>{{ detalle.producto.existencia }}</td>
+                            <td><a href="#">Detalles</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /block -->
+    </div>
 {% endblock %}
