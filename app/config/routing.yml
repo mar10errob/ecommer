@@ -1,4 +1,8 @@
-usuario:
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+admin:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
     prefix:   /admin
 

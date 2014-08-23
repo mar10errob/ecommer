@@ -47,6 +47,13 @@ class Usuario implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="nick", type="string", length=50)
+     */
+    protected $nick;
+
+    /**
+     * @var string
+     *
      * @ORM\ManyToOne(targetEntity="SPV\DireccionBundle\Entity\Direccion")
      */
     protected $direccion;
@@ -99,7 +106,7 @@ class Usuario implements UserInterface
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
-
+        $this->generaNick();
         return $this;
     }
 
@@ -157,6 +164,22 @@ class Usuario implements UserInterface
     public function getApellidoMaterno()
     {
         return $this->apellidoMaterno;
+    }
+
+    /**
+     * @param string $nick
+     */
+    public function setNick($nick)
+    {
+        $this->nick = $nick;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNick()
+    {
+        return $this->nick;
     }
 
     /**
@@ -264,6 +287,9 @@ class Usuario implements UserInterface
         return $this;
     }
 
+    public function generaNick(){
+        $this->nick=substr($this->getNombre(),0).$this->getApellidoPaterno().substr($this->getApellidoMaterno(),0);
+    }
     /**
      * Get status
      *
@@ -311,7 +337,7 @@ class Usuario implements UserInterface
      */
     public function getUsername()
     {
-        return $this->getId();
+        return $this->getNick();
     }
 
     /**

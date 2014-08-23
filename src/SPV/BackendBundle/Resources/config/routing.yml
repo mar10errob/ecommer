@@ -1,0 +1,19 @@
+BackendTipoUnidad:
+    resource: "@BackendBundle/Resources/config/routing/tipounidad.yml"
+    prefix: /tipounidad
+
+BackendTipoProducto:
+    resource: "@BackendBundle/Resources/config/routing/tipoproducto.yml"
+    prefix: /tipoproducto
+
+BackendTipoProveedor:
+    resource: "@BackendBundle/Resources/config/routing/tipoproveedor.yml"
+    prefix: /tipoproveedor
+
+BackendEstado:
+    resource: "@BackendBundle/Resources/config/routing/estado.yml"
+    prefix: /estado
+
+BackendColonia:
+    resource: "@BackendBundle/Resources/config/routing/colonia.yml"
+    prefix: /colonia

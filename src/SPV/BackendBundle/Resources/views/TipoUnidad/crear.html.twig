@@ -1,0 +1,8 @@
+{% extends '::admin.html.twig' %}
+    {% block fullcontenido %}
+        <form action="{{ path('backend_tipounidad_crear') }}" method="POST" role="form" >
+        	<legend>Crear Tipo de Unidad para los Productos</legend>
+            {{ form_widget(formulario) }}
+        	<button type="submit" class="btn btn-primary">Crear</button>
+        </form>
+    {% endblock %}

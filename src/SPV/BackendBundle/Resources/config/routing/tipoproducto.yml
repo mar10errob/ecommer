@@ -1,0 +1,30 @@
+tipoProducto:
+    path:     /
+    defaults: { _controller: "BackendBundle:TipoProducto:index" }
+
+tipoProducto_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:TipoProducto:show" }
+
+tipoProducto_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:TipoProducto:new" }
+
+tipoProducto_create:
+    path:     /create
+    defaults: { _controller: "BackendBundle:TipoProducto:create" }
+    requirements: { _method: post }
+
+tipoProducto_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:TipoProducto:edit" }
+
+tipoProducto_update:
+    path:     /{id}/update
+    defaults: { _controller: "BackendBundle:TipoProducto:update" }
+    requirements: { _method: post|put }
+
+tipoProducto_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:TipoProducto:delete" }
+    requirements: { _method: post|delete }

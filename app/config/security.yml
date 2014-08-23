@@ -40,7 +40,7 @@ security:
         cliente:
             entity: { class: SPV\ClienteBundle\Entity\Cliente, property: email }
         administradores:
-            entity: { class: SPV\UsuarioBundle\Entity\Usuario, property: id }
+            entity: { class: SPV\UsuarioBundle\Entity\Usuario, property: nick }
 #            memory:
 #                users:
 #                    admin: { password: 1234, roles: ROLE_ADMIN }

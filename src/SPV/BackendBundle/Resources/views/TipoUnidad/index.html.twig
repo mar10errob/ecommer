@@ -1,0 +1,27 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+        <h2>Lista de Tipos de Unidades</h2>
+        <h3 class="text-right"><a href="{{ path('backend_tipounidad_crear') }}">Crear nuevo</a></h3>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Simbolo</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for tipounidad in tipounidades %}
+                <tr>
+                    <td>{{ tipounidad.id }}</td>
+                    <td>{{ tipounidad.descripcion }}</td>
+                    <td>{{ tipounidad.simbolo }}</td>
+                    <td><a href="{{ path('backend_tipounidad_actualizar',{'id':tipounidad.id}) }}">Modificar</a></td>
+                    <td><a href="{{ path('backend_tipounidad_borrar',{'id':tipounidad.id}) }}">Borrar</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

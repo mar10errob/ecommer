@@ -45,7 +45,7 @@ class Estado
      * @param string $nombre
      * @return Estado
      */
-    public function setDescripcion($nombre)
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
 
@@ -57,14 +57,14 @@ class Estado
      *
      * @return string 
      */
-    public function getDescripcion()
+    public function getNombre()
     {
         return $this->nombre;
     }
 
     function __toString()
     {
-        return $this->getDescripcion();
+        return $this->getNombre();
     }
 
 

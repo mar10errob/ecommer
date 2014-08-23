@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new SPV\DireccionBundle\DireccionBundle(),
             new SPV\ProductoBundle\ProductoBundle(),
             new SPV\UsuarioBundle\UsuarioBundle(),
+            new SPV\BackendBundle\BackendBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

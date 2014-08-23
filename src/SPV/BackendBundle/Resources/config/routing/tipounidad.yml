@@ -1,0 +1,15 @@
+backend_tipounidad:
+    pattern: /
+    defaults: { _controller: "BackendBundle:TipoUnidad:index" }
+
+backend_tipounidad_crear:
+    pattern: /crear
+    defaults: { _controller: "BackendBundle:TipoUnidad:crear" }
+
+backend_tipounidad_actualizar:
+    pattern: /actualizar/{id}
+    defaults: { _controller: "BackendBundle:TipoUnidad:actualizar" }
+
+backend_tipounidad_borrar:
+    pattern: /borrar/{id}
+    defaults: { _controller: "BackendBundle:TipoUnidad:borrar" }

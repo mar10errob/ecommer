@@ -1,0 +1,30 @@
+tipoproveedor:
+    path:     /
+    defaults: { _controller: "BackendBundle:TipoProveedor:index" }
+
+tipoproveedor_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:TipoProveedor:show" }
+
+tipoproveedor_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:TipoProveedor:new" }
+
+tipoproveedor_create:
+    path:     /create
+    defaults: { _controller: "BackendBundle:TipoProveedor:create" }
+    requirements: { _method: post }
+
+tipoproveedor_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:TipoProveedor:edit" }
+
+tipoproveedor_update:
+    path:     /{id}/update
+    defaults: { _controller: "BackendBundle:TipoProveedor:update" }
+    requirements: { _method: post|put }
+
+tipoproveedor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:TipoProveedor:delete" }
+    requirements: { _method: post|delete }
