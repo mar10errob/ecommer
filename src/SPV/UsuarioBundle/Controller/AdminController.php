@@ -50,7 +50,7 @@ class AdminController extends Controller
                 $usuario->setPassword($passwordCodificado);
                 $em->persist($usuario);
                 $em->flush();
-                return $this->redirect($this->generateUrl('admin'));
+                return $this->redirect($this->generateUrl('usuario'));
             }
         }
         return $this->render(

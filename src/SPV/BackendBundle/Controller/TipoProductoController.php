@@ -43,7 +43,7 @@ class TipoProductoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipoProducto_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('tipoProducto'));
         }
 
         return $this->render('BackendBundle:TipoProducto:new.html.twig', array(
@@ -66,7 +66,7 @@ class TipoProductoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -83,28 +83,6 @@ class TipoProductoController extends Controller
         return $this->render('BackendBundle:TipoProducto:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a TipoProducto entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ProductoBundle:TipoProducto')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find TipoProducto entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('BackendBundle:TipoProducto:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -146,7 +124,7 @@ class TipoProductoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -171,7 +149,7 @@ class TipoProductoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipoProducto_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tipoProducto'));
         }
 
         return $this->render('BackendBundle:TipoProducto:edit.html.twig', array(

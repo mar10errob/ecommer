@@ -12,6 +12,7 @@ class UsuarioType extends AbstractType{
             ->add('nombre')
             ->add('apellidoPaterno')
             ->add('apellidoMaterno')
+            ->add('nick')
             ->add('password','repeated', array(
                 'type'=>'password',
                 'invalid_message'=>'Ambos campos de contraseña deben coincidir'

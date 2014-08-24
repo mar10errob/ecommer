@@ -2,10 +2,6 @@ colonia:
     path:     /
     defaults: { _controller: "BackendBundle:Colonia:index" }
 
-colonia_show:
-    path:     /{id}/show
-    defaults: { _controller: "BackendBundle:Colonia:show" }
-
 colonia_new:
     path:     /new
     defaults: { _controller: "BackendBundle:Colonia:new" }

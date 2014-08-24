@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Cliente</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido Paterno</th>
+                <td>{{ entity.apellidoPaterno }}</td>
+            </tr>
+            <tr>
+                <th>Apellido Materno</th>
+                <td>{{ entity.apellidoMaterno }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Nacimiento</th>
+                <td>{{ entity.fechaNacimiento|date('Y-m-d') }}</td>
+            </tr>
+            <tr>
+                <th>Curp</th>
+                <td>{{ entity.curp }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ entity.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Saldo</th>
+                <td>{{ entity.saldo }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ entity.salt }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cliente') }}">
+            Regresar a la Lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

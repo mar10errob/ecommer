@@ -16,7 +16,6 @@ class TipoProductoType extends AbstractType
     {
         $builder
             ->add('descripcion')
-            ->add('slug')
         ;
     }
     

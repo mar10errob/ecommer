@@ -2,10 +2,6 @@ tipoProducto:
     path:     /
     defaults: { _controller: "BackendBundle:TipoProducto:index" }
 
-tipoProducto_show:
-    path:     /{id}/show
-    defaults: { _controller: "BackendBundle:TipoProducto:show" }
-
 tipoProducto_new:
     path:     /new
     defaults: { _controller: "BackendBundle:TipoProducto:new" }

@@ -1,0 +1,49 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Lista de Productos</div>
+                <h5 class="text-right"><a href="{{ path('producto_registro') }}">Agregar un Producto</a></h5>
+            </div>
+        </div>
+
+        <div class="block-content collapse in">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Precio Unitario</th>
+                    <th>Existencia</th>
+                    <th>Fecha de Ingreso</th>
+                    <th>Ranking</th>
+                    <th>Proveedor</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.id }}</td>
+                        <td><a href="{{ path('producto_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                        <td>{{ entity.precioUnitario }}</td>
+                        <td>{{ entity.existencia }}</td>
+                        <td>{% if entity.fechaIngreso %}{{ entity.fechaIngreso|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.ranking }}</td>
+                        <td>{{ entity.proveedor }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('editar_producto', { 'id': entity.id }) }}">Editar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

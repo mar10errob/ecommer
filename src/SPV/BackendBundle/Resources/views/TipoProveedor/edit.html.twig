@@ -1,16 +1,16 @@
-{% extends '::base.html.twig' %}
+{% extends '::admin.html.twig' %}
 
-{% block body -%}
-    <h1>TipoProveedor edit</h1>
+{% block contenido%}
+    <h1>Editar Tipo de Proveedor</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('tipoproveedor') }}">
-            Back to the list
+            Regresar a la Lista
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    {#<li>{{ form(delete_form) }}</li>#}
 </ul>
 {% endblock %}

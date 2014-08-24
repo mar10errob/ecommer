@@ -1,5 +1,6 @@
 {% extends '::admin.html.twig' %}
 {% block contenido %}
+    <h1>Detalle de la Compra a Proveedor</h1>
     <form action="{{ path('registro_detalle') }}" method="post" {{ form_enctype(formproducto) }}>
         {{ form_widget(formproducto) }}
         <input type="hidden" value="{{ movimiento }}" name="movimiento"/>

@@ -2,10 +2,6 @@ estado:
     path:     /
     defaults: { _controller: "BackendBundle:Estado:index" }
 
-estado_show:
-    path:     /{id}/show
-    defaults: { _controller: "BackendBundle:Estado:show" }
-
 estado_new:
     path:     /new
     defaults: { _controller: "BackendBundle:Estado:new" }

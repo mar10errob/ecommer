@@ -44,7 +44,7 @@ class TipoProveedorController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipoproveedor_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('tipoproveedor'));
         }
 
         return $this->render('BackendBundle:TipoProveedor:new.html.twig', array(
@@ -67,7 +67,7 @@ class TipoProveedorController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Crear','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -84,28 +84,6 @@ class TipoProveedorController extends Controller
         return $this->render('BackendBundle:TipoProveedor:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a TipoProveedor entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('ProveedorBundle:TipoProveedor')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find TipoProveedor entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('BackendBundle:TipoProveedor:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -147,7 +125,7 @@ class TipoProveedorController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -172,7 +150,7 @@ class TipoProveedorController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipoproveedor_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('tipoproveedor'));
         }
 
         return $this->render('BackendBundle:TipoProveedor:edit.html.twig', array(
@@ -217,7 +195,7 @@ class TipoProveedorController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('tipoproveedor_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array('label' => 'Borrar','attr'=>array('class'=>'btn btn-primary')))
             ->getForm()
         ;
     }

@@ -1,0 +1,61 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <h1>Producto</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Precio Unitario</th>
+                <td>{{ entity.precioUnitario }}</td>
+            </tr>
+            <tr>
+                <th>Existencia</th>
+                <td>{{ entity.existencia }}</td>
+            </tr>
+            <tr>
+                <th>Fechade Ingreso</th>
+                <td>{{ entity.fechaIngreso|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fecha de Caducidad</th>
+                <td>{{ entity.fechaCaducidad|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td><div class="miniaturas"><img src="{{ asset(entity.imagen != null ? 'uploads/images/productos/'~entity.imagen : 'uploads/images/productos/img-default.png') }}" alt="{{ entity.descripcion }}" class="img-responsive"/></div></td>
+            </tr>
+            <tr>
+                <th>Ranking</th>
+                <td>{{ entity.ranking }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ entity.slug }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('producto') }}">
+            Regresar a la Lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

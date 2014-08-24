@@ -1,0 +1,51 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Lista de Clientes</div>
+            </div>
+        </div>
+
+        <div class="block-content collapse in">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Curp</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Telefono</th>
+                    <th>Saldo</th>
+                    <th>Salt</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.id }}</td>
+                        <td><a href="{{ path('cliente_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                        <td>{{ entity.apellidoPaterno }}</td>
+                        <td>{{ entity.apellidoMaterno }}</td>
+                        <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.curp }}</td>
+                        <td>{{ entity.email }}</td>
+                        <td>{{ entity.password }}</td>
+                        <td>{{ entity.telefono }}</td>
+                        <td>{{ entity.saldo }}</td>
+                        <td>{{ entity.salt }}</td>
+                        <td>{{ entity.status }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

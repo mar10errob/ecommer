@@ -1,0 +1,16 @@
+proveedor:
+    path:     /
+    defaults: { _controller: "ProveedorBundle:Proveedor:index" }
+
+proveedor_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProveedorBundle:Proveedor:show" }
+
+proveedor_registro:
+    pattern:  /registro
+    defaults: { _controller: ProveedorBundle:Admin:registro }
+
+editar_proveedor:
+    pattern: /{id}/editar
+    defaults: { _controller: ProveedorBundle:Admin:editar }
+

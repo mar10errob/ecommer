@@ -1,43 +1,47 @@
-{% extends '::base.html.twig' %}
+{% extends '::admin.html.twig' %}
 
-{% block body -%}
-    <h1>Colonia list</h1>
+{% block contenido %}
+    <div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Lista de Colonias</div>
+                <h5 class="text-right">
+                    <a href="{{ path('colonia_new') }}">
+                        Agregar una Colonia
+                    </a></h5>
+            </div>
+        </div>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Codigopostal</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('colonia_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nombre }}</td>
-                <td>{{ entity.codigoPostal }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('colonia_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('colonia_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('colonia_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+        <div class="block-content collapse in">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Codigo Postal</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.id }}</td>
+                        <td>{{ entity.nombre }}</td>
+                        <td>{{ entity.codigoPostal }}</td>
+                        <td>{{ entity.estado }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('colonia_edit', { 'id': entity.id }) }}">Editar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -17,3 +17,7 @@ BackendEstado:
 BackendColonia:
     resource: "@BackendBundle/Resources/config/routing/colonia.yml"
     prefix: /colonia
+
+BackendCliente:
+    resource: "@ClienteBundle/Resources/config/routing/cliente.yml"
+    prefix: /clientes

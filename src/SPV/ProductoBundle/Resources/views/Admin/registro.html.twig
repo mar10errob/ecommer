@@ -1,7 +1,9 @@
 {% extends '::admin.html.twig' %}
 {% block contenido %}
     {% if accion=='editar' %}
-        editar {{ producto.nombre }}
+        <h1>Editar Producto</h1>
+        {% else %}
+            <h1>Agregar Producto</h1>
     {% endif %}
     <form action="{{ accion == 'crear' ? path('producto_registro') : path('editar_producto',{'id':producto.id}) }}" method="post" {{ form_enctype(formproducto) }}>
         {{ form_widget(formproducto) }}
@@ -13,6 +15,6 @@
         {% endif %}
     {% endif %}
         <br/>
-        <input type="submit" name="" value="{{ accion == 'crear' ? 'Registrar' : 'Modificar' }}">
+        <input type="submit" name="" value="{{ accion == 'crear' ? 'Registrar' : 'Modificar' }}" class="btn btn-primary">
     </form>
 {% endblock %}

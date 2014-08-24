@@ -1,0 +1,10 @@
+cliente:
+    path:     /
+    defaults: { _controller: "ClienteBundle:Cliente:index" }
+
+cliente_show:
+    path:     /{id}/show
+    defaults: { _controller: "ClienteBundle:Cliente:show" }
+
+
+

@@ -23,7 +23,7 @@ class AdminController extends Controller
                 $em=$this->getDoctrine()->getManager();
                 $em->persist($producto);
                 $em->flush();
-                return $this->redirect($this->generateUrl('lista_productos'));
+                return $this->redirect($this->generateUrl('producto'));
             }
         }
         return $this->render('ProductoBundle:Admin:registro.html.twig',
@@ -54,7 +54,7 @@ class AdminController extends Controller
                 }
                 $em->persist($producto);
                 $em->flush();
-                return $this->redirect($this->generateUrl('lista_productos'));
+                return $this->redirect($this->generateUrl('producto'));
             }
         }
         return $this->render('ProductoBundle:Admin:registro.html.twig',
@@ -64,12 +64,5 @@ class AdminController extends Controller
                 'formproducto'=>$formproducto->createView()
             )
         );
-    }
-    public function listaAction(){
-        $em=$this->getDoctrine()->getManager();
-        $productos=$em->getRepository('ProductoBundle:Producto')->findAll();
-        return $this->render('ProductoBundle:Admin:lista.html.twig',array(
-            'productos'=>$productos
-        ));
     }
 }

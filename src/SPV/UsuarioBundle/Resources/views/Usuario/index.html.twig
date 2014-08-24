@@ -1,0 +1,36 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Lista de Usuarios</div>
+                <h5 class="text-right"><a href="{{ path('usuario_registro') }}">Agregar un Usuario</a></h5>
+            </div>
+        </div>
+
+        <div class="block-content collapse in">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Nick</th>
+                    <th>Tipo</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>{{ entity.id }}</td>
+                        <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                        <td>{{ entity.nick }}</td>
+                        <td>{{ entity.tipo }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

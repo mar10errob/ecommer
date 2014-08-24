@@ -44,7 +44,7 @@ class EstadoController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('estado_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('estado'));
         }
 
         return $this->render('BackendBundle:Estado:new.html.twig', array(
@@ -67,7 +67,7 @@ class EstadoController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Agregar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -84,28 +84,6 @@ class EstadoController extends Controller
         return $this->render('BackendBundle:Estado:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
-    }
-
-    /**
-     * Finds and displays a Estado entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('DireccionBundle:Estado')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Estado entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('BackendBundle:Estado:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -147,7 +125,7 @@ class EstadoController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -172,7 +150,7 @@ class EstadoController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('estado_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('estado'));
         }
 
         return $this->render('BackendBundle:Estado:edit.html.twig', array(

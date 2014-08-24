@@ -1,5 +1,5 @@
 {% extends '::admin.html.twig' %}
-{% block fullcontenido %}
+{% block contenido %}
     <form action="{{ path('backend_tipounidad_actualizar',{'id':tipounidad.id}) }}" method="POST">
     	<legend>Modificar Tipo de Unidad para los Productos</legend>
             {{ form_widget(formulario) }}

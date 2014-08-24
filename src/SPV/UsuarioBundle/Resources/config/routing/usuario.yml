@@ -1,0 +1,21 @@
+usuario:
+    path:     /
+    defaults: { _controller: "UsuarioBundle:Usuario:index" }
+
+usuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "UsuarioBundle:Usuario:show" }
+
+usuario_registro:
+    pattern:  /registro
+    defaults: { _controller: UsuarioBundle:Admin:registro }
+
+usuario_edit:
+    path:     /{id}/editar
+    defaults: { _controller: "UsuarioBundle:Usuario:edit" }
+
+usuario_update:
+    path:     /{id}/update
+    defaults: { _controller: "UsuarioBundle:Usuario:update" }
+    requirements: { _method: post|put }
+

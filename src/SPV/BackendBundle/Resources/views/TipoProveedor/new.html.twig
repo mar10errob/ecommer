@@ -1,14 +1,14 @@
-{% extends '::base.html.twig' %}
+{% extends '::admin.html.twig' %}
 
-{% block body -%}
-    <h1>TipoProveedor creation</h1>
+{% block contenido%}
+    <h1>Crear Tipo de Proveedor</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
         <a href="{{ path('tipoproveedor') }}">
-            Back to the list
+            Regresar a la Lista
         </a>
     </li>
 </ul>

@@ -2,10 +2,6 @@ tipoproveedor:
     path:     /
     defaults: { _controller: "BackendBundle:TipoProveedor:index" }
 
-tipoproveedor_show:
-    path:     /{id}/show
-    defaults: { _controller: "BackendBundle:TipoProveedor:show" }
-
 tipoproveedor_new:
     path:     /new
     defaults: { _controller: "BackendBundle:TipoProveedor:new" }

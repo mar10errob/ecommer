@@ -24,7 +24,7 @@ class AdminController extends Controller{
                 $proveedor->setStatus(true);
                 $em->persist($proveedor);
                 $em->flush();
-//                return $this->redirect($this->generateUrl('admin'));
+                return $this->redirect($this->generateUrl('proveedor'));
             }
         }
         return $this->render('ProveedorBundle:Admin:registro.html.twig',
@@ -53,7 +53,7 @@ class AdminController extends Controller{
                 $em->persist($proveedor);
                 $em->flush();
                 return $this->redirect(
-                    $this->generateUrl('lista_proveedores')
+                    $this->generateUrl('proveedor')
                 );
             }
         }
@@ -65,13 +65,5 @@ class AdminController extends Controller{
                 'formdireccion'=>$formdireccion->createView()
             )
         );
-    }
-    
-    public function listaAction(){
-        $em=$this->getDoctrine()->getManager();
-        $proveedores=$em->getRepository('ProveedorBundle:Proveedor')->findAll();
-        return $this->render('ProveedorBundle:Admin:lista.html.twig',array(
-            'proveedores'=>$proveedores
-        ));
     }
 }

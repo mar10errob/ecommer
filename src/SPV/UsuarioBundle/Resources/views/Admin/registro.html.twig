@@ -1,5 +1,6 @@
 {% extends '::admin.html.twig' %}
 {% block contenido %}
+
 	<form action="{{ path('usuario_registro') }}" method="post">
 		{{ form_widget(usuario) }}
 		{{ form_widget(direccion) }}

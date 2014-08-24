@@ -1,41 +1,46 @@
-{% extends '::base.html.twig' %}
+{% extends '::admin.html.twig' %}
 
-{% block body -%}
-    <h1>TipoProveedor list</h1>
+{% block contenido %}
+    <div class="row-fluid">
+        <div class="block">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header">
+                    <div class="muted pull-left">Lista de Tipos de Proveedores</div>
+                    <h5 class="text-right">
+                        <a href="{{ path('tipoproveedor_new') }}">
+                            Agregar un Tipo
+                        </a>
+                    </h5>
+                </div>
+            </div>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Descripcion</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('tipoproveedor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.descripcion }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('tipoproveedor_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('tipoproveedor_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('tipoproveedor_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+            <div class="block-content collapse in">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td>{{ entity.id }}</td>
+                            <td>{{ entity.descripcion }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('tipoproveedor_edit', { 'id': entity.id }) }}">Editar</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

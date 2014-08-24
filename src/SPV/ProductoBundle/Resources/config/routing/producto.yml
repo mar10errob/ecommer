@@ -1,0 +1,17 @@
+producto:
+    path:     /
+    defaults: { _controller: "ProductoBundle:Producto:index" }
+
+producto_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProductoBundle:Producto:show" }
+
+producto_registro:
+    pattern:  /registro
+    defaults: { _controller: ProductoBundle:Admin:registro }
+
+editar_producto:
+    pattern: /{id}/editar
+    defaults: { _controller: ProductoBundle:Admin:editar }
+
+

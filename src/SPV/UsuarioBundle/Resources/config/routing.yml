@@ -1,6 +1,6 @@
-usuario_registro:
-    pattern:  /registro
-    defaults: { _controller: UsuarioBundle:Admin:registro }
+BackendUsuario:
+    resource: "@UsuarioBundle/Resources/config/routing/usuario.yml"
+    prefix: /usuarios
 
 admin:
     pattern: /

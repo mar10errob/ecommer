@@ -36,7 +36,11 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="#">Perfil</a>
+                                    <a href="{{ path('usuario_show',{'id':app.user.id}) }}">Perfil</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="{{ path('usuario_edit',{'id':app.user.id}) }}">Modificar Informacion</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
@@ -56,20 +60,122 @@
         <div class="row-fluid">
             <div class="span3" id="sidebar">
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                    <li class="active"><a href="{{ path('admin') }}">Inicio</a></li>
-                    <li><a href="{{ path('usuario_registro') }}">Nuevo empleado</a></li>
-                    <li><a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a></li>
-                    <li><a href="{{ path('lista_proveedores') }}">Lista de Proveedores</a></li>
-                    <li><a href="{{ path('producto_registro') }}">Nuevo Producto</a></li>
-                    <li><a href="{{ path('lista_productos') }}">Lista de Productos</a></li>
-                    <li><a href="{{ path('nueva_compra') }}">Nueva Compra</a></li>
-                    <li><a href="{{ path('lista_compras') }}">Lista de Compras</a></li>
-                    <li><a href="{{ path('lista_pedidos') }}">Lista de Pedidos</a></li>
-                    <li><a href="#">Nueva Venta</a></li>
+                    {#<i class="icon-chevron-right"></i>#}
+                    <li><a href="{{ path('admin') }}"><i class="icon-home"></i> Inicio</a></li>
+                    <div class="accordion" id="leftMenu">
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colProveedores">
+                                    <i class="icon-user"></i> Proveedores
+                                </a>
+                            </div>
+                            <div id="colProveedores" class="accordion-body collapse" style="height: 0px; ">
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('proveedor') }}">Lista de Proveedores</a></li>
+                                        <li><a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colCompras">
+                                    <i class="icon-shopping-cart"></i> Compras a Proveedor
+                                </a>
+                            </div>
+                            <div id="colCompras" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('lista_compras') }}">Lista de Compras</a></li>
+                                        <li><a href="{{ path('nueva_compra') }}">Nueva Compra</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colPedidos">
+                                    <i class="icon-star"></i> Pedidos
+                                </a>
+                            </div>
+                            <div id="colPedidos" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('lista_pedidos') }}">Lista de Pedidos</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colProductos">
+                                    <i class="icon-gift"></i> Productos
+                                </a>
+                            </div>
+                            <div id="colProductos" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('producto') }}">Lista de Productos</a></li>
+                                        <li><a href="{{ path('producto_registro') }}">Nuevo Producto</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colCliente">
+                                    <i class="icon-user"></i> Clientes
+                                </a>
+                            </div>
+                            <div id="colCliente" class="accordion-body collapse" style="height: 0px; ">
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('cliente') }}">Lista de Clientes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colEmpleados">
+                                    <i class="icon-user"></i> Usuarios
+                                </a>
+                            </div>
+                            <div id="colEmpleados" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('usuario') }}">Lista de Usuarios</a></li>
+                                        <li><a href="{{ path('usuario_registro') }}">Nuevo Usuario</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colCatalogos">
+                                    <i class="icon-folder-open"></i> Catalogos
+                                </a>
+                            </div>
+                            <div id="colCatalogos" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('tipoProducto') }}">Tipos de Productos</a></li>
+                                        <li><a href="{{ path('backend_tipounidad') }}">Tipos de Unidades</a></li>
+                                        <li><a href="{{ path('tipoproveedor') }}">Tipos de Proveedores</a></li>
+                                        <li><a href="{{ path('colonia') }}">Colonias</a></li>
+                                        <li><a href="{{ path('estado') }}">Estados</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </ul>
             </div>
             <div class="span9" id="content">
+                <div class="row-fluid">
                 {% block contenido %}{% endblock %}
+                </div>
             </div>
         </div>
     </div>

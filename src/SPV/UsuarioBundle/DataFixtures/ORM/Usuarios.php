@@ -42,7 +42,7 @@ class Usuarios implements FixtureInterface, ContainerAwareInterface{
         $tipo2->setDescripcion('empleado');
         $manager->persist($tipo2);
 
-        $empleado=new Usuario();
+        /*$empleado=new Usuario();
         $empleado->setNombre('empleado');
         $empleado->setApellidoPaterno('mplead');
         $empleado->setApellidoMaterno('oemple');
@@ -53,7 +53,7 @@ class Usuarios implements FixtureInterface, ContainerAwareInterface{
         $empleado->setPassword($encoder2->encodePassword('empleado',$empleado->getSalt()));
         $empleado->setStatus(true);
 
-        $manager->persist($empleado);
+        $manager->persist($empleado);*/
 
         $manager->flush();
     }

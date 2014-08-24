@@ -44,7 +44,7 @@ class ColoniaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('colonia_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('colonia'));
         }
 
         return $this->render('BackendBundle:Colonia:new.html.twig', array(
@@ -67,7 +67,7 @@ class ColoniaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'Agregar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -87,27 +87,6 @@ class ColoniaController extends Controller
         ));
     }
 
-    /**
-     * Finds and displays a Colonia entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('DireccionBundle:Colonia')->find($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Colonia entity.');
-        }
-
-        $deleteForm = $this->createDeleteForm($id);
-
-        return $this->render('BackendBundle:Colonia:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Displays a form to edit an existing Colonia entity.
@@ -147,7 +126,7 @@ class ColoniaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'Actualizar','attr'=>array('class'=>'btn btn-primary')));
 
         return $form;
     }
@@ -172,7 +151,7 @@ class ColoniaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('colonia_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('colonia'));
         }
 
         return $this->render('BackendBundle:Colonia:edit.html.twig', array(

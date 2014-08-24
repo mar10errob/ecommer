@@ -1,0 +1,41 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <h1>Usuario</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellido Paterno</th>
+                <td>{{ entity.apellidoPaterno }}</td>
+            </tr>
+            <tr>
+                <th>Apellido Materno</th>
+                <td>{{ entity.apellidoMaterno }}</td>
+            </tr>
+            <tr>
+                <th>Nick</th>
+                <td>{{ entity.nick }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ entity.status == 1 ? 'Activo' : 'No Activo' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('usuario') }}">
+            Regresar a la Lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

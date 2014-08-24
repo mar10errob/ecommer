@@ -1,23 +1,44 @@
 {% extends '::admin.html.twig' %}
 {% block contenido %}
+    <h1>Nueva Compra a Proveedor</h1>
     <form action="{{ path('nueva_compra') }}" method="post" {{ form_enctype(formcompra) }}>
-        <table>
-            <tr>
-                <td></td>
-                <td>Id</td>
-                <td>Nombre</td>
-            </tr>
-            {% for proveedor in proveedores %}
-                <tr>
-                    <td><input type="radio" name="proveedor" value="{{ proveedor.id }}"/></td>
-                    <td>{{ proveedor.id }}</td>
-                    <td>{{ proveedor.nombre }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        <a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a>
-        {{ form_widget(formcompra) }}
-        <br/>
-        <input type="submit" name="" value="Siguiente">
+        <div class="span9">
+            <div class="block">
+                <div class="block">
+                    <div class="navbar navbar-inner block-header">
+                        <div class="muted pull-left">Seleccione un Proveedor</div>
+                        <h5 class="text-right">
+                            <a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a>
+                        </h5>
+                    </div>
+                </div>
+                <div class="block-content collapse in">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for proveedor in proveedores %}
+                            <tr>
+                                <td><input type="radio" name="proveedor" value="{{ proveedor.id }}"/></td>
+                                <td>{{ proveedor.id }}</td>
+                                <td>{{ proveedor.nombre }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="span3">
+            {{ form_widget(formcompra) }}
+            <br/>
+            <input type="submit" name="" value="Siguiente" class="btn btn-primary">
+        </div>
     </form>
 {% endblock %}
