@@ -62,7 +62,7 @@ class UsuarioController extends Controller
 
         $editForm = $this->createEditForm($entity);
 
-        return $this->render('UsuarioBundle:Usuaio:edit.html.twig', array(
+        return $this->render('UsuarioBundle:Usuario:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView()
         ));

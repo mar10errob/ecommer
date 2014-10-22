@@ -1,6 +1,5 @@
-{% extends '::base.html.twig' %}
-
-{% block body -%}
+{% extends '::admin.html.twig' %}
+{% block contenido %}
     <h1>Cliente</h1>
 
     <table class="table table-striped">
@@ -23,7 +22,11 @@
             </tr>
             <tr>
                 <th>Fecha de Nacimiento</th>
-                <td>{{ entity.fechaNacimiento|date('Y-m-d') }}</td>
+                <td>{{ entity.fechaNacimiento|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
+                <th>Dirección</th>
+                <td>{{ entity.direccion }}</td>
             </tr>
             <tr>
                 <th>Curp</th>
@@ -34,10 +37,6 @@
                 <td>{{ entity.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ entity.password }}</td>
-            </tr>
-            <tr>
                 <th>Telefono</th>
                 <td>{{ entity.telefono }}</td>
             </tr>
@@ -46,12 +45,12 @@
                 <td>{{ entity.saldo }}</td>
             </tr>
             <tr>
-                <th>Salt</th>
-                <td>{{ entity.salt }}</td>
-            </tr>
-            <tr>
                 <th>Status</th>
-                <td>{{ entity.status }}</td>
+                {% if entity.status %}
+                    <td>Activo</td>
+                {% else %}
+                    <td>Inactivo</td>
+                {% endif %}
             </tr>
         </tbody>
     </table>

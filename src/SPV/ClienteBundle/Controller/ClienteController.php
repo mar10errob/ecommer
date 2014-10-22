@@ -47,4 +47,24 @@ class ClienteController extends Controller
             'entity'      => $entity,
         ));
     }
+
+    public function activarAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $cliente = $em->getRepository('ClienteBundle:Cliente')->find($id);
+        $cliente->setStatus(true);
+        $em->persist($cliente);
+        $em->flush();
+        return $this->redirect($this->generateUrl('cliente'));
+    }
+
+    public function desactivarAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        $cliente = $em->getRepository('ClienteBundle:Cliente')->find($id);
+        $cliente->setStatus(false);
+        $em->persist($cliente);
+        $em->flush();
+        return $this->redirect($this->generateUrl('cliente'));
+    }
 }

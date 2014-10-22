@@ -4,7 +4,7 @@ BackendUsuario:
 
 admin:
     pattern: /
-    defaults: { _controller: UsuarioBundle:Admin:prueba }
+    defaults: { _controller: UsuarioBundle:Admin:principal }
 
 usuario_login:
     pattern: /login

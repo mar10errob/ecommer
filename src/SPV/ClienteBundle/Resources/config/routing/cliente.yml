@@ -6,5 +6,12 @@ cliente_show:
     path:     /{id}/show
     defaults: { _controller: "ClienteBundle:Cliente:show" }
 
+cliente_activar:
+    path:     /{id}/activar
+    defaults: { _controller: "ClienteBundle:Cliente:activar" }
+
+cliente_desactivar:
+    path:     /{id}/desactivar
+    defaults: { _controller: "ClienteBundle:Cliente:desactivar" }
 
 

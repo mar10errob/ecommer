@@ -71,8 +71,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>What would you like to do next?</h3>
-                    <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                    {% if not app.user.status %}
+                    <h3>Recuerde que!!!</h3>
+                    <p>Para generar algún pedido tiene que esperar a que la empresa lo autorice.</p>
+                    <p>Le llegara un mensaje a su perfil cuado sea autorizado para realizar pedidos.</p>
+                    {% else %}
+                    <h3>Tips</h3>
+                    <p>Para que pueda ver el total de todos su productos agregados utilice el boton "actualizar".</p>
+                    {% endif %}
                 </div>
                 <div class="col-sm-6">
                     <div class="total_area">
@@ -86,7 +92,9 @@
                             {{ form_rest(form) }}
                         </form>
                         <input type="submit" value="Actualizar" class="btn btn-default update" form="formulario" >
+                        {% if app.user.status %}
                         <a class="btn btn-default check_out" href="{{ path('pedido') }}">Generar Pedido</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

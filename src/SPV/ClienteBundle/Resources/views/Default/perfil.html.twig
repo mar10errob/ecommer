@@ -30,19 +30,18 @@
                         <div class="bill-to">
                             <p>Direccion</p>
                             <div class="perfil-one">
-                                <input type="text" value="{{ app.user.direccion.calle }}" disabled/>
+                                <input type="text" value="Calle: {{ app.user.direccion.calle }}" disabled/>
                                 <input type="text" value="#ext. {{ app.user.direccion.numeroExterior }}" disabled/>
                                 <input type="text" value="#int. {{ app.user.direccion.numeroInterior }}" disabled/>
-                                <input type="text" value="{{ app.user.direccion.colonia.nombre }}" disabled/>
+                                <input type="text" value="Col: {{ app.user.direccion.colonia.nombre }}" disabled/>
                                 <input type="text" value="cp. {{ app.user.direccion.colonia.codigoPostal }}" disabled/>
                                 <a class="btn btn-default update" href="{{ path('modificar_cliente') }}">Modificar Información</a>
                                 {#<a class="btn btn-default update" href="#">Modificar Contraseña</a>#}
                             </div>
                             <div class="perfil-two">
-                                <input type="text" value="{{ app.user.direccion.estado }}" disabled/>
+                                <input type="text" value="Edo: {{ app.user.direccion.estado }}" disabled/>
                                 <input type="text" value="Mexico" disabled/>
-                                <input type="text" value="{{ app.user.telefono }}" disabled>
-                                <input type="text" value="Telefono Celular" disabled>
+                                <input type="text" value="Tel. {{ app.user.telefono }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -50,6 +49,12 @@
                         <div class="shopper-info">
                             <p>Saldo</p>
                             <input type="text" value="${{ app.user.saldo }}" disabled/>
+                            <p>Status</p>
+                            {% if app.user.status %}
+                            <input type="text" value="Activo" disabled/>
+                            {% else %}
+                            <input type="text" value="Inactivo" disabled/>
+                            {% endif %}
                             {#<label><input type="checkbox"> Shipping to bill address</label>#}
                         </div>
                     </div>

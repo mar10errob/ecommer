@@ -14,4 +14,8 @@ editar_producto:
     pattern: /{id}/editar
     defaults: { _controller: ProductoBundle:Admin:editar }
 
+producto_delete:
+    pattern: /{id}/borrar
+    defaults: { _controller: ProductoBundle:Producto:delete }
+
 

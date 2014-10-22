@@ -25,8 +25,12 @@ class AdminController extends Controller
         ));
     }
 
-    public function pruebaAction()
+    public function principalAction()
     {
+        $this->get('session')->getFlashBag()->add(
+            'info',
+            'Bienvenido'
+        );
         return $this->render('UsuarioBundle:Admin:principal.html.twig');
     }
 

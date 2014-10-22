@@ -1,12 +1,11 @@
 {% extends '::base.html.twig' %}
 {% block title %}Administracion{% endblock %}
 {% block linkhead %}
-    {#<link href="{{ asset('css/normalize.min.css') }}" rel="stylesheet" media="screen">#}
     <link href="{{ asset('admin/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('admin/bootstrap/css/bootstrap-responsive.min.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('admin/vendors/easypiechart/jquery.easy-pie-chart.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('admin/assets/styles.css') }}" rel="stylesheet" media="screen">
-    {#<link href="{{ asset('css/styles.css') }}" rel="stylesheet">#}
+    <link href="{{ asset('admin/vendors/data-table/jquery.dataTables.min.css') }}" rel="stylesheet" media="screen">
     <!--[if lt IE 9]>
     <script src="{{ asset('js/html5shiv.js') }}"></script>
     <script src="{{ asset('js/respond.min.js') }}"></script>
@@ -55,6 +54,14 @@
             </div>
         </div>
     </div>
+    {% for mensajes in app.session.flashbag.get('info') %}
+        <div class="container">
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <p>{{ mensajes }}</p>
+            </div>
+        </div>
+    {% endfor %}
     {% block fullcontenido %}
     <div class="container-fluid">
         <div class="row-fluid">
@@ -169,6 +176,20 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colMapa">
+                                    <i class="icon-globe"></i> Mapa
+                                </a>
+                            </div>
+                            <div id="colMapa" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('mapa') }}">Mapa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </ul>
             </div>
@@ -190,7 +211,8 @@
     <script src="{{ asset('admin/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/easypiechart/jquery.easy-pie-chart.js') }}"></script>
     <script src="{{ asset('admin/assets/scripts.js') }}"></script>
-    {#<script src="{{ asset('js/scripts.js') }}"></script>#}
+    <script src="{{ asset('admin/vendors/data-table/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/data-table/tablestyles.js') }}"></script>
     <script>
         $(function() {
             // Easy pie charts

@@ -47,4 +47,19 @@ class ProductoController extends Controller
             'entity'      => $entity,
         ));
     }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ProductoBundle:Producto')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find TipoProveedor entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('producto'));
+    }
 }

@@ -185,7 +185,12 @@ class Direccion
 
     function __toString()
     {
-        return $this->getCalle().' '.$this->getColonia()->getNombre().' '.$this->getNumeroExterior();
+        if($this->getNumeroInterior()==null){
+            return $this->getCalle().' #'.$this->getNumeroExterior().' Col.'.$this->getColonia().' '.$this->getEstado();
+        }else{
+            return $this->getCalle().' #'.$this->getNumeroExterior().' int.'.$this->getNumeroInterior().' Col.'.$this->getColonia().' '.$this->getEstado();
+        }
+
     }
 
 

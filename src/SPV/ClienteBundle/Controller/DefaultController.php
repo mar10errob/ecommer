@@ -17,6 +17,9 @@ class DefaultController extends Controller
 {
     public function loginAction()
     {
+        if ($this->get('security.context')->isGranted('ROLE_CLIENTE')) {
+            return $this->redirect($this->generateUrl('perfil'));
+        }
         $peticion = $this->getRequest();
         $sesion = $peticion->getSession();
         $error = $peticion->attributes->get(
@@ -34,6 +37,18 @@ class DefaultController extends Controller
     }
 
     public function perfilAction(){
+        $cliente=$this->get('security.context')->getToken()->getUser();
+        if($cliente->getStatus()){
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                'Ya puede realizar Pedidos'
+            );
+        }else{
+            $this->get('session')->getFlashBag()->add(
+                'info',
+                'No puede realizar pedidos necesita autorizacion por parte de la empresa.'
+            );
+        }
         $this->get('session')->getFlashBag()->add(
             'info',
             'Bienvenido'
@@ -42,6 +57,9 @@ class DefaultController extends Controller
     }
 
     public function registroAction(){
+        if ($this->get('security.context')->isGranted('ROLE_CLIENTE')) {
+            return $this->redirect($this->generateUrl('perfil'));
+        }
         $peticion=$this->getRequest();
         $cliente=new Cliente();
         $direccion=new Direccion();
@@ -55,13 +73,17 @@ class DefaultController extends Controller
                 $em->persist($direccion);
                 $cliente->setDireccion($direccion);
                 $cliente->setSaldo(0);
-                $cliente->setStatus(true);
+                $cliente->setStatus(false);
                 $cliente->setSalt(md5(time()));
                 $encoder = $this->get('security.encoder_factory')->getEncoder($cliente);
                 $passwordCodificado = $encoder->encodePassword($cliente->getPassword(), $cliente->getSalt());
                 $cliente->setPassword($passwordCodificado);
                 $em->persist($cliente);
                 $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'info',
+                    'Ya puede inicar sesión con su e-mail y su contraseña'
+                );
                 return $this->redirect($this->generateUrl('cliente_login'));
             }
         }
