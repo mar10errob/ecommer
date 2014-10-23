@@ -79,18 +79,15 @@
 
 {% block contenido %}
     <div class="features_items"><!--features_items-->
-        <h2 class="title text-center">Productos Principales</h2>
-        {% for producto in productos %}
+        <h2 class="title text-center">Horarios de los Envios</h2>
+        {# {% for producto in productos %}
             <div class="col-sm-4">
                 <div class="product-image-wrapper">
                     <div class="single-products">
                         <div class="productinfo text-center">
                             <img src="{{ asset(producto.imagen != null ? 'uploads/images/productos/'~producto.imagen : 'uploads/images/productos/img-default.png') }}" alt=""/>
-
                             <h2>${{ producto.precioUnitario | number_format(2,'.',',') }}</h2>
-
                             <p>{{ producto.nombre }}</p>
-                            {#<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>#}
                         </div>
                         <div class="product-overlay">
                             <div class="overlay-content">
@@ -102,17 +99,12 @@
                                 <a href="{{ path('sylius_cart_item_add', {'productoId': producto.id }) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Agregar al carrito</a>
                             </div>
                         </div>
-                        {# if i % 2 %}
-                            <img src="{{ asset('images/home/sale.png') }}" class="new" alt=""/>
-                        {% else %}
-                            <img src="{{ asset('images/home/new.png') }}" class="new" alt=""/>
-                        {% endif #}
                     </div>
                 </div>
             </div>
             {% else %}
             <h1>no hay productos</h1>
-        {% endfor %}
+        {% endfor %} #}
     </div><!--features_items-->
 {% endblock %}
 

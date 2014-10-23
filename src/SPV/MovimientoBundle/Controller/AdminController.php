@@ -45,10 +45,36 @@ class AdminController extends Controller
         $em=$this->getDoctrine()->getManager();
         $tipo=$em->getRepository('MovimientoBundle:TipoMovimiento')->findOneBy(array('descripcion'=>'compra'));
         $compras=$em->getRepository('MovimientoBundle:Movimiento')->findBy(array('tipo'=>$tipo));
+        if(count($compras)>0){
+            foreach ($compras as $compra) {
+                $detalles=$em->getRepository('MovimientoBundle:DetalleMovimiento')->findBy(array('movimiento'=>$compra));
+                if(count($detalles)==0){
+                    $this->deleteCompraAction($compra->getId());
+                }
+            }
+        }
+        $compras=$em->getRepository('MovimientoBundle:Movimiento')->findBy(array('tipo'=>$tipo));
         return $this->render('MovimientoBundle:Admin:listacompras.html.twig',
             array(
             'compras'=>$compras
         ));
+    }
+
+    public function deleteCompraAction($id){
+        $em=$this->getDoctrine()->getManager();
+        $compra=$em->getRepository('MovimientoBundle:Movimiento')->find($id);
+        $detalles=$em->getRepository('MovimientoBundle:DetalleMovimiento')->findBy(array('movimiento'=>$compra));
+        if (!$compra) {
+            throw $this->createNotFoundException('Unable to find TipoProveedor entity.');
+        }
+        if(count($detalles)>0){
+            foreach ($detalles as $detalle) {
+                $em->remove($detalle);
+            }    
+        }
+        $em->remove($compra);
+        $em->flush();
+        return $this->redirect($this->generateUrl('lista_compras'));
     }
 
     public function nuevoDetalleAction(){
