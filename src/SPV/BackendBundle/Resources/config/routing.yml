@@ -1,3 +1,7 @@
+BackendFechaPedidos:
+    resource: "@BackendBundle/Resources/config/routing/fechapedidos.yml"
+    prefix: /fechapedidos
+
 BackendTipoUnidad:
     resource: "@BackendBundle/Resources/config/routing/tipounidad.yml"
     prefix: /tipounidad
@@ -21,7 +25,7 @@ BackendColonia:
 BackendCliente:
     resource: "@ClienteBundle/Resources/config/routing/cliente.yml"
     prefix: /clientes
-    
+
 mapa:
     path:     /mapa
     defaults: { _controller: "BackendBundle:Default:mapa" }

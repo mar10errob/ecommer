@@ -1,0 +1,30 @@
+fechapedidos:
+    path:     /
+    defaults: { _controller: "BackendBundle:FechaPedidos:index" }
+
+# fechapedidos_show:
+#     path:     /{id}/show
+#     defaults: { _controller: "BackendBundle:FechaPedidos:show" }
+
+fechapedidos_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:FechaPedidos:new" }
+
+fechapedidos_create:
+    path:     /create
+    defaults: { _controller: "BackendBundle:FechaPedidos:create" }
+    requirements: { _method: post }
+
+fechapedidos_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:FechaPedidos:edit" }
+
+fechapedidos_update:
+    path:     /{id}/update
+    defaults: { _controller: "BackendBundle:FechaPedidos:update" }
+    requirements: { _method: post|put }
+
+fechapedidos_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:FechaPedidos:delete" }
+    requirements: { _method: get }

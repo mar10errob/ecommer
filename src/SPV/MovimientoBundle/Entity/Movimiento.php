@@ -329,4 +329,13 @@ class Movimiento
     {
         return $this->status;
     }
+
+    public function __toString()
+    {
+        if($this->getTipo()->getId()==3){
+            return 'Pedido '.$this->getId().' '.$this->getCliente()->__toString();
+        }else{
+            return $this->getId();
+        }
+    }
 }
