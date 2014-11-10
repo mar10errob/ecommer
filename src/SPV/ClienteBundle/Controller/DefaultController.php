@@ -33,11 +33,19 @@ class DefaultController extends Controller
     }
 
     public function pedidoAction(){
-        return $this->render('ClienteBundle:Default:pedido.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $general=$em->getRepository('DireccionBundle:ConfGral')->findAll();
+        $una=$general[0];
+        // $carProveedor=$this->get('sylius.cart_provider');
+        return $this->render('ClienteBundle:Default:pedido.html.twig',array('general'=>$una));
     }
 
     public function perfilAction(){
         $cliente=$this->get('security.context')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
+        $tipo=$em->getRepository('MovimientoBundle:TipoMovimiento')->find(3);
+        $pedidos = $em->getRepository('MovimientoBundle:Movimiento')->findBy(array('tipo'=>$tipo,'cliente'=>$cliente));
+        $fechas=$em->getRepository('DireccionBundle:FechaPedidos')->findBy(array('pedido'=>$pedidos));
         if($cliente->getStatus()){
             $this->get('session')->getFlashBag()->add(
                 'info',
@@ -53,7 +61,11 @@ class DefaultController extends Controller
             'info',
             'Bienvenido'
         );
-        return $this->render('ClienteBundle:Default:perfil.html.twig');
+        return $this->render('ClienteBundle:Default:perfil.html.twig',
+            array(
+                'pedidos'=>$pedidos,
+                'fechas'=>$fechas
+                ));
     }
 
     public function registroAction(){
@@ -111,7 +123,7 @@ class DefaultController extends Controller
             $tipomovimiento=$em->getRepository('MovimientoBundle:TipoMovimiento')->findOneBy(array(
                 'descripcion'=>'pedido'
             ));
-            $total=$carProveedor->getCart()->getTotal();
+            $total=$carProveedor->getCart()->getTotal() + $this->getRequest()->get('costo_envio');
             $saldo=$cliente->getSaldo();
             $pedido=new Movimiento();
             $pedido->setTipo($tipomovimiento);

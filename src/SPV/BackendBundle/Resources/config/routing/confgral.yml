@@ -1,0 +1,30 @@
+confgral:
+    path:     /
+    defaults: { _controller: "BackendBundle:ConfGral:index" }
+
+confgral_show:
+    path:     /{id}/show
+    defaults: { _controller: "BackendBundle:ConfGral:show" }
+
+confgral_new:
+    path:     /new
+    defaults: { _controller: "BackendBundle:ConfGral:new" }
+
+confgral_create:
+    path:     /create
+    defaults: { _controller: "BackendBundle:ConfGral:create" }
+    requirements: { _method: post }
+
+confgral_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BackendBundle:ConfGral:edit" }
+
+confgral_update:
+    path:     /{id}/update
+    defaults: { _controller: "BackendBundle:ConfGral:update" }
+    requirements: { _method: post|put }
+
+confgral_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BackendBundle:ConfGral:delete" }
+    requirements: { _method: post|delete }

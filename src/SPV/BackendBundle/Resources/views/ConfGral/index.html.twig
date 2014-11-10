@@ -1,0 +1,38 @@
+{% extends '::admin.html.twig' %}
+
+{% block contenido %}
+    <div class="block">
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Configuracion General</div>
+            </div>
+        </div>
+        <div class="block-content collapse in">
+            <table class="stripe" id="table-index">
+                <thead>
+                    <tr>
+                        <th>Parametro</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                {% set id=0 %}
+                <tbody class="text-center">
+                {% for entity in entities %}
+                    {% if loop.first %}
+                        {% set id= entity.id %}
+                        <tr>
+                            <td>Costo de Envio</td>
+                            <td>${{ entity.costoEnvio }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if id!=0 %}
+            <h5 class="text-center">
+                <a href="{{ path('confgral_edit', { 'id': id }) }}">Editar Configuraciones</a>
+            </h5>
+        {% endif %}
+    </div>
+    {% endblock %}

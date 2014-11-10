@@ -65,7 +65,7 @@
     {% block fullcontenido %}
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span3" id="sidebar">
+            <div class="span2" id="sidebar">
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                     {#<i class="icon-chevron-right"></i>#}
                     <li><a href="{{ path('admin') }}"><i class="icon-home"></i> Inicio</a></li>
@@ -173,6 +173,7 @@
                                         <li><a href="{{ path('tipoproveedor') }}">Tipos de Proveedores</a></li>
                                         <li><a href="{{ path('colonia') }}">Colonias</a></li>
                                         <li><a href="{{ path('estado') }}">Estados</a></li>
+                                        <li><a href="{{ path('confgral') }}">Configuraciones Generales</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -194,7 +195,7 @@
                     </div>
                 </ul>
             </div>
-            <div class="span9" id="content">
+            <div class="span10" id="content">
                 <div class="row-fluid">
                 {% block contenido %}{% endblock %}
                 </div>

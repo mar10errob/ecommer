@@ -14,6 +14,7 @@
                     <tr>
                         <th>Cliente</th>
                         <th>Fecha de Registro</th>
+                        <th>Total del Pedido</th>
                         <th>Fecha de Entrega</th>
                         <th></th>
                     </tr>
@@ -23,6 +24,7 @@
                         <tr>
                             <td>{{ pedido.cliente }}</td>
                             <td>{{ pedido.fechaCreacion | date('d/m/Y h:m:s') }}</td>
+                            <td>${{ pedido.costo }}</td>
                             <td>{% if pedido.fechaEntrega %}{{ pedido.fechaEntrega | date('d/m/Y') }}{% else %}No se ha autorizado este pedido <a href="{{ path('fechapedidos_new') }}">Agendar</a>{% endif %}</td>
                             <td><a href="{{ path('lista_detalles',{ 'id' : pedido.id }) }}">Detalles</a></td>
                         </tr>

@@ -23,7 +23,7 @@
                 {% for entity in entities %}
                     <tr>
                         <td><a href="{{ path('lista_detalles',{ 'id' : entity.pedido.id }) }}">{{ entity.pedido }}</a></td>
-                        <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</td>
                         <td>{{ entity.hora|date('H:i:s') }}</td>
                         <td>{{ entity.ruta }}</td>
                         <td>

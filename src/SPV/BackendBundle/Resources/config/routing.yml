@@ -1,3 +1,7 @@
+BackendConfgral:
+    resource: "@BackendBundle/Resources/config/routing/confgral.yml"
+    prefix: /confgral
+
 BackendFechaPedidos:
     resource: "@BackendBundle/Resources/config/routing/fechapedidos.yml"
     prefix: /fechapedidos
@@ -25,6 +29,7 @@ BackendColonia:
 BackendCliente:
     resource: "@ClienteBundle/Resources/config/routing/cliente.yml"
     prefix: /clientes
+
 
 mapa:
     path:     /mapa
