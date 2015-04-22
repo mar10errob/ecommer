@@ -61,7 +61,7 @@ class Producto
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_caducidad", type="datetime")
+     * @ORM\Column(name="fecha_caducidad", type="datetime", nullable=true)
      */
     protected $fechaCaducidad;
 

@@ -33,7 +33,7 @@
                         <td><a href="{{ path('cliente_show', { 'id': entity.id }) }}">{{ entity.nombre~" "~entity.apellidoPaterno~" "~entity.apellidoMaterno }}</a></td>
                         <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('d/m/Y') }}{% endif %}</td>
                         <td>{{ entity.direccion}}</td>
-                        <td>{{ entity.curp }}</td>
+                        <td>{{ entity.curp | upper }}</td>
                         <td>{{ entity.email }}</td>
                         <td>{{ entity.telefono }}</td>
                         <td>{{ entity.saldo }}</td>

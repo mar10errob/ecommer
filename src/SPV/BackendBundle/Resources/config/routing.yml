@@ -30,6 +30,9 @@ BackendCliente:
     resource: "@ClienteBundle/Resources/config/routing/cliente.yml"
     prefix: /clientes
 
+BackendEstadisticas:
+    resource: "@BackendBundle/Resources/config/routing/estadisticas.yml"
+    prefix: /estadisticas
 
 mapa:
     path:     /mapa

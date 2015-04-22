@@ -15,6 +15,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
+                    <th>RFC</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -23,6 +24,7 @@
                     <tr>
                         <td>{{ entity.id }}</td>
                         <td><a href="{{ path('proveedor_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                        <td>{{ entity.rfc | upper }}</td>
                         <td>
                             <ul>
                                 <li>

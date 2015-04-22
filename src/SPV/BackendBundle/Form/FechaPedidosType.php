@@ -18,7 +18,6 @@ class FechaPedidosType extends AbstractType
             ->add('fecha')
             ->add('hora')
             ->add('ruta')
-            ->add('pedido')
         ;
     }
     

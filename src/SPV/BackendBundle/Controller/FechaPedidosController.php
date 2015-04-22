@@ -36,18 +36,19 @@ class FechaPedidosController extends Controller
     public function createAction(Request $request)
     {
         $entity = new FechaPedidos();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$request->query->get('id'));
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $pedido=$em->getRepository('MovimientoBundle:Movimiento')->find($entity->getPedido()->getId());
+            $pedido=$em->getRepository('MovimientoBundle:Movimiento')->find($request->query->get('id'));
+            $entity->setPedido($pedido);
             $pedido->setFechaEntrega($entity->getFecha());
+            $em->persist($entity);
             $em->persist($pedido);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('fechapedidos', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('fechapedidos'));
         }
 
         return $this->render('BackendBundle:FechaPedidos:new.html.twig', array(
@@ -63,10 +64,10 @@ class FechaPedidosController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(FechaPedidos $entity)
+    private function createCreateForm(FechaPedidos $entity, $id)
     {
         $form = $this->createForm(new FechaPedidosType(), $entity, array(
-            'action' => $this->generateUrl('fechapedidos_create'),
+            'action' => $this->generateUrl('fechapedidos_create',array('id'=>$id)),
             'method' => 'POST',
         ));
 
@@ -79,10 +80,10 @@ class FechaPedidosController extends Controller
      * Displays a form to create a new FechaPedidos entity.
      *
      */
-    public function newAction()
+    public function newAction($id)
     {
         $entity = new FechaPedidos();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity, $id);
 
         return $this->render('BackendBundle:FechaPedidos:new.html.twig', array(
             'entity' => $entity,

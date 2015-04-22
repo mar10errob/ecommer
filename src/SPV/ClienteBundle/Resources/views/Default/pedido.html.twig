@@ -73,6 +73,7 @@
                 <h2>Resumen de Compra</h2>
             </div>
                 {% set cart = sylius_cart_get() %}
+                {% set tiene = true %}
                 <div class="table-responsive cart_info">
                     <table class="table table-condensed">
                         <thead>
@@ -108,6 +109,7 @@
                             {% else %}
                             <tr>
                                 <td colspan="5" align="center"><h4>No hay articulos en el carrito.</h4></td>
+                                {% set tiene = false %}
                             </tr>
                             {% endfor %}
                             <tr>
@@ -121,11 +123,13 @@
                                         
                                         <tr class="shipping-cost">
                                             <td>Costo de envio</td>
-                                            <td>${{ costoenvio }}</td>
+                                            <td>${{ costoenvio | number_format(2,'.',',') }}</td>
                                         </tr>
                                         <tr>
+
                                             <td>Total</td>
-                                            <td><span>${{ cart.total+costoenvio | number_format(2,'.',',') }}</span></td>
+                                            {% set total=cart.total+costoenvio %}
+                                            <td><span>${{ total | number_format(2,'.',',') }}</span></td>
                                         </tr>
                                         
                                     </table>
@@ -145,8 +149,10 @@
                     <label><input type="checkbox"> Paypal</label>
                 </span>
             </div>
- #}            <div class="col-md-2">
+ #}         <div class="col-md-2">
+                {% if tiene %}
                 <input type="submit" class="btn btn-default check_out" form="formobservacion" value="Confirmar Pedido"/>
+                {% endif %}
             </div>
         </div>
     </section> <!--/#cart_items-->

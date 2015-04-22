@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class ProveedorType extends AbstractType{
 
     public function buildForm(FormBuilderInterface $builder, array $option){
-        $builder->add('nombre')->add('tipo');
+        $builder->add('nombre')->add('rfc')->add('tipo');
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver){

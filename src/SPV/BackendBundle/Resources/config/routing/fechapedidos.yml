@@ -7,7 +7,7 @@ fechapedidos:
 #     defaults: { _controller: "BackendBundle:FechaPedidos:show" }
 
 fechapedidos_new:
-    path:     /new
+    path:     /{id}/new
     defaults: { _controller: "BackendBundle:FechaPedidos:new" }
 
 fechapedidos_create:

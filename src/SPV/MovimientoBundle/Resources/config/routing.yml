@@ -21,3 +21,7 @@ lista_pedidos:
 delete_compra:
     pattern: /{id}/elimina-compra/
     defaults: { _controller: MovimientoBundle:Admin:deleteCompra }
+
+delete_pedido:
+    pattern: /{id}/elimina-pedido/
+    defaults: { _controller: MovimientoBundle:Admin:deletePedido }

@@ -335,7 +335,7 @@ class Movimiento
         if($this->getTipo()->getDescripcion()=='pedido'){
             return 'Pedido '.$this->getId().' '.$this->getCliente()->__toString();
         }else{
-            return $this->getId();
+            return ''.$this->getId();
         }
     }
 }

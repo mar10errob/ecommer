@@ -5,6 +5,7 @@ use SPV\MovimientoBundle\Entity\DetalleMovimiento;
 use SPV\MovimientoBundle\Entity\Movimiento;
 use SPV\MovimientoBundle\Form\CompraType;
 use SPV\ProductoBundle\Entity\Producto;
+use SPV\ClienteBundle\Entity\Cliente;
 use SPV\ProductoBundle\Form\ProductoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -63,10 +64,10 @@ class AdminController extends Controller
     public function deleteCompraAction($id){
         $em=$this->getDoctrine()->getManager();
         $compra=$em->getRepository('MovimientoBundle:Movimiento')->find($id);
-        $detalles=$em->getRepository('MovimientoBundle:DetalleMovimiento')->findBy(array('movimiento'=>$compra));
         if (!$compra) {
-            throw $this->createNotFoundException('Unable to find TipoProveedor entity.');
+            throw $this->createNotFoundException('No existe dicha Compra.');
         }
+        $detalles=$em->getRepository('MovimientoBundle:DetalleMovimiento')->findBy(array('movimiento'=>$compra));
         if(count($detalles)>0){
             foreach ($detalles as $detalle) {
                 $em->remove($detalle);
@@ -97,6 +98,7 @@ class AdminController extends Controller
                 $em->persist($producto);
                 $detalle->setMovimiento($em->getRepository('MovimientoBundle:Movimiento')->find($movimiento));
                 $detalle->setProducto($producto);
+                $detalle->setCantidad($producto->getExistencia());
                 $em->persist($detalle);
                 $em->flush();
                 if($peticion->request->get('accion')=="Terminar"){
@@ -132,5 +134,26 @@ class AdminController extends Controller
             array(
                 'pedidos'=>$pedidos
             ));
+    }
+
+    public function deletePedidoAction($id){
+        $em=$this->getDoctrine()->getManager();
+        $pedido=$em->getRepository('MovimientoBundle:Movimiento')->find($id);
+        if (!$pedido) {
+            throw $this->createNotFoundException('No existe dicho pedido.');
+        }
+        $detalles=$em->getRepository('MovimientoBundle:DetalleMovimiento')->findBy(array('movimiento'=>$pedido));
+        if(count($detalles)>0){
+            foreach ($detalles as $detalle) {
+                $em->remove($detalle);
+            }    
+        }
+        $cliente=$pedido->getCliente();
+        $nuevosaldo=$cliente->getSaldo() - $pedido->getCosto();
+        $cliente->setSaldo($nuevosaldo);
+        $em->remove($pedido);
+        $em->persist($cliente);
+        $em->flush();
+        return $this->redirect($this->generateUrl('lista_pedidos'));
     }
 }

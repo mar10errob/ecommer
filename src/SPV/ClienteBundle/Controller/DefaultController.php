@@ -139,6 +139,7 @@ class DefaultController extends Controller
                 $detallePedido=new DetalleMovimiento();
                 $detallePedido->setMovimiento($pedido);
                 $detallePedido->setProducto($item->getProducto());
+                $detallePedido->setCantidad($item->getQuantity());
                 $em->persist($detallePedido);
             }
             $em->flush();

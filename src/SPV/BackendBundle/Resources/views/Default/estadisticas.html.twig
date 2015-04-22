@@ -1,0 +1,45 @@
+{# {% for dato in datos %}
+	{% for detalle in dato.detalles%}
+		<p>{{ detalle.cantidad }}</p>
+	{% endfor %}
+	<p>{{ dato.producto.nombre }} {{ dato.ventas }} {{ dato.compras }}</p>
+{% endfor %}
+ #}
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Estadisticas de los Productos Registrados de ({{ fechas.inicial }} a {{ fechas.final }})</div>
+            </div>
+        </div>
+
+        <div class="block-content collapse in">
+            <table class="stripe" id="table-index">
+                <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Compras</th>
+                    <th>Ventas</th>
+                    <th>En existencia</th>
+                    <th>Precio Unitario</th> 
+                    <th>Total de los Productos Vendidos</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                {% for dato in datos %}
+                    <tr>
+                        <td>{{ dato.producto.nombre }}</td>
+                        <td>{{ dato.compras }}</td>
+                        <td>{{ dato.ventas }}</td>
+                        <td>{{ dato.compras - dato.ventas }}</td>
+                        <td>${{ dato.producto.precioUnitario | number_format(2,'.',',') }}</td>
+                        <td>${{ dato.producto.precioUnitario * dato.ventas  | number_format(2,'.',',') }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

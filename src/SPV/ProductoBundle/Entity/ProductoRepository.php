@@ -25,6 +25,7 @@ class ProductoRepository extends EntityRepository
 
         return $consulta->getResult();
     }
+
     public function findPopulares(){
         $em=$this->getEntityManager();
         $consulta=$em->createQuery('
@@ -35,6 +36,7 @@ class ProductoRepository extends EntityRepository
 
         return $consulta->getResult();
     }
+
     public function findCategorias($slug){
         $em=$this->getEntityManager();
         $consulta=$em->createQuery('
@@ -43,6 +45,19 @@ class ProductoRepository extends EntityRepository
             JOIN p.tipoProducto t
             WHERE t.slug= :tipo');
         $consulta->setParameter('tipo', $slug);
+
+        return $consulta->getResult();
+    }
+
+    public function findRango($finicial,$ffinal){
+        $em=$this->getEntityManager();
+        $consulta=$em->createQuery('
+        SELECT p
+        FROM ProductoBundle:Producto p
+        WHERE p.fechaIngreso BETWEEN :inicio AND :final
+        ORDER BY p.fechaIngreso DESC');
+        $consulta->setParameter('inicio',$finicial);
+        $consulta->setParameter('final',$ffinal);
 
         return $consulta->getResult();
     }

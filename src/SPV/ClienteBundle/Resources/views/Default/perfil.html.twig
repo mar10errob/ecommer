@@ -48,7 +48,7 @@
                     <div class="col-sm-3">
                         <div class="shopper-info">
                             <p>Saldo</p>
-                            <input type="text" value="${{ app.user.saldo }}" disabled/>
+                            <input type="text" value="${{ app.user.saldo | number_format(2,'.',',') }}" disabled/>
                             <p>Status</p>
                             {% if app.user.status %}
                             <input type="text" value="Activo" disabled/>

@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class DetalleMovimientoRepository extends EntityRepository
 {
+	public function findProductos($idProducto){
+        $em=$this->getEntityManager();
+        $consulta=$em->createQuery('
+            SELECT d
+            FROM MoviminetoBundle:DetalleMovimieto d
+            JOIN d.producto p
+            WHERE p.id= :prod');
+        $consulta->setParameter('prod', $idProducto);
+
+        return $consulta->getResult();
+    }
 }
