@@ -1,0 +1,15 @@
+{% extends '::admin.html.twig' %}
+
+{% block contenido %}
+    <h1>Agendar Pedido</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('fechapedidos') }}">
+            Regresar a la Lista
+        </a>
+    </li>
+</ul>
+{% endblock %}

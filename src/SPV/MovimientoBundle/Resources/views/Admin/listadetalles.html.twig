@@ -21,7 +21,7 @@
                     {% for detalle in detalles %}
                         <tr>
                             <td>{{ detalle.producto.nombre }}</td>
-                            <td>{{ detalle.producto.existencia }}</td>
+                            <td>{{ detalle.producto.existencia ~ " " ~ detalle.producto.tipoUnidad}}</td>
                             <td><a href="{{ path('producto_show',{'id':detalle.producto.id}) }}">Detalles</a></td>
                         </tr>
                     {% endfor %}

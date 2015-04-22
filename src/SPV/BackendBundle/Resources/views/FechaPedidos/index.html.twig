@@ -1,0 +1,48 @@
+{% extends '::admin.html.twig' %}
+{% block contenido %}
+    <div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Fecha de los pedidos</div>
+                {# <h5 class="text-right"><a href="{{ path('fechapedidos_new') }}">Agendar un Pedido</a></h5> #}
+            </div>
+        </div>
+        <div class="block-content collapse in">
+            <table class="stripe" id="table-index">
+                <thead>
+                    <tr>
+                        <th>Pedido</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Ruta</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('lista_detalles',{ 'id' : entity.pedido.id }) }}">{{ entity.pedido }}</a></td>
+                        <td>{% if entity.fecha %}{{ entity.fecha|date('d-M-Y') }}{% endif %}</td>
+                        <td>{{ entity.hora|date('H:i:s') }}</td>
+                        <td>{{ entity.ruta }}</td>
+                        <td>
+                            <ul>
+                                {# <li>
+                                    <a href="{{ path('fechapedidos_show', { 'id': entity.id }) }}">show</a>
+                                </li> #}
+                                <li>
+                                    <a href="{{ path('fechapedidos_edit', { 'id': entity.id }) }}">Editar</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('fechapedidos_delete', { 'id': entity.id }) }}">Eliminar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

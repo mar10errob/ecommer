@@ -32,6 +32,13 @@ class Proveedor
     /**
      * @var string
      *
+     * @ORM\Column(name="rfc", type="string", length=50)
+     */
+    protected $rfc;
+
+    /**
+     * @var string
+     *
      * @ORM\ManyToOne(targetEntity="SPV\ProveedorBundle\Entity\TipoProveedor")
      */
     protected $tipo;
@@ -90,6 +97,29 @@ class Proveedor
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set rfc
+     *
+     * @param string $rfc
+     * @return Proveedor
+     */
+    public function setRfc($rfc)
+    {
+        $this->rfc = $rfc;
+
+        return $this;
+    }
+
+    /**
+     * Get rfc
+     *
+     * @return string 
+     */
+    public function getRfc()
+    {
+        return $this->rfc;
     }
 
     /**

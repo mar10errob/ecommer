@@ -14,8 +14,8 @@
                 <tr>
                     <th>Id</th>
                     <th>Nombre</th>
-                    <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
+                    {# <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th> #}
                     <th>Fecha de Nacimiento</th>
                     <th>Direccion</th>
                     <th>Curp</th>
@@ -30,12 +30,10 @@
                 {% for entity in entities %}
                     <tr>
                         <td>{{ entity.id }}</td>
-                        <td><a href="{{ path('cliente_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
-                        <td>{{ entity.apellidoPaterno }}</td>
-                        <td>{{ entity.apellidoMaterno }}</td>
+                        <td><a href="{{ path('cliente_show', { 'id': entity.id }) }}">{{ entity.nombre~" "~entity.apellidoPaterno~" "~entity.apellidoMaterno }}</a></td>
                         <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('d/m/Y') }}{% endif %}</td>
                         <td>{{ entity.direccion}}</td>
-                        <td>{{ entity.curp }}</td>
+                        <td>{{ entity.curp | upper }}</td>
                         <td>{{ entity.email }}</td>
                         <td>{{ entity.telefono }}</td>
                         <td>{{ entity.saldo }}</td>

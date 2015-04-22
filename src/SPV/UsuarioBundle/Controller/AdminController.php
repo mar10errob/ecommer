@@ -31,7 +31,7 @@ class AdminController extends Controller
             'info',
             'Bienvenido'
         );
-        return $this->render('UsuarioBundle:Admin:principal.html.twig');
+        return $this->redirect($this->generateUrl('lista_pedidos'));
     }
 
     public function registroAction(){

@@ -1,0 +1,16 @@
+{% extends '::admin.html.twig' %}
+
+{% block contenido %}
+    <h1>Editar Configuraciones</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('confgral') }}">
+            Regresar a la lista
+        </a>
+    </li>
+    {# <li>{{ form(delete_form) }}</li> #}
+</ul>
+{% endblock %}

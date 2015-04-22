@@ -1,0 +1,7 @@
+estadisticas:
+    path:     /
+    defaults: { _controller: "BackendBundle:Estadisticas:index" }
+
+crear_estadisticas:
+    path: /crear
+    defaults: { _controller: "BackendBundle:Estadisticas:crear" }

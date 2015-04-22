@@ -23,4 +23,4 @@ tipoProducto_update:
 tipoProducto_delete:
     path:     /{id}/delete
     defaults: { _controller: "BackendBundle:TipoProducto:delete" }
-    requirements: { _method: post|delete }
+    requirements: { _method: get|delete }

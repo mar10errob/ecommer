@@ -1,1 +1,45 @@
-Hello {{ name }}!
+{% extends '::admin.html.twig' %}
+{% block individual %}
+     <link href="{{ asset('admin/bootstrap/css/datepicker.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+{% block jsindi %}
+	<script src="{{ asset('admin/bootstrap/js/bootstrap-datepicker.js ') }}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker6').datepicker({
+                format:'yyyy-mm-dd'
+            });
+            $('#datetimepicker7').datepicker({
+                format:'yyyy-mm-dd'
+            });
+        });
+    </script>
+{% endblock %}
+{% block contenido %}
+	<div class="block">
+        <!-- block -->
+        <div class="block">
+            <div class="navbar navbar-inner block-header">
+                <div class="muted pull-left">Estadisticas</div>
+            </div>
+        </div>
+
+        <div class="block-content collapse in">
+            <form action="{{ path('crear_estadisticas') }}" method="POST" role="form">
+            	<legend>Selecione un rango de fechas</legend>
+            
+            	<div class="form-group">
+            		<label for="">Fecha Inicial</label>
+                    <input type='text' class="form-control" id='datetimepicker6' name='inicial' required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="">Fecha Final</label>
+                    <input type='text' class="form-control" id='datetimepicker7' name='final' required/>
+                </div>
+            
+                <button type="submit" class="btn btn-primary">Generar</button>
+            </form>
+		</div>
+	</div>
+{% endblock %}

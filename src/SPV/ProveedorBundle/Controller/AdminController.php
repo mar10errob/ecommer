@@ -66,4 +66,19 @@ class AdminController extends Controller{
             )
         );
     }
+
+    public function deleteAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('ProveedorBundle:Proveedor')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find TipoProducto entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('proveedor'));
+    }
 }

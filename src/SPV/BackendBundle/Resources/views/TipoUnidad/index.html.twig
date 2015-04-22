@@ -25,7 +25,12 @@
                             <td>{{ tipounidad.id }}</td>
                             <td>{{ tipounidad.descripcion }}</td>
                             <td>{{ tipounidad.simbolo }}</td>
-                            <td><a href="{{ path('backend_tipounidad_actualizar',{'id':tipounidad.id}) }}">Modificar</a></td>
+                            <td>
+                                <ul>
+                                    <li><a href="{{ path('backend_tipounidad_actualizar',{'id':tipounidad.id}) }}">Modificar</a></li>
+                                    <li><a href="{{ path('backend_tipounidad_borrar',{'id':tipounidad.id}) }}">Eliminar</a></li>
+                                </ul>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

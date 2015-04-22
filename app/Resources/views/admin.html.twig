@@ -11,6 +11,7 @@
     <script src="{{ asset('js/respond.min.js') }}"></script>
     <![endif]-->
     <script src="{{ asset('admin/vendors/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+    {% block individual %}{% endblock %}
 {% endblock %}
 {% block body %}
     <div class="navbar navbar-fixed-top">
@@ -65,7 +66,7 @@
     {% block fullcontenido %}
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span3" id="sidebar">
+            <div class="span2" id="sidebar">
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                     {#<i class="icon-chevron-right"></i>#}
                     <li><a href="{{ path('admin') }}"><i class="icon-home"></i> Inicio</a></li>
@@ -79,8 +80,8 @@
                             <div id="colProveedores" class="accordion-body collapse" style="height: 0px; ">
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('proveedor') }}">Lista de Proveedores</a></li>
-                                        <li><a href="{{ path('proveedor_registro') }}">Nuevo proveedor</a></li>
+                                        <li><a href="{{ path('proveedor') }}"><i class="icon-user"></i> Lista de Proveedores</a></li>
+                                        <li><a href="{{ path('proveedor_registro') }}"><i class="icon-user"></i> Nuevo proveedor</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -94,8 +95,8 @@
                             <div id="colCompras" class="accordion-body collapse" >
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('lista_compras') }}">Lista de Compras</a></li>
-                                        <li><a href="{{ path('nueva_compra') }}">Nueva Compra</a></li>
+                                        <li><a href="{{ path('lista_compras') }}"><i class="icon-shopping-cart"></i> Lista de Compras</a></li>
+                                        <li><a href="{{ path('nueva_compra') }}"><i class="icon-shopping-cart"></i> Nueva Compra</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -109,7 +110,8 @@
                             <div id="colPedidos" class="accordion-body collapse" >
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('lista_pedidos') }}">Lista de Pedidos</a></li>
+                                        <li><a href="{{ path('lista_pedidos') }}"><i class="icon-star"></i> Lista de Pedidos</a></li>
+                                        <li><a href="{{ path('fechapedidos') }}"><i class="icon-star"></i> Fecha de los Pedidos</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -123,8 +125,8 @@
                             <div id="colProductos" class="accordion-body collapse" >
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('producto') }}">Lista de Productos</a></li>
-                                        <li><a href="{{ path('producto_registro') }}">Nuevo Producto</a></li>
+                                        <li><a href="{{ path('producto') }}"><i class="icon-gift"></i> Lista de Productos</a></li>
+                                        <li><a href="{{ path('producto_registro') }}"><i class="icon-gift"></i> Nuevo Producto</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -138,7 +140,7 @@
                             <div id="colCliente" class="accordion-body collapse" style="height: 0px; ">
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('cliente') }}">Lista de Clientes</a></li>
+                                        <li><a href="{{ path('cliente') }}"><i class="icon-user"></i> Lista de Clientes</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -152,8 +154,8 @@
                             <div id="colEmpleados" class="accordion-body collapse" >
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('usuario') }}">Lista de Usuarios</a></li>
-                                        <li><a href="{{ path('usuario_registro') }}">Nuevo Usuario</a></li>
+                                        <li><a href="{{ path('usuario') }}"><i class="icon-user"></i> Lista de Usuarios</a></li>
+                                        <li><a href="{{ path('usuario_registro') }}"><i class="icon-user"></i> Nuevo Usuario</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -167,11 +169,12 @@
                             <div id="colCatalogos" class="accordion-body collapse" >
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('tipoProducto') }}">Tipos de Productos</a></li>
-                                        <li><a href="{{ path('backend_tipounidad') }}">Tipos de Unidades</a></li>
-                                        <li><a href="{{ path('tipoproveedor') }}">Tipos de Proveedores</a></li>
-                                        <li><a href="{{ path('colonia') }}">Colonias</a></li>
-                                        <li><a href="{{ path('estado') }}">Estados</a></li>
+                                        <li><a href="{{ path('tipoProducto') }}"><i class="icon-folder-open"></i> Tipos de Productos</a></li>
+                                        <li><a href="{{ path('backend_tipounidad') }}"><i class="icon-folder-open"></i> Tipos de Unidades</a></li>
+                                        <li><a href="{{ path('tipoproveedor') }}"><i class="icon-folder-open"></i> Tipos de Proveedores</a></li>
+                                        <li><a href="{{ path('colonia') }}"><i class="icon-folder-open"></i> Colonias</a></li>
+                                        <li><a href="{{ path('estado') }}"><i class="icon-folder-open"></i> Estados</a></li>
+                                        <li><a href="{{ path('confgral') }}"><i class="icon-folder-open"></i> Configuraciones Generales</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -185,7 +188,21 @@
                             <div id="colMapa" class="accordion-body collapse" >
                                 <div class="accordion-inner">
                                     <ul>
-                                        <li><a href="{{ path('mapa') }}">Mapa</a></li>
+                                        <li><a href="{{ path('mapa') }}"><i class="icon-globe"></i> Mapa</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-group">
+                            <div class="accordion-heading">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#leftMenu" href="#colEst">
+                                    <i class="icon-signal"></i> Estadisticas
+                                </a>
+                            </div>
+                            <div id="colEst" class="accordion-body collapse" >
+                                <div class="accordion-inner">
+                                    <ul>
+                                        <li><a href="{{ path('estadisticas') }}"><i class="icon-signal"></i> Ver Estadisticas</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -193,7 +210,7 @@
                     </div>
                 </ul>
             </div>
-            <div class="span9" id="content">
+            <div class="span10" id="content">
                 <div class="row-fluid">
                 {% block contenido %}{% endblock %}
                 </div>
@@ -213,6 +230,7 @@
     <script src="{{ asset('admin/assets/scripts.js') }}"></script>
     <script src="{{ asset('admin/vendors/data-table/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('admin/vendors/data-table/tablestyles.js') }}"></script>
+    {% block jsindi %}{% endblock %}
     <script>
         $(function() {
             // Easy pie charts

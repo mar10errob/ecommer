@@ -14,3 +14,6 @@ editar_proveedor:
     pattern: /{id}/editar
     defaults: { _controller: ProveedorBundle:Admin:editar }
 
+delete_proveedor:
+    pattern: /{id}/eliminar
+    defaults: { _controller: ProveedorBundle:Admin:delete }

@@ -24,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    
+                    {% set tiene = true %}
                     {% for item in cart.Items %}
                         {% set producto= item.Producto %}
                         <tr>
@@ -59,6 +59,7 @@
                     {% else %}
                         <tr>
                             <td colspan="5" align="center"><h4>No hay articulos en el carrito.</h4></td>
+                            {% set tiene = false %}
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -92,7 +93,7 @@
                             {{ form_rest(form) }}
                         </form>
                         <input type="submit" value="Actualizar" class="btn btn-default update" form="formulario" >
-                        {% if app.user.status %}
+                        {% if app.user.status and tiene %}
                         <a class="btn btn-default check_out" href="{{ path('pedido') }}">Generar Pedido</a>
                         {% endif %}
                     </div>
